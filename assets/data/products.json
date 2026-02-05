@@ -1,0 +1,476 @@
+[
+  {
+    "id": "plla",
+    "name": "左旋聚乳酸 PLLA",
+    "tagline": "高结晶植入级聚酯｜骨科内固定/膜材/缝线基材",
+    "category": "聚酯类 biodegradable polymers",
+    "description": "聚左旋乳酸(PLLA)是一种生物可降解医用高分子材料，广泛应用于可吸收骨钉、手术缝合线及药物缓释系统。无毒可代谢，支持注塑/静电纺丝加工",
+    "applications": [
+      "骨科内固定螺钉/棒",
+      "可吸收膜/防粘连膜",
+      "组织工程支架",
+      "长效药物缓释载体（需配方评估）"
+    ],
+    "variants": [
+      {
+        "sku": "PLLA-50K-OH",
+        "mw": "50,000",
+        "iv": "0.8 dL/g",
+        "end_group": "-OH",
+        "crystallinity": "高结晶",
+        "form": "颗粒/粉末",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": 980,
+        "lead_time": "7-10个工作日（常规库存）",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "MFI": "1.5 g/10min (190°C/2.16kg)",
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%",
+          "degradation": "18–24 个月（体内，典型区间）",
+          "sn_residue": "≤ 100 ppm",
+          "heavy_metals": "≤ 10 ppm (as Pb)"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PLLA-50K-OH.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLLA-100K-COOH",
+        "mw": "100,000",
+        "iv": "1.6 dL/g",
+        "end_group": "-COOH",
+        "crystallinity": "高结晶",
+        "form": "颗粒",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1580,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "MFI": "0.7 g/10min (190°C/2.16kg)",
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%",
+          "degradation": "24–36 个月（体内，典型区间）",
+          "sn_residue": "≤ 100 ppm",
+          "heavy_metals": "≤ 10 ppm (as Pb)"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PLLA-100K-COOH.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLLA-40K-OH",
+        "mw": "40,000",
+        "iv": "0.6 dL/g",
+        "end_group": "-OH",
+        "crystallinity": "高结晶",
+        "form": "颗粒",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": 880,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLLA-430K-COOH",
+        "mw": "430,000",
+        "iv": "3.2 dL/g",
+        "end_group": "-COOH",
+        "crystallinity": "高结晶",
+        "form": "颗粒",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 2680,
+        "lead_time": "15-20个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plla",
+    "image": "assets/images/materials/plla.png"
+  },
+  {
+    "id": "ppdo",
+    "name": "聚对二氧环己酮 PPDO",
+    "tagline": "柔韧可吸收材料｜缝合线/网片/软组织修复",
+    "category": "聚酯类 biodegradable polymers",
+    "description": "可生物降解医疗器械：可吸收缝合线及骨科固定装置\n组织再生替代物\n高校及科研机构实验室研究用材料",
+    "applications": [
+      "可吸收缝合线",
+      "可吸收补片/网片",
+      "软组织修复支架"
+    ],
+    "variants": [
+      {
+        "sku": "PPDO-200K",
+        "mw": "200,000",
+        "iv": "2.0 ~ 3.0",
+        "end_group": "封端",
+        "crystallinity": "中等结晶",
+        "form": "颗粒",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1880,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "Tg": "-12 ~ -5",
+          "Tm": "100 ~ 110",
+          "MFI": "3.0 g/10min (190°C/2.16kg)",
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%",
+          "degradation": "6–9 个月（体内，典型区间）"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PPDO-200K.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PPDO-150K-Ester",
+        "mw": "150,000",
+        "iv": "2.0 ~ 3.0",
+        "end_group": "酯端基",
+        "crystallinity": "中等结晶",
+        "form": "颗粒",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1680,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "Tg": "-12 ~ -5",
+          "Tm": "100 ~ 110",
+          "residual_monomer": "≤ 0.5%"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_ppdo",
+    "image": "assets/images/materials/ppdo.png"
+  },
+  {
+    "id": "plga",
+    "name": "PLGA 共聚物",
+    "tagline": "可控降解速率｜药物缓释/微球/组织工程",
+    "category": "聚酯类 biodegradable polymers",
+    "description": "丙交酯-乙交酯共聚物PLGA是无规共聚，无定型聚合物，广泛用于手术缝合线，防粘连膜，组织工程支架，可吸收微球，如载药缓释微球等。与PLA相比，根据GA含量不同可控制聚合物降解时间，材料柔软有弹性。不同的单体比例可以制备出不同类型的PLGA，例如：PLGA75：25表示该聚合物由75%乳酸和25%羟基乙酸组成。PLGA降解程度随单体比不同而有差异，乙交酯比例越大越易降解。",
+    "applications": [
+      "药物缓释微球",
+      "抗粘连膜",
+      "组织工程支架",
+      "短-中期可吸收固定材料（需结构验证）"
+    ],
+    "variants": [
+      {
+        "sku": "PLGA-75:25-80K",
+        "mw": "80,000",
+        "iv": "0.9 dL/g",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=75:25",
+        "crystallinity": "无定形",
+        "form": "粉末",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": 1280,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "MFI": "6.0 g/10min (190°C/2.16kg)",
+          "degradation": "2–4 个月（体内，典型区间）",
+          "residual_monomer": "≤ 1.0%"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PLGA-75-25-80K.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-50:50-30K",
+        "mw": "30,000",
+        "iv": "0.5 dL/g",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=50:50",
+        "crystallinity": "无定形",
+        "form": "粉末",
+        "pack": "100g/500g（可定制）",
+        "price_cny": 760,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "MFI": "12.0 g/10min (190°C/2.16kg)",
+          "degradation": "4–8 周（体内，典型区间）",
+          "residual_monomer": "≤ 1.0%"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PLGA-50-50-30K.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-85:15-120K-Powder100nm",
+        "mw": "120,000",
+        "iv": "1.1 dL/g",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=15:85",
+        "crystallinity": "非晶",
+        "form": "粉料 ~100nm",
+        "pack": "100g/500g（可定制）",
+        "price_cny": 1680,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "particle_size": "~100 nm",
+          "residual_monomer": "≤ 0.5%",
+          "moisture": "≤ 0.2%",
+          "residual_solvent": "≤ 0.05%",
+          "Tg": null,
+          "Tm": null
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-50:50-60K-Pellet3mm",
+        "mw": "60,000",
+        "iv": "0.7 dL/g",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=50:50",
+        "crystallinity": "非晶",
+        "form": "粒料 ~3mm",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1280,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "pellet_size": "~3 mm",
+          "residual_monomer": "≤ 0.8%",
+          "moisture": "≤ 0.2%",
+          "Tg": null,
+          "Tm": null
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-75:25-80K-Filament",
+        "mw": "80,000",
+        "iv": "0.9 dL/g",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=75:25",
+        "crystallinity": "非晶",
+        "form": "丝料",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": 1480,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "form": "丝料",
+          "residual_monomer": "≤ 0.8%",
+          "moisture": "≤ 0.2%",
+          "Tg": null,
+          "Tm": null
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-1090-1.3 ~ 1.7",
+        "mw": "—",
+        "iv": "1.3 ~ 1.7",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=10:90",
+        "crystallinity": "非晶",
+        "form": "粒料",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1380,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": "40 ~ 50",
+          "Tm": "200 ~ 210"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-3070-0.9 ~ 1.1",
+        "mw": "—",
+        "iv": "0.9 ~ 1.1",
+        "end_group": "-COOH",
+        "ratio": "GA:LA=30:70",
+        "crystallinity": "非晶",
+        "form": "粒料",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1380,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": "45 ~ 55",
+          "Tm": "Non crystalline"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/plga.png"
+  },
+  {
+    "id": "pcl",
+    "name": "聚己内酯 PCL",
+    "tagline": "柔软慢降解｜长效缓释/软组织支架/医美填充载体",
+    "category": "聚酯类 biodegradable polymers",
+    "description": "医用聚己内酯有优良的生物相容性、记忆性、生物可降解性等，它广泛地应用在各个领域，聚己内酯柔软，便于加工，性能优良，可做组织工程支架材料。",
+    "applications": [
+      "长效药物缓释",
+      "软组织修复支架",
+      "医美填充载体（多孔微球等）"
+    ],
+    "variants": [
+      {
+        "sku": "PCL-80K",
+        "mw": "80,000",
+        "iv": "1.0 dL/g",
+        "end_group": "-OH",
+        "crystallinity": "结晶",
+        "form": "颗粒",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": 1180,
+        "lead_time": "7-10个工作日",
+        "properties": {
+          "Tg": null,
+          "Tm": null,
+          "MFI": "2.5 g/10min (160°C/2.16kg)",
+          "degradation": ">24 个月（体内，典型区间）"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PCL-80K.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_pcl",
+    "image": "assets/images/materials/pcl.png"
+  },
+  {
+    "id": "microspheres",
+    "name": "微球 Microspheres",
+    "tagline": "粒径 1–100 μm 可控｜药物缓释/医美填充/靶向递送",
+    "category": "微球 Microspheres",
+    "description": "PLGA微球（聚乙丙交酯微球）是一种可降解的功能高分子有机化合物，具有良好的生物相容性、无毒、良好的成囊和成膜的性能，PLGA微球可以被用于制备药物传递系统、药物缓释系统和组织工程支架等医疗器械，也可以用于制备可降解的手术缝合线、防粘连膜、组织工程支架等材料。",
+    "applications": [
+      "药物缓释微球",
+      "靶向给药载体",
+      "医美填充材料（孔隙结构可选）"
+    ],
+    "variants": [
+      {
+        "sku": "PLGA-MS-10um",
+        "mw": "—",
+        "iv": "—",
+        "end_group": "—",
+        "crystallinity": "—",
+        "form": "微球粉末",
+        "pack": "10g/50g（可定制）",
+        "price_cny": 2200,
+        "lead_time": "按需求评估",
+        "properties": {
+          "particle_size": "20μm~40μm；20μm~50μm；30μm~50μm；40μm~60μm",
+          "drug_loading": "按配方评估",
+          "porosity": "可选",
+          "degradation": "与基体比例/分子量相关",
+          "mw_range": "1-2万、3-4万、6-8万"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_PLGA-MS-10um.pdf"
+          },
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/microspheres.png"
+  }
+]

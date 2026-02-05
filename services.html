@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <title>服务｜迪康医用材�?/title>
+  
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Noto Sans SC','ui-sans-serif','system-ui'],
+        display: ['Noto Serif SC','ui-sans-serif','system-ui']
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="assets/css/theme.css">
+
+</head>
+<body class="theme-dark bg-slate-50 text-slate-900">
+  <canvas id="particleNetwork" class="particle-canvas"></canvas>
+  
+<header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+  <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">DK</div>
+      <div class="leading-tight">
+        <div class="font-semibold text-slate-900 tracking-tight">迪康医用材料</div>
+        <div class="text-xs text-slate-500">bioresorbable polymers</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
+      <a class="hover:text-slate-900" href="products.html">产品</a>
+      <a class="hover:text-slate-900" href="services.html">服务</a>
+      <a class="hover:text-slate-900" href="about.html">关于我们</a>
+      <a class="hover:text-slate-900" href="contact.html">联系</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="btn-ghost relative inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 hover:bg-slate-50">
+        询价�?
+        <span class="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span>
+      </a>
+      <a href="contact.html#quote" class="btn-primary hidden sm:inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+        立即询价
+      </a>
+    </div>
+  </div>
+</header>
+
+  <main class="relative z-10 mx-auto max-w-7xl px-4 py-10">
+    <div class="grid lg:grid-cols-12 gap-8">
+      <div class="lg:col-span-5">
+        <h1 class="text-3xl font-semibold tracking-tight">材料与加工服�?/h1>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          我们的服务目标是让客户在“材料—工艺—器械”链路上少走弯路：从分子�?端基/比例定制，到微球开发、线材挤出、静电纺丝、注塑与3D打印验证�?
+        </p>
+        <div class="mt-6 glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+          <div class="font-medium text-slate-900">服务范围（不�?PEEK�?/div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700">
+            <li>�?聚合物定制：合成/共聚/端基修饰/分子量精确定�?/li>
+            <li>�?指标服务：IV、MFI、残留单�?溶剂、水分、金属离子、降解评价等</li>
+            <li>�?加工能力：线材挤出、静电纺丝、注塑加工�?D打印验证</li>
+            <li>�?微球开发：粒径 1�?00 μm 可控，孔隙率/载药/释放曲线调控</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="text-sm text-slate-500">01</div>
+            <div class="mt-2 font-semibold text-slate-900">项目需求梳�?/div>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">收集器械类别、目标支撑周期、加工方式、灭菌与包装方案，输出材料窗口与风险点�?/p>
+          </div>
+          <div class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="text-sm text-slate-500">02</div>
+            <div class="mt-2 font-semibold text-slate-900">样品与小�?/div>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">提供典型规格样品；必要时进行端基/分子�?比例的小试迭代�?/p>
+          </div>
+          <div class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="text-sm text-slate-500">03</div>
+            <div class="mt-2 font-semibold text-slate-900">指标与报�?/div>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">按项目选择检测项，形成批次COA与趋势数据，支持质量协议对接�?/p>
+          </div>
+          <div class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="text-sm text-slate-500">04</div>
+            <div class="mt-2 font-semibold text-slate-900">加工验证</div>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">挤出/注塑/纺丝/打印建立工艺窗口，给出关键控制点与建议参数�?/p>
+          </div>
+        </div>
+
+        <div class="mt-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-900">常见交付�?/h2>
+          <div class="mt-4 grid sm:grid-cols-2 gap-3 text-sm text-slate-700">
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">�?材料规格书（含分子量/端基/比例/推荐应用�?/div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">�?批次检测报告（COA）与趋势数据（按需�?/div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">�?工艺窗口建议（挤�?注塑/纺丝/打印�?/div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">�?选型建议与风险清单（降解/力学/灭菌/包装�?/div>
+          </div>
+          <a href="contact.html#tech" class="btn-primary mt-5 inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">发起技术沟�?/a>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+<footer class="relative z-10 border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-12 gap-8">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">DK</div>
+        <div>
+          <div class="font-semibold text-slate-900">成都迪康药业 | 医用材料合成中心</div>
+          <div class="text-sm text-slate-600">高分子可吸收医用材料研发与产业化平台</div>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+        专注可吸收生物材料研发与生产，提�?PLLA / PPDO / PLGA / PCL 原材料与指标检测服务，
+        支持定制合成、微球开发、线材挤出、静电纺丝、注塑与 3D 打印验证�?
+      </p>
+      <div class="mt-4 text-xs text-slate-500">© 2026 成都迪康药业. All rights reserved.</div>
+    </div>
+
+    <div class="md:col-span-7 grid sm:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="font-medium text-slate-900">产品</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li><a class="hover:text-slate-900" href="products.html">聚酯类聚合物</a></li>
+          <li><a class="hover:text-slate-900" href="products.html">微球 / 载药体系</a></li>
+          <li><a class="hover:text-slate-900" href="services.html">加工验证服务</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-medium text-slate-900">支持</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li><a class="hover:text-slate-900" href="contact.html#quote">样品 / 报价</a></li>
+          <li><a class="hover:text-slate-900" href="contact.html#tech">技术沟�?/a></li>
+          <li><a class="hover:text-slate-900" href="about.html#qa">质量与认�?/a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-medium text-slate-900">联系</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li>邮箱：1792625284@qq.com</li>
+          <li>电话：13689016487</li>
+          <li>地址：成都市高新区（示例�?/li>
+        </ul>
+        <div class="mt-4">
+          <img class="qr-image" src="./assets/images/qr/wechat.png" alt="企业微信二维码" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 rounded-2xl bg-slate-900 px-4 py-3 text-sm text-white shadow-lg opacity-0 translate-y-2 transition"></div>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
+
+

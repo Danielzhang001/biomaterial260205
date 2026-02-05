@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <title>联系｜迪康医用材料</title>
+  
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Noto Sans SC','ui-sans-serif','system-ui'],
+        display: ['Noto Serif SC','ui-sans-serif','system-ui']
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="assets/css/theme.css">
+
+</head>
+<body class="theme-dark bg-slate-50 text-slate-900">
+  <canvas id="particleNetwork" class="particle-canvas"></canvas>
+  
+<header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
+  <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">DK</div>
+      <div class="leading-tight">
+        <div class="font-semibold text-slate-900 tracking-tight">迪康医用材料</div>
+        <div class="text-xs text-slate-500">bioresorbable polymers</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
+      <a class="hover:text-slate-900" href="products.html">产品</a>
+      <a class="hover:text-slate-900" href="services.html">服务</a>
+      <a class="hover:text-slate-900" href="about.html">关于我们</a>
+      <a class="hover:text-slate-900" href="contact.html">联系</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="cart.html" class="btn-ghost relative inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 hover:bg-slate-50">
+        询价单
+        <span class="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span>
+      </a>
+      <a href="contact.html#quote" class="btn-primary hidden sm:inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+        立即询价
+      </a>
+    </div>
+  </div>
+</header>
+
+  <main class="relative z-10 mx-auto max-w-7xl px-4 py-10">
+    <div class="grid lg:grid-cols-12 gap-10">
+      <div class="lg:col-span-5">
+        <h1 class="text-3xl font-semibold tracking-tight">联系与支持</h1>
+        <p class="mt-3 text-slate-600 leading-relaxed">
+          你可以选择"申请样品/报价"或"技术沟通"。我们会根据你的器械场景、目标支撑周期与加工方式，推荐合适的材料窗口与规格。
+        </p>
+
+        <div class="mt-6 glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div class="font-medium text-slate-900">联系信息</div>
+          <div class="mt-3 text-sm text-slate-700 space-y-2">
+            <div>邮箱：1792625284@qq.com</div>
+            <div>电话：13689016487</div>
+            <div>地址：四川省成都市</div>
+                <div class="mt-4 text-xs text-slate-500">提交后可通过邮件或企业微信跟进报价与样品。</div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <section id="quote" class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-900">申请样品 / 报价</h2>
+          <p class="mt-2 text-sm text-slate-600">填写信息后可自动生成询价单；提交后由销售与技术支持跟进。</p>
+          <form id="quoteForm" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="mt-5 grid sm:grid-cols-2 gap-4">
+            <input type="hidden" name="form-name" value="quote" />
+            <p class="hidden">
+              <label>Don't fill this out: <input name="bot-field" /></label>
+            </p>
+            <div>
+              <label class="text-sm text-slate-700">公司/团队</label>
+              <input name="company" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="例如：XX 医疗器械" required />
+            </div>
+            <div>
+              <label class="text-sm text-slate-700">联系人</label>
+              <input name="contact" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="姓名" required />
+            </div>
+            <div>
+              <label class="text-sm text-slate-700">邮箱</label>
+              <input name="email" type="email" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="name@company.com" required />
+            </div>
+            <div>
+              <label class="text-sm text-slate-700">电话</label>
+              <input name="phone" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="+86 ..." required />
+            </div>
+            <div>
+              <label class="text-sm text-slate-700">应用领域</label>
+              <select name="application" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" required>
+                <option value="">请选择</option>
+                <option>骨科内固定</option>
+                <option>软组织修复</option>
+                <option>缝合�?/ 网片</option>
+                <option>药物缓释 / 微球</option>
+                <option>医美填充</option>
+                <option>其他</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-sm text-slate-700">预计用量</label>
+              <input name="usage" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="例如：50 kg / 月" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="text-sm text-slate-700">需求描述</label>
+              <textarea name="requirements" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" rows="5" placeholder="例如：PLGA 75:25，用于药物缓释微球，目标释放周期 1-2 个月"></textarea>
+            </div>
+            <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+              <button type="submit" class="btn-primary rounded-2xl bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-slate-800">提交询价</button>
+              <a href="cart.html" class="text-sm font-medium text-slate-900 hover:underline">先看询价单 →</a>
+            </div>
+            <div class="sm:col-span-2 text-xs text-slate-500">提交后可通过 Netlify 表单通知发送至 1792625284@qq.com。</div>
+          </form>
+        </section>
+
+        <section id="tech" class="glass-card hover-lift rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-900">技术沟通</h2>
+          <div class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
+              <div class="font-medium text-slate-900">器械：骨科/普外/妇科</div>
+              <div class="mt-1 text-slate-600">目标强度、支撑周期、结构与植入环境</div>
+            </div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
+              <div class="font-medium text-slate-900">工艺：挤出/注塑/纺丝/打印</div>
+              <div class="mt-1 text-slate-600">温度窗口、剪切、干燥与灭菌适配</div>
+            </div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
+              <div class="font-medium text-slate-900">指标：IV/MFI/残留</div>
+              <div class="mt-1 text-slate-600">按项目定义必测项与放行标�?/div>
+            </div>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
+              <div class="font-medium text-slate-900">交付：样品→小试→批量</div>
+              <div class="mt-1 text-slate-600">供应安全与批次一致性管理</div>
+            </div>
+          </div>
+          <div class="mt-5 text-xs text-slate-500">注：本页面表单为演示占位；上线需对接CRM/工单/邮件。</div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+<footer class="relative z-10 border-t border-slate-200 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 grid md:grid-cols-12 gap-8">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">DK</div>
+        <div>
+          <div class="font-semibold text-slate-900">成都迪康药业 | 医用材料合成中心</div>
+          <div class="text-sm text-slate-600">高分子可吸收医用材料研发与产业化平台</div>
+        </div>
+      </div>
+      <p class="mt-4 text-sm text-slate-600 leading-relaxed">
+        专注可吸收生物材料研发与生产，提�?PLLA / PPDO / PLGA / PCL 原材料与指标检测服务，
+        支持定制合成、微球开发、线材挤出、静电纺丝、注塑与 3D 打印验证�?
+      </p>
+      <div class="mt-4 text-xs text-slate-500">© 2026 成都迪康药业. All rights reserved.</div>
+    </div>
+
+    <div class="md:col-span-7 grid sm:grid-cols-3 gap-6 text-sm">
+      <div>
+        <div class="font-medium text-slate-900">产品</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li><a class="hover:text-slate-900" href="products.html">聚酯类聚合物</a></li>
+          <li><a class="hover:text-slate-900" href="products.html">微球 / 载药体系</a></li>
+          <li><a class="hover:text-slate-900" href="services.html">加工验证服务</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-medium text-slate-900">支持</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li><a class="hover:text-slate-900" href="contact.html#quote">样品 / 报价</a></li>
+          <li><a class="hover:text-slate-900" href="contact.html#tech">技术沟通</a></li>
+          <li><a class="hover:text-slate-900" href="about.html#qa">质量与认证</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="font-medium text-slate-900">联系</div>
+        <ul class="mt-3 space-y-2 text-slate-600">
+          <li>邮箱：1792625284@qq.com</li>
+          <li>电话：13689016487</li>
+          <li>地址：成都市高新区（示例）</li>
+        </ul>
+        <div class="mt-4">
+          <img class="qr-image" src="./assets/images/qr/wechat.png" alt="企业微信二维码" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 rounded-2xl bg-slate-900 px-4 py-3 text-sm text-white shadow-lg opacity-0 translate-y-2 transition"></div>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
+
+
