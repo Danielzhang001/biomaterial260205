@@ -278,6 +278,70 @@ function getSummaryCards(product, variant){
   ];
 }
 
+function buildProductInfoSection(product, variant){
+  const labels = {
+    info: '\u4ea7\u54c1\u4fe1\u606f',
+    intro: '\u4ea7\u54c1\u4ecb\u7ecd\uff1a',
+    app: '\u5e94\u7528\uff1a',
+    feature: '\u4ea7\u54c1\u7279\u70b9\uff1a',
+    process: '\u52a0\u5de5\u5de5\u827a\uff1a',
+    spec: '\u4ea7\u54c1\u6307\u6807\uff1a',
+    form: '\u5f62\u6001',
+    pack: '\u5305\u88c5'
+  };
+
+  const scope = getSpecScope(product);
+  const appText = (product.applications || []).join(' ; ') || 'Custom application guidance available.';
+  const propertySummary = Object.entries(variant?.properties || {})
+    .slice(0, 4)
+    .map(([k, val]) => `${k}: ${normalizePropertyValue(k, val)}`)
+    .join(' ; ');
+
+  const featureParts = [product.tagline, propertySummary].filter(Boolean);
+  const featureText = featureParts.length
+    ? `${featureParts.join(' ; ')}.`
+    : 'Material parameters and degradation window can be customized.';
+  const processText = product.processing || 'Support molding, extrusion, microsphere and 3D printing validation.';
+
+  const indicatorRows = [
+    `${scope.a_label}: ${scope.a_value}`,
+    `${scope.b_label}: ${scope.b_value}`,
+    variant?.form ? `${labels.form}: ${variant.form}` : '',
+    variant?.pack ? `${labels.pack}: ${variant.pack}` : ''
+  ].filter(Boolean);
+
+  return `
+    <div class="product-info-sheet-head">
+      <div class="product-info-sheet-title">${labels.info}</div>
+      <div class="product-info-sheet-track"></div>
+    </div>
+    <div class="product-info-sheet-body">
+      <section class="product-info-row">
+        <h3 class="product-info-row-title">${labels.intro}</h3>
+        <p class="product-info-row-text">${product.description || ''}</p>
+      </section>
+      <section class="product-info-row">
+        <h3 class="product-info-row-title">${labels.app}</h3>
+        <p class="product-info-row-text">${appText}</p>
+      </section>
+      <section class="product-info-row">
+        <h3 class="product-info-row-title">${labels.feature}</h3>
+        <p class="product-info-row-text">${featureText}</p>
+      </section>
+      <section class="product-info-row">
+        <h3 class="product-info-row-title">${labels.process}</h3>
+        <p class="product-info-row-text">${processText}</p>
+      </section>
+      <section class="product-info-row">
+        <h3 class="product-info-row-title">${labels.spec}</h3>
+        <ul class="product-info-bullets">
+          ${indicatorRows.map((text) => `<li>${text}</li>`).join('')}
+        </ul>
+      </section>
+    </div>
+  `;
+}
+
 function openReport(file, sku){
   const modal = document.getElementById('reportModal');
   const frame = document.getElementById('reportFrame');
@@ -440,6 +504,20 @@ function renderProductDetail(){
   // 使用第一个产品变体作为默认值
   const defaultVariant = p.variants[0];
 
+  const rightCol = wrap.querySelector('.lg\\:col-span-7');
+  const legacyInfoCard = rightCol
+    ? rightCol.querySelector('.glass-card.hover-lift.mt-6.rounded-3xl.border.border-slate-200.bg-white.p-5.shadow-sm')
+    : null;
+
+  if(legacyInfoCard){
+    const infoSheetHost = document.createElement('div');
+    infoSheetHost.id = 'productInfoSheetHost';
+    infoSheetHost.className = 'glass-card hover-lift mt-6 rounded-3xl border border-slate-200 bg-white shadow-sm overflow-hidden';
+    infoSheetHost.innerHTML = buildProductInfoSection(p, defaultVariant);
+    legacyInfoCard.insertAdjacentElement('afterend', infoSheetHost);
+    legacyInfoCard.classList.add('hidden');
+  }
+
   function renderVariant(){
     const v = defaultVariant;
     document.getElementById('priceText').textContent = money(v.price_cny);
@@ -452,6 +530,9 @@ function renderProductDetail(){
         <div class="mt-1 font-semibold text-slate-900">${item.value}</div>
       </div>
     `).join('');
+
+    const infoSheetHost = document.getElementById('productInfoSheetHost');
+    if(infoSheetHost) infoSheetHost.innerHTML = buildProductInfoSection(p, v);
 
     const propsRows = Object.entries(v.properties || {}).map(([k,val])=>`
       <tr class="border-b border-slate-100">
