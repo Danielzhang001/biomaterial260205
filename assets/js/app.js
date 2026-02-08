@@ -178,7 +178,8 @@ function renderFilters(){
   const catSel = document.getElementById('catSelect');
   const polySel = document.getElementById('polySelect');
   if(catSel){
-    const cats = ['全部', ...Array.from(new Set(state.products.map(p=>p.category)))];
+    // 定义固定的产品分类
+    const cats = ['全部', '生物医用单体', '生物医用聚合物', '生物医用微球', '医用加工服务'];
     catSel.innerHTML = cats.map(c=>`<option value="${c}">${c}</option>`).join('');
     catSel.value = state.filter.category;
     catSel.onchange = ()=>{ state.filter.category = catSel.value; renderCatalog(); };
@@ -269,17 +270,26 @@ function renderProductDetail(){
           </div>
 
           <div class="p-5">
-            <label class="text-sm font-medium text-slate-800">选择规格（SKU）</label>
-            <select id="variantSelect" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-slate-900/10">
-              ${p.variants.map(v=>`<option value="${v.sku}">${v.sku} · Mw ${v.mw} · 端基 ${v.end_group || '—'}${v.ratio?(' · '+v.ratio):''}</option>`).join('')}
-            </select>
+            <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-5 bg-slate-50">
+              <div class="text-sm font-medium text-slate-900 mb-4">产品规格范围</div>
+              <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-slate-600">粘均分子量：</span>
+                  <span class="font-medium text-slate-900">0.6-100万</span>
+                </div>
+                <div>
+                  <span class="text-slate-600">特性粘度：</span>
+                  <span class="font-medium text-slate-900">0.3-5dL/g</span>
+                </div>
+              </div>
+            </div>
 
             <div class="mt-5 grid md:grid-cols-2 gap-4" id="variantSummary"></div>
 
             <div class="mt-6 flex flex-wrap items-end justify-between gap-4">
               <div>
                 <div class="text-sm text-slate-600">报价方式</div>
-                <div class="text-2xl font-semibold text-slate-900" id="priceText"></div>
+                <div class="text-2xl font-semibold text-slate-900" id="priceText">询价</div>
                 <div class="text-xs text-slate-500 mt-1">价格按需询价，销售团队将于24小时内联系。</div>
               </div>
               <div class="flex items-end gap-3">
@@ -326,17 +336,37 @@ function renderProductDetail(){
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
+
+        <div class="glass-card hover-lift mt-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+          <h2 class="text-lg font-semibold text-slate-900">产品详细介绍</h2>
+          <div class="mt-4 prose prose-sm max-w-none text-slate-700">
+            <p class="leading-relaxed">${p.description}</p>
+            <div class="mt-4">
+              <h3 class="font-medium text-slate-900">主要特性</h3>
+              <ul class="mt-2 space-y-1">
+                ${p.applications.map(app => `<li class="flex gap-2"><span class="text-slate-400">•</span><span>${app}</span></li>`).join('')}
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4 flex justify-center">
+            <div class="card-visual w-48 h-48 rounded-2xl overflow-hidden border border-slate-200">
+              ${productMedia(p)}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   `;
 
-  const variantSelect = document.getElementById('variantSelect');
   const qtyInput = document.getElementById('qtyInput');
   const addBtn = document.getElementById('addBtn');
   const tabPanels = document.getElementById('tabPanels');
 
+  // 使用第一个产品变体作为默认值
+  const defaultVariant = p.variants[0];
+
   function renderVariant(){
-    const v = p.variants.find(x=>x.sku===variantSelect.value) || p.variants[0];
+    const v = defaultVariant;
     document.getElementById('priceText').textContent = money(v.price_cny);
 
     const summary = document.getElementById('variantSummary');
@@ -420,7 +450,6 @@ function renderProductDetail(){
     };
   }
 
-  variantSelect.onchange = renderVariant;
   renderVariant();
   renderCartBadge();
 }

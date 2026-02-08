@@ -3,7 +3,7 @@
     "id": "plla",
     "name": "左旋聚乳酸 PLLA",
     "tagline": "高结晶植入级聚酯｜骨科内固定/膜材/缝线基材",
-    "category": "聚酯类 biodegradable polymers",
+    "category": "生物医用聚合物",
     "description": "聚左旋乳酸(PLLA)是一种生物可降解医用高分子材料，广泛应用于可吸收骨钉、手术缝合线及药物缓释系统。无毒可代谢，支持注塑/静电纺丝加工",
     "applications": [
       "骨科内固定螺钉/棒",
@@ -23,8 +23,8 @@
         "price_cny": 980,
         "lead_time": "7-10个工作日（常规库存）",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "MFI": "1.5 g/10min (190°C/2.16kg)",
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%",
@@ -54,8 +54,8 @@
         "price_cny": 1580,
         "lead_time": "10-15个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "MFI": "0.7 g/10min (190°C/2.16kg)",
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%",
@@ -85,8 +85,8 @@
         "price_cny": 880,
         "lead_time": "7-10个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%"
         },
@@ -108,8 +108,8 @@
         "price_cny": 2680,
         "lead_time": "15-20个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%"
         },
@@ -128,7 +128,7 @@
     "id": "ppdo",
     "name": "聚对二氧环己酮 PPDO",
     "tagline": "柔韧可吸收材料｜缝合线/网片/软组织修复",
-    "category": "聚酯类 biodegradable polymers",
+    "category": "生物医用聚合物",
     "description": "可生物降解医疗器械：可吸收缝合线及骨科固定装置\n组织再生替代物\n高校及科研机构实验室研究用材料",
     "applications": [
       "可吸收缝合线",
@@ -195,7 +195,7 @@
     "id": "plga",
     "name": "PLGA 共聚物",
     "tagline": "可控降解速率｜药物缓释/微球/组织工程",
-    "category": "聚酯类 biodegradable polymers",
+    "category": "生物医用聚合物",
     "description": "丙交酯-乙交酯共聚物PLGA是无规共聚，无定型聚合物，广泛用于手术缝合线，防粘连膜，组织工程支架，可吸收微球，如载药缓释微球等。与PLA相比，根据GA含量不同可控制聚合物降解时间，材料柔软有弹性。不同的单体比例可以制备出不同类型的PLGA，例如：PLGA75：25表示该聚合物由75%乳酸和25%羟基乙酸组成。PLGA降解程度随单体比不同而有差异，乙交酯比例越大越易降解。",
     "applications": [
       "药物缓释微球",
@@ -216,8 +216,8 @@
         "price_cny": 1280,
         "lead_time": "7-10个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "MFI": "6.0 g/10min (190°C/2.16kg)",
           "degradation": "2–4 个月（体内，典型区间）",
           "residual_monomer": "≤ 1.0%"
@@ -245,8 +245,8 @@
         "price_cny": 760,
         "lead_time": "7-10个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "MFI": "12.0 g/10min (190°C/2.16kg)",
           "degradation": "4–8 周（体内，典型区间）",
           "residual_monomer": "≤ 1.0%"
@@ -278,8 +278,8 @@
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%",
           "residual_solvent": "≤ 0.05%",
-          "Tg": null,
-          "Tm": null
+          "Tg": "定制",
+          "Tm": "定制"
         },
         "reports": [
           {
@@ -303,8 +303,8 @@
           "pellet_size": "~3 mm",
           "residual_monomer": "≤ 0.8%",
           "moisture": "≤ 0.2%",
-          "Tg": null,
-          "Tm": null
+          "Tg": "定制",
+          "Tm": "定制"
         },
         "reports": [
           {
@@ -328,8 +328,8 @@
           "form": "丝料",
           "residual_monomer": "≤ 0.8%",
           "moisture": "≤ 0.2%",
-          "Tg": null,
-          "Tm": null
+          "Tg": "定制",
+          "Tm": "定制"
         },
         "reports": [
           {
@@ -390,7 +390,7 @@
     "id": "pcl",
     "name": "聚己内酯 PCL",
     "tagline": "柔软慢降解｜长效缓释/软组织支架/医美填充载体",
-    "category": "聚酯类 biodegradable polymers",
+    "category": "生物医用聚合物",
     "description": "医用聚己内酯有优良的生物相容性、记忆性、生物可降解性等，它广泛地应用在各个领域，聚己内酯柔软，便于加工，性能优良，可做组织工程支架材料。",
     "applications": [
       "长效药物缓释",
@@ -409,8 +409,8 @@
         "price_cny": 1180,
         "lead_time": "7-10个工作日",
         "properties": {
-          "Tg": null,
-          "Tm": null,
+          "Tg": "定制",
+          "Tm": "定制",
           "MFI": "2.5 g/10min (160°C/2.16kg)",
           "degradation": ">24 个月（体内，典型区间）"
         },
@@ -433,7 +433,7 @@
     "id": "microspheres",
     "name": "微球 Microspheres",
     "tagline": "粒径 1–100 μm 可控｜药物缓释/医美填充/靶向递送",
-    "category": "微球 Microspheres",
+    "category": "生物医用微球",
     "description": "PLGA微球（聚乙丙交酯微球）是一种可降解的功能高分子有机化合物，具有良好的生物相容性、无毒、良好的成囊和成膜的性能，PLGA微球可以被用于制备药物传递系统、药物缓释系统和组织工程支架等医疗器械，也可以用于制备可降解的手术缝合线、防粘连膜、组织工程支架等材料。",
     "applications": [
       "药物缓释微球",
