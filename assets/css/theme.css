@@ -120,11 +120,14 @@ h1, h2, h3, .font-display {
 
 .nav-dropdown {
   position: relative;
+  /* Extend hover area below trigger so cursor can move into menu without flicker */
+  padding-bottom: 0.45rem;
+  margin-bottom: -0.45rem;
 }
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.6rem);
+  top: calc(100% + 0.18rem);
   left: 0;
   min-width: 220px;
   border-radius: 0.9rem;
