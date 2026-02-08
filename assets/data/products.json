@@ -2,116 +2,39 @@
   {
     "id": "plla",
     "name": "左旋聚乳酸 PLLA",
-    "tagline": "高结晶植入级聚酯｜骨科内固定/膜材/缝线基材",
+    "tagline": "高结晶可吸收聚合物｜骨科固定/膜材/支架",
     "category": "生物医用聚合物",
-    "description": "聚左旋乳酸(PLLA)是一种生物可降解医用高分子材料，广泛应用于可吸收骨钉、手术缝合线及药物缓释系统。无毒可代谢，支持注塑/静电纺丝加工",
+    "description": "PLLA 为半结晶医用可吸收聚合物，具备较高力学强度和较慢降解特征，常用于骨科内固定、可吸收膜与组织工程支架。可提供分子量、端基和特性黏度定制。",
     "applications": [
       "骨科内固定螺钉/棒",
       "可吸收膜/防粘连膜",
       "组织工程支架",
-      "长效药物缓释载体（需配方评估）"
+      "中长期药物缓释载体"
     ],
+    "spec_range": {
+      "a_label": "粘均分子量",
+      "a_value": "0.6-100万（可定制）",
+      "b_label": "特性粘度",
+      "b_value": "0.3-5.0 dL/g（可定制）"
+    },
+    "processing": "注塑成型、静电纺丝、线材挤出与 3D 打印验证。",
     "variants": [
       {
-        "sku": "PLLA-50K-OH",
-        "mw": "50,000",
-        "iv": "0.8 dL/g",
-        "end_group": "-OH",
+        "sku": "PLLA-CUSTOM",
+        "mw": "可定制",
+        "iv": "可定制",
+        "end_group": "可定制",
         "crystallinity": "高结晶",
-        "form": "颗粒/粉末",
-        "pack": "500g/1kg（可定制）",
-        "price_cny": 980,
-        "lead_time": "7-10个工作日（常规库存）",
+        "form": "颗粒/粉末/丝材",
+        "pack": "500g/1kg/5kg（可定制）",
+        "price_cny": null,
+        "lead_time": "7-15个工作日",
         "properties": {
           "Tg": "定制",
           "Tm": "定制",
-          "MFI": "1.5 g/10min (190°C/2.16kg)",
           "residual_monomer": "≤ 0.5%",
           "moisture": "≤ 0.2%",
-          "degradation": "18–24 个月（体内，典型区间）",
-          "sn_residue": "≤ 100 ppm",
-          "heavy_metals": "≤ 10 ppm (as Pb)"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PLLA-50K-OH.pdf"
-          },
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLLA-100K-COOH",
-        "mw": "100,000",
-        "iv": "1.6 dL/g",
-        "end_group": "-COOH",
-        "crystallinity": "高结晶",
-        "form": "颗粒",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1580,
-        "lead_time": "10-15个工作日",
-        "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "MFI": "0.7 g/10min (190°C/2.16kg)",
-          "residual_monomer": "≤ 0.5%",
-          "moisture": "≤ 0.2%",
-          "degradation": "24–36 个月（体内，典型区间）",
-          "sn_residue": "≤ 100 ppm",
-          "heavy_metals": "≤ 10 ppm (as Pb)"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PLLA-100K-COOH.pdf"
-          },
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLLA-40K-OH",
-        "mw": "40,000",
-        "iv": "0.6 dL/g",
-        "end_group": "-OH",
-        "crystallinity": "高结晶",
-        "form": "颗粒",
-        "pack": "500g/1kg（可定制）",
-        "price_cny": 880,
-        "lead_time": "7-10个工作日",
-        "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "residual_monomer": "≤ 0.5%",
-          "moisture": "≤ 0.2%"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLLA-430K-COOH",
-        "mw": "430,000",
-        "iv": "3.2 dL/g",
-        "end_group": "-COOH",
-        "crystallinity": "高结晶",
-        "form": "颗粒",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 2680,
-        "lead_time": "15-20个工作日",
-        "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "residual_monomer": "≤ 0.5%",
-          "moisture": "≤ 0.2%"
+          "degradation": "12-36个月（与分子量/结构相关）"
         },
         "reports": [
           {
@@ -125,59 +48,39 @@
     "image": "assets/images/materials/plla.png"
   },
   {
-    "id": "ppdo",
-    "name": "聚对二氧环己酮 PPDO",
-    "tagline": "柔韧可吸收材料｜缝合线/网片/软组织修复",
+    "id": "pdlla",
+    "name": "外消旋聚乳酸 PDLLA",
+    "tagline": "无定形可吸收聚合物｜降解相对快于 PLLA",
     "category": "生物医用聚合物",
-    "description": "可生物降解医疗器械：可吸收缝合线及骨科固定装置\n组织再生替代物\n高校及科研机构实验室研究用材料",
+    "description": "PDLLA 为无定形聚乳酸，通常较同分子量 PLLA 表现出更快水解降解，适用于中短期支撑、可吸收填充及药物递送体系。",
     "applications": [
-      "可吸收缝合线",
-      "可吸收补片/网片",
-      "软组织修复支架"
+      "短中期可吸收固定",
+      "药物缓释基体",
+      "组织修复支架",
+      "可吸收填充体系"
     ],
+    "spec_range": {
+      "a_label": "特性粘度",
+      "a_value": "0.2-3.0 dL/g",
+      "b_label": "端基",
+      "b_value": "羧基/羟基/酯端基（可定制）"
+    },
+    "processing": "注塑、溶液浇铸、静电纺丝与微球制备。",
     "variants": [
       {
-        "sku": "PPDO-200K",
-        "mw": "200,000",
-        "iv": "2.0 ~ 3.0",
-        "end_group": "封端",
-        "crystallinity": "中等结晶",
-        "form": "颗粒",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1880,
-        "lead_time": "10-15个工作日",
+        "sku": "PDLLA-IV0.2-3.0",
+        "mw": "按黏度窗口定制",
+        "iv": "0.2-3.0 dL/g",
+        "end_group": "-COOH / -OH / Ester",
+        "crystallinity": "无定形",
+        "form": "粉末/颗粒",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": null,
+        "lead_time": "10-20个工作日",
         "properties": {
-          "Tg": "-12 ~ -5",
-          "Tm": "100 ~ 110",
-          "MFI": "3.0 g/10min (190°C/2.16kg)",
-          "residual_monomer": "≤ 0.5%",
-          "moisture": "≤ 0.2%",
-          "degradation": "6–9 个月（体内，典型区间）"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PPDO-200K.pdf"
-          },
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PPDO-150K-Ester",
-        "mw": "150,000",
-        "iv": "2.0 ~ 3.0",
-        "end_group": "酯端基",
-        "crystallinity": "中等结晶",
-        "form": "颗粒",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1680,
-        "lead_time": "10-15个工作日",
-        "properties": {
-          "Tg": "-12 ~ -5",
-          "Tm": "100 ~ 110",
+          "Tg": "45-55°C（随分子量变化）",
+          "Tm": "无明显熔点（无定形）",
+          "degradation": "通常快于 PLLA（同分子量条件）",
           "residual_monomer": "≤ 0.5%"
         },
         "reports": [
@@ -188,192 +91,93 @@
         ]
       }
     ],
-    "image_svg": "bottle_ppdo",
-    "image": "assets/images/materials/ppdo.png"
+    "image_svg": "bottle_plla",
+    "image": "assets/images/materials/pdlla-powder.png"
   },
   {
     "id": "plga",
     "name": "PLGA 共聚物",
-    "tagline": "可控降解速率｜药物缓释/微球/组织工程",
+    "tagline": "LA:GA 比例可调｜缓释微球/组织工程/可吸收器械",
     "category": "生物医用聚合物",
-    "description": "丙交酯-乙交酯共聚物PLGA是无规共聚，无定型聚合物，广泛用于手术缝合线，防粘连膜，组织工程支架，可吸收微球，如载药缓释微球等。与PLA相比，根据GA含量不同可控制聚合物降解时间，材料柔软有弹性。不同的单体比例可以制备出不同类型的PLGA，例如：PLGA75：25表示该聚合物由75%乳酸和25%羟基乙酸组成。PLGA降解程度随单体比不同而有差异，乙交酯比例越大越易降解。",
+    "description": "PLGA 通过调节乳酸与乙醇酸比例实现降解速率与力学窗口控制。常见规律为 50:50 降解更快，75:25 居中，85:15 相对更慢，适合不同释放与支撑周期。",
     "applications": [
       "药物缓释微球",
-      "抗粘连膜",
       "组织工程支架",
-      "短-中期可吸收固定材料（需结构验证）"
+      "抗粘连膜",
+      "中短期可吸收器械"
     ],
+    "spec_range": {
+      "a_label": "LA:GA 比例",
+      "a_value": "85:15 / 75:25 / 50:50",
+      "b_label": "特性粘度",
+      "b_value": "0.2-2.0 dL/g（可定制）"
+    },
+    "processing": "微球乳化固化、膜材制备、挤出造粒与注塑试制。",
     "variants": [
       {
-        "sku": "PLGA-75:25-80K",
-        "mw": "80,000",
-        "iv": "0.9 dL/g",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=75:25",
+        "sku": "PLGA-85:15",
+        "mw": "可定制",
+        "iv": "0.8-1.8 dL/g",
+        "end_group": "-COOH / Ester",
+        "ratio": "LA:GA = 85:15",
         "crystallinity": "无定形",
-        "form": "粉末",
+        "form": "颗粒/粉末",
         "pack": "500g/1kg（可定制）",
-        "price_cny": 1280,
+        "price_cny": null,
+        "lead_time": "10-15个工作日",
+        "properties": {
+          "Tg": "定制",
+          "Tm": "定制",
+          "mechanics": "相对更高强度保持",
+          "degradation": "相对较慢，适合更长释放/支撑周期"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-75:25",
+        "mw": "可定制",
+        "iv": "0.5-1.5 dL/g",
+        "end_group": "-COOH / Ester",
+        "ratio": "LA:GA = 75:25",
+        "crystallinity": "无定形",
+        "form": "颗粒/粉末",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": null,
+        "lead_time": "7-12个工作日",
+        "properties": {
+          "Tg": "定制",
+          "Tm": "定制",
+          "mechanics": "强度与降解平衡",
+          "degradation": "中等降解速率，常用于月级释放"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      },
+      {
+        "sku": "PLGA-50:50",
+        "mw": "可定制",
+        "iv": "0.2-1.2 dL/g",
+        "end_group": "-COOH / Ester",
+        "ratio": "LA:GA = 50:50",
+        "crystallinity": "无定形",
+        "form": "颗粒/粉末",
+        "pack": "100g/500g（可定制）",
+        "price_cny": null,
         "lead_time": "7-10个工作日",
         "properties": {
           "Tg": "定制",
           "Tm": "定制",
-          "MFI": "6.0 g/10min (190°C/2.16kg)",
-          "degradation": "2–4 个月（体内，典型区间）",
-          "residual_monomer": "≤ 1.0%"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PLGA-75-25-80K.pdf"
-          },
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-50:50-30K",
-        "mw": "30,000",
-        "iv": "0.5 dL/g",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=50:50",
-        "crystallinity": "无定形",
-        "form": "粉末",
-        "pack": "100g/500g（可定制）",
-        "price_cny": 760,
-        "lead_time": "7-10个工作日",
-        "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "MFI": "12.0 g/10min (190°C/2.16kg)",
-          "degradation": "4–8 周（体内，典型区间）",
-          "residual_monomer": "≤ 1.0%"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PLGA-50-50-30K.pdf"
-          },
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-85:15-120K-Powder100nm",
-        "mw": "120,000",
-        "iv": "1.1 dL/g",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=15:85",
-        "crystallinity": "非晶",
-        "form": "粉料 ~100nm",
-        "pack": "100g/500g（可定制）",
-        "price_cny": 1680,
-        "lead_time": "10-15个工作日",
-        "properties": {
-          "particle_size": "~100 nm",
-          "residual_monomer": "≤ 0.5%",
-          "moisture": "≤ 0.2%",
-          "residual_solvent": "≤ 0.05%",
-          "Tg": "定制",
-          "Tm": "定制"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-50:50-60K-Pellet3mm",
-        "mw": "60,000",
-        "iv": "0.7 dL/g",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=50:50",
-        "crystallinity": "非晶",
-        "form": "粒料 ~3mm",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1280,
-        "lead_time": "7-10个工作日",
-        "properties": {
-          "pellet_size": "~3 mm",
-          "residual_monomer": "≤ 0.8%",
-          "moisture": "≤ 0.2%",
-          "Tg": "定制",
-          "Tm": "定制"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-75:25-80K-Filament",
-        "mw": "80,000",
-        "iv": "0.9 dL/g",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=75:25",
-        "crystallinity": "非晶",
-        "form": "丝料",
-        "pack": "500g/1kg（可定制）",
-        "price_cny": 1480,
-        "lead_time": "10-15个工作日",
-        "properties": {
-          "form": "丝料",
-          "residual_monomer": "≤ 0.8%",
-          "moisture": "≤ 0.2%",
-          "Tg": "定制",
-          "Tm": "定制"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-1090-1.3 ~ 1.7",
-        "mw": "—",
-        "iv": "1.3 ~ 1.7",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=10:90",
-        "crystallinity": "非晶",
-        "form": "粒料",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1380,
-        "lead_time": "7-10个工作日",
-        "properties": {
-          "Tg": "40 ~ 50",
-          "Tm": "200 ~ 210"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      },
-      {
-        "sku": "PLGA-3070-0.9 ~ 1.1",
-        "mw": "—",
-        "iv": "0.9 ~ 1.1",
-        "end_group": "-COOH",
-        "ratio": "GA:LA=30:70",
-        "crystallinity": "非晶",
-        "form": "粒料",
-        "pack": "1kg/5kg（可定制）",
-        "price_cny": 1380,
-        "lead_time": "7-10个工作日",
-        "properties": {
-          "Tg": "45 ~ 55",
-          "Tm": "Non crystalline"
+          "mechanics": "初期强度较好，后期衰减更快",
+          "degradation": "三者中通常最快，适合短周期释放"
         },
         "reports": [
           {
@@ -387,38 +191,89 @@
     "image": "assets/images/materials/plga.png"
   },
   {
-    "id": "pcl",
-    "name": "聚己内酯 PCL",
-    "tagline": "柔软慢降解｜长效缓释/软组织支架/医美填充载体",
+    "id": "ppdo",
+    "name": "聚对二氧环己酮 PPDO",
+    "tagline": "高柔韧可吸收聚合物｜缝合线/软组织修复",
     "category": "生物医用聚合物",
-    "description": "医用聚己内酯有优良的生物相容性、记忆性、生物可降解性等，它广泛地应用在各个领域，聚己内酯柔软，便于加工，性能优良，可做组织工程支架材料。",
+    "description": "PPDO（聚对二氧环己酮）是医用可吸收单丝材料，具有良好柔韧性与延展性，在缝合线、软组织修复和需要中期支撑的场景中应用广泛。",
     "applications": [
-      "长效药物缓释",
-      "软组织修复支架",
-      "医美填充载体（多孔微球等）"
+      "可吸收缝合线",
+      "软组织修复",
+      "可吸收网片",
+      "中期支撑器械部件"
     ],
+    "spec_range": {
+      "a_label": "特性粘度",
+      "a_value": "1.0-3.0 dL/g",
+      "b_label": "形态",
+      "b_value": "颗粒/粉末（可定制）"
+    },
+    "processing": "单丝挤出拉伸、注塑成型与编织前体材料制备。",
     "variants": [
       {
-        "sku": "PCL-80K",
-        "mw": "80,000",
-        "iv": "1.0 dL/g",
-        "end_group": "-OH",
-        "crystallinity": "结晶",
-        "form": "颗粒",
+        "sku": "PPDO-IV1.0-3.0",
+        "mw": "按黏度窗口定制",
+        "iv": "1.0-3.0 dL/g",
+        "end_group": "封端/酯端基（可定制）",
+        "crystallinity": "中等结晶",
+        "form": "颗粒/粉末",
         "pack": "1kg/5kg（可定制）",
-        "price_cny": 1180,
-        "lead_time": "7-10个工作日",
+        "price_cny": null,
+        "lead_time": "10-15个工作日",
         "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "MFI": "2.5 g/10min (160°C/2.16kg)",
-          "degradation": ">24 个月（体内，典型区间）"
+          "Tg": "-12 ~ -5°C",
+          "Tm": "100 ~ 110°C",
+          "mechanics": "柔韧性好，适合单丝加工",
+          "degradation": "通常约 6 个月级别（与结构和环境相关）"
         },
         "reports": [
           {
             "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PCL-80K.pdf"
-          },
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_ppdo",
+    "image": "assets/images/materials/ppdo.png"
+  },
+  {
+    "id": "pcl",
+    "name": "聚己内酯 PCL",
+    "tagline": "慢降解可吸收聚合物｜长效缓释/软组织支架",
+    "category": "生物医用聚合物",
+    "description": "PCL 具备良好延展性与加工性，降解周期相对更长，适合长期支撑与长效释放体系。",
+    "applications": [
+      "长效药物缓释",
+      "软组织修复支架",
+      "医美填充载体",
+      "3D 打印可吸收结构"
+    ],
+    "spec_range": {
+      "a_label": "特性粘度",
+      "a_value": "0.2-2.5 dL/g",
+      "b_label": "形态",
+      "b_value": "颗粒/粉末/丝材"
+    },
+    "processing": "挤出、注塑、3D打印丝材开发与静电纺丝。",
+    "variants": [
+      {
+        "sku": "PCL-IV0.2-2.5",
+        "mw": "按黏度窗口定制",
+        "iv": "0.2-2.5 dL/g",
+        "end_group": "-OH / Ester（可定制）",
+        "crystallinity": "结晶",
+        "form": "颗粒/粉末/丝材",
+        "pack": "1kg/5kg（可定制）",
+        "price_cny": null,
+        "lead_time": "7-15个工作日",
+        "properties": {
+          "Tg": "定制",
+          "Tm": "定制",
+          "mechanics": "柔韧、延展性好",
+          "degradation": "通常慢于 PLLA/PLGA"
+        },
+        "reports": [
           {
             "name": "检测报告（示例）",
             "file": "assets/reports/COA_Summary.pdf"
@@ -430,39 +285,40 @@
     "image": "assets/images/materials/pcl.png"
   },
   {
-    "id": "microspheres",
-    "name": "微球 Microspheres",
-    "tagline": "粒径 1–100 μm 可控｜药物缓释/医美填充/靶向递送",
-    "category": "生物医用微球",
-    "description": "PLGA微球（聚乙丙交酯微球）是一种可降解的功能高分子有机化合物，具有良好的生物相容性、无毒、良好的成囊和成膜的性能，PLGA微球可以被用于制备药物传递系统、药物缓释系统和组织工程支架等医疗器械，也可以用于制备可降解的手术缝合线、防粘连膜、组织工程支架等材料。",
+    "id": "pgcl",
+    "name": "PGCL（GA:CL=75:25）",
+    "tagline": "柔韧缝线级共聚物｜手术缝合线常用比例",
+    "category": "生物医用聚合物",
+    "description": "PGCL（poly(glycolide-co-caprolactone)）75:25 兼具乙交酯的强度与己内酯的柔韧性，常用于可吸收单丝缝合线体系。",
     "applications": [
-      "药物缓释微球",
-      "靶向给药载体",
-      "医美填充材料（孔隙结构可选）"
+      "可吸收手术缝合线",
+      "软组织近似缝合",
+      "柔性吸收植入件"
     ],
+    "spec_range": {
+      "a_label": "共聚比例",
+      "a_value": "GA:CL = 75:25",
+      "b_label": "特性粘度",
+      "b_value": "1.0-2.5 dL/g（可定制）"
+    },
+    "processing": "单丝挤出与拉伸取向加工。",
     "variants": [
       {
-        "sku": "PLGA-MS-10um",
-        "mw": "—",
-        "iv": "—",
-        "end_group": "—",
-        "crystallinity": "—",
-        "form": "微球粉末",
-        "pack": "10g/50g（可定制）",
-        "price_cny": 2200,
-        "lead_time": "按需求评估",
+        "sku": "PGCL-75:25",
+        "mw": "按项目定制",
+        "iv": "1.0-2.5 dL/g",
+        "end_group": "可定制",
+        "crystallinity": "半结晶",
+        "form": "颗粒",
+        "pack": "500g/1kg（可定制）",
+        "price_cny": null,
+        "lead_time": "10-20个工作日",
         "properties": {
-          "particle_size": "20μm~40μm；20μm~50μm；30μm~50μm；40μm~60μm",
-          "drug_loading": "按配方评估",
-          "porosity": "可选",
-          "degradation": "与基体比例/分子量相关",
-          "mw_range": "1-2万、3-4万、6-8万"
+          "tensile_retention": "适合周级到月级软组织支撑",
+          "absorption": "常见吸收周期约 90-120 天范围（与制品结构相关）",
+          "flexibility": "优于纯 PGA 体系"
         },
         "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_PLGA-MS-10um.pdf"
-          },
           {
             "name": "检测报告（示例）",
             "file": "assets/reports/COA_Summary.pdf"
@@ -470,37 +326,42 @@
         ]
       }
     ],
-    "image_svg": "microspheres",
-    "image": "assets/images/materials/microspheres.png"
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/pellets.svg"
   },
   {
-    "id": "l-lactide",
-    "name": "生物医用单体（L-Lactide）",
-    "tagline": "高纯度医用丙交酯单体｜聚合反应与器械级研发",
+    "id": "l-la",
+    "name": "L-LA（L-丙交酯）",
+    "tagline": "高纯度手性单体｜PLLA 聚合前驱体",
     "category": "生物医用单体",
-    "description": "医用级 L-Lactide 单体适用于可吸收聚酯的开环聚合开发，可用于分子量窗口验证、共聚配方筛选与中试放大前评估。",
+    "description": "L-LA 用于制备高结晶 PLLA 体系。强调高纯度、低水分与低残留，常见供货形态为块状结晶或粉末。",
     "applications": [
-      "医用聚酯聚合前驱体",
-      "共聚体系比例筛选",
-      "药物缓释载体前期开发"
+      "PLLA 聚合前驱体",
+      "器械级聚合小试",
+      "共聚配方筛选"
     ],
+    "spec_range": {
+      "a_label": "纯度",
+      "a_value": "≥99.5%",
+      "b_label": "形态",
+      "b_value": "块状结晶/粉末"
+    },
+    "processing": "单体提纯、真空干燥与惰性条件储运。",
     "variants": [
       {
-        "sku": "MONO-LLA-99.5",
+        "sku": "MONO-L-LA",
         "mw": "单体级",
-        "iv": "定制",
-        "end_group": "定制",
+        "iv": "不适用",
+        "end_group": "不适用",
         "crystallinity": "高纯度结晶",
-        "form": "结晶粉末",
+        "form": "块状结晶/粉末",
         "pack": "100g/500g（可定制）",
         "price_cny": null,
-        "lead_time": "按项目评估",
+        "lead_time": "现货/按批次",
         "properties": {
-          "purity": "≥ 99.5%",
-          "water": "≤ 0.1%",
-          "residual_solvent": "≤ 0.05%",
-          "Tg": "定制",
-          "Tm": "定制"
+          "purity": "≥99.5%",
+          "water": "≤0.1%",
+          "appearance": "白色结晶或粉末"
         },
         "reports": [
           {
@@ -514,37 +375,311 @@
     "image": "assets/images/materials/plla-sample.png"
   },
   {
-    "id": "processing-service",
-    "name": "医用加工服务（挤出/注塑/纺丝/3D打印）",
-    "tagline": "材料到工艺一体化验证｜按项目输出工艺窗口",
-    "category": "医用加工服务",
-    "description": "提供医用聚合物的线材挤出、注塑、静电纺丝和 3D 打印验证服务，支持样品试制、参数迭代与工艺窗口建议。",
+    "id": "d-la",
+    "name": "D-LA（D-丙交酯）",
+    "tagline": "高纯度手性单体｜立构调控共聚开发",
+    "category": "生物医用单体",
+    "description": "D-LA 常用于立构调控与共聚设计，形态可为块状结晶或粉末，适合科研与器械材料开发。",
     "applications": [
-      "线材挤出参数验证",
-      "注塑样件与结构试制",
-      "静电纺丝膜材与支架",
-      "3D 打印材料可加工性评估"
+      "立构调控共聚",
+      "PDLA 开发",
+      "结晶行为研究"
     ],
+    "spec_range": {
+      "a_label": "纯度",
+      "a_value": "≥99.0%",
+      "b_label": "形态",
+      "b_value": "块状结晶/粉末"
+    },
+    "processing": "低水分控制与低温密封储存。",
     "variants": [
       {
-        "sku": "SERVICE-PROCESS-VALIDATION",
+        "sku": "MONO-D-LA",
+        "mw": "单体级",
+        "iv": "不适用",
+        "end_group": "不适用",
+        "crystallinity": "高纯度结晶",
+        "form": "块状结晶/粉末",
+        "pack": "100g/500g（可定制）",
+        "price_cny": null,
+        "lead_time": "按批次评估",
+        "properties": {
+          "purity": "≥99.0%",
+          "water": "≤0.1%",
+          "appearance": "白色结晶或粉末"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plla",
+    "image": "assets/images/materials/plla-sample.png"
+  },
+  {
+    "id": "dl-la",
+    "name": "D,L-LA（外消旋丙交酯）",
+    "tagline": "高纯度外消旋单体｜PDLLA/PLGA 前驱体",
+    "category": "生物医用单体",
+    "description": "D,L-LA 可用于制备无定形或低结晶度聚乳酸体系，常用于调控降解速率与加工窗口。",
+    "applications": [
+      "PDLLA 聚合",
+      "PLGA 共聚前驱体",
+      "药物递送材料开发"
+    ],
+    "spec_range": {
+      "a_label": "纯度",
+      "a_value": "≥99.0%",
+      "b_label": "形态",
+      "b_value": "块状结晶/粉末"
+    },
+    "processing": "单体精制与低水分包装。",
+    "variants": [
+      {
+        "sku": "MONO-DL-LA",
+        "mw": "单体级",
+        "iv": "不适用",
+        "end_group": "不适用",
+        "crystallinity": "结晶",
+        "form": "块状结晶/粉末",
+        "pack": "100g/500g（可定制）",
+        "price_cny": null,
+        "lead_time": "按批次评估",
+        "properties": {
+          "purity": "≥99.0%",
+          "water": "≤0.1%",
+          "appearance": "白色结晶或粉末"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plla",
+    "image": "assets/images/materials/plla-sample.png"
+  },
+  {
+    "id": "plla-ms",
+    "name": "PLLA 微球",
+    "tagline": "可吸收缓释微球｜中长期释放窗口",
+    "category": "生物医用微球",
+    "description": "PLLA 微球适用于中长期释放体系，支持粒径与孔隙结构定制。",
+    "applications": [
+      "中长期药物递送",
+      "组织工程填充",
+      "功能微粒体系"
+    ],
+    "spec_range": {
+      "a_label": "粒径",
+      "a_value": "10-100 μm（可定制）",
+      "b_label": "分子量",
+      "b_value": "按项目定制"
+    },
+    "processing": "乳化溶剂挥发、筛分分级与冻干。",
+    "variants": [
+      {
+        "sku": "PLLA-MS",
+        "mw": "按项目定制",
+        "iv": "按项目定制",
+        "end_group": "可定制",
+        "crystallinity": "半结晶",
+        "form": "微球粉末",
+        "pack": "10g/50g（可定制）",
+        "price_cny": null,
+        "lead_time": "按需求评估",
+        "properties": {
+          "particle_size": "10-100 μm",
+          "release_profile": "可按处方调控",
+          "porosity": "可定制"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/microspheres.png"
+  },
+  {
+    "id": "pdlla-ms",
+    "name": "PDLLA 微球",
+    "tagline": "无定形微球体系｜释放启动更快",
+    "category": "生物医用微球",
+    "description": "PDLLA 微球由于基体无定形，常用于需要较快启动释放的体系。",
+    "applications": [
+      "中短期释放",
+      "医美/组织填充体系",
+      "复配微球载体"
+    ],
+    "spec_range": {
+      "a_label": "粒径",
+      "a_value": "10-80 μm（可定制）",
+      "b_label": "特性粘度",
+      "b_value": "0.2-3.0 dL/g"
+    },
+    "processing": "双乳化、喷雾干燥与冻干。",
+    "variants": [
+      {
+        "sku": "PDLLA-MS",
+        "mw": "按项目定制",
+        "iv": "0.2-3.0 dL/g",
+        "end_group": "可定制",
+        "crystallinity": "无定形",
+        "form": "微球粉末",
+        "pack": "10g/50g（可定制）",
+        "price_cny": null,
+        "lead_time": "按需求评估",
+        "properties": {
+          "particle_size": "10-80 μm",
+          "release_profile": "中短周期可调",
+          "porosity": "可定制"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/microspheres-2.png"
+  },
+  {
+    "id": "ppdo-ms",
+    "name": "PPDO 微球",
+    "tagline": "柔韧基体微球｜可吸收递送载体",
+    "category": "生物医用微球",
+    "description": "PPDO 微球适用于特定柔韧基体需求的可吸收递送体系，支持粒径分布定制。",
+    "applications": [
+      "药物递送",
+      "可吸收填充基体",
+      "多相复合微球"
+    ],
+    "spec_range": {
+      "a_label": "粒径",
+      "a_value": "20-120 μm（可定制）",
+      "b_label": "材料基体",
+      "b_value": "PPDO 可调配方"
+    },
+    "processing": "溶剂挥发与冻干工艺。",
+    "variants": [
+      {
+        "sku": "PPDO-MS",
+        "mw": "按项目定制",
+        "iv": "1.0-3.0 dL/g",
+        "end_group": "可定制",
+        "crystallinity": "中等结晶",
+        "form": "微球粉末",
+        "pack": "10g/50g（可定制）",
+        "price_cny": null,
+        "lead_time": "按需求评估",
+        "properties": {
+          "particle_size": "20-120 μm",
+          "release_profile": "按应用场景设计",
+          "porosity": "可选"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/ppdo-powder.png"
+  },
+  {
+    "id": "plga-ms",
+    "name": "PLGA 微球",
+    "tagline": "经典缓释微球体系｜粒径/载药/释放可调",
+    "category": "生物医用微球",
+    "description": "PLGA 微球是药物缓释中应用最广的体系之一，可通过 LA:GA 比例与分子量协同调控释放曲线。",
+    "applications": [
+      "注射缓释制剂",
+      "靶向给药研究",
+      "组织工程递送"
+    ],
+    "spec_range": {
+      "a_label": "粒径",
+      "a_value": "10-100 μm（可定制）",
+      "b_label": "LA:GA 比例",
+      "b_value": "50:50 / 75:25 / 85:15"
+    },
+    "processing": "单乳化/双乳化、固化与冻干。",
+    "variants": [
+      {
+        "sku": "PLGA-MS",
+        "mw": "按项目定制",
+        "iv": "0.2-1.5 dL/g",
+        "end_group": "-COOH / Ester",
+        "crystallinity": "无定形",
+        "form": "微球粉末",
+        "pack": "10g/50g（可定制）",
+        "price_cny": null,
+        "lead_time": "按需求评估",
+        "properties": {
+          "particle_size": "10-100 μm",
+          "drug_loading": "可评估",
+          "release_profile": "可定制"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/microspheres.png"
+  },
+  {
+    "id": "service-injection",
+    "name": "医用加工服务：注塑",
+    "tagline": "医疗级注塑打样与窗口建立",
+    "category": "医用加工服务",
+    "description": "提供可吸收聚合物注塑打样、模温与熔体窗口建议、制件初步结构验证。",
+    "applications": [
+      "器械结构件打样",
+      "工艺参数摸底",
+      "批次一致性评估"
+    ],
+    "spec_range": {
+      "a_label": "服务内容",
+      "a_value": "注塑打样/参数建议",
+      "b_label": "交付",
+      "b_value": "样件+工艺窗口"
+    },
+    "processing": "项目制服务。",
+    "variants": [
+      {
+        "sku": "SERVICE-INJECTION",
         "mw": "按项目",
         "iv": "按项目",
         "end_group": "按项目",
         "crystallinity": "按项目",
-        "form": "项目制",
+        "form": "服务项目",
         "pack": "方案报价",
         "price_cny": null,
-        "lead_time": "按项目排期",
+        "lead_time": "2-8周",
         "properties": {
-          "Tg": "定制",
-          "Tm": "定制",
-          "deliverables": "工艺窗口、样件、测试建议",
-          "project_cycle": "2-8 周（视复杂度）"
+          "deliverables": "样件、窗口参数、问题清单",
+          "notes": "可签署技术协议"
         },
         "reports": [
           {
-            "name": "服务说明（示例）",
+            "name": "检测报告（示例）",
             "file": "assets/reports/COA_Summary.pdf"
           }
         ]
@@ -552,5 +687,228 @@
     ],
     "image_svg": "bottle_plga",
     "image": "assets/images/materials/plga-pellet.png"
+  },
+  {
+    "id": "service-microsphere",
+    "name": "医用加工服务：微球制备",
+    "tagline": "粒径分布与释放曲线联合调控",
+    "category": "医用加工服务",
+    "description": "提供微球处方筛选、乳化固化参数优化、粒径分级与初步释放测试建议。",
+    "applications": [
+      "工艺开发",
+      "处方筛选",
+      "中试放大前验证"
+    ],
+    "spec_range": {
+      "a_label": "服务内容",
+      "a_value": "微球制备/粒径调控",
+      "b_label": "交付",
+      "b_value": "样品+工艺建议"
+    },
+    "processing": "项目制服务。",
+    "variants": [
+      {
+        "sku": "SERVICE-MICROSPHERE",
+        "mw": "按项目",
+        "iv": "按项目",
+        "end_group": "按项目",
+        "crystallinity": "按项目",
+        "form": "服务项目",
+        "pack": "方案报价",
+        "price_cny": null,
+        "lead_time": "3-10周",
+        "properties": {
+          "deliverables": "微球样品、粒径报告、释放建议",
+          "notes": "支持多轮迭代"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "microspheres",
+    "image": "assets/images/materials/microspheres-2.png"
+  },
+  {
+    "id": "service-3d",
+    "name": "医用加工服务：3D 打印",
+    "tagline": "可吸收材料打印验证与结构优化",
+    "category": "医用加工服务",
+    "description": "提供 FDM/熔融挤出方向的材料可打印性评估、打印参数建议与结构件试样。",
+    "applications": [
+      "快速原型",
+      "打印参数验证",
+      "结构与力学初评"
+    ],
+    "spec_range": {
+      "a_label": "服务内容",
+      "a_value": "打印验证/参数开发",
+      "b_label": "交付",
+      "b_value": "样件+工艺建议"
+    },
+    "processing": "项目制服务。",
+    "variants": [
+      {
+        "sku": "SERVICE-3DPRINT",
+        "mw": "按项目",
+        "iv": "按项目",
+        "end_group": "按项目",
+        "crystallinity": "按项目",
+        "form": "服务项目",
+        "pack": "方案报价",
+        "price_cny": null,
+        "lead_time": "2-6周",
+        "properties": {
+          "deliverables": "打印样件、参数建议、风险点",
+          "notes": "支持多结构迭代"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/plga-pellet.png"
+  },
+  {
+    "id": "bg45s5",
+    "name": "生物活性玻璃 45S5",
+    "tagline": "经典生物活性陶瓷｜骨修复与骨结合促进",
+    "category": "生物医用陶瓷",
+    "description": "45S5 生物活性玻璃常用组成为 SiO2 45%、CaO 24.5%、Na2O 24.5%、P2O5 6%，可快速形成类骨磷灰石层，常用于骨缺损修复。",
+    "applications": [
+      "骨缺损填充",
+      "口颌面骨修复",
+      "骨传导复合材料"
+    ],
+    "spec_range": {
+      "a_label": "典型组分",
+      "a_value": "45SiO2-24.5CaO-24.5Na2O-6P2O5",
+      "b_label": "形态",
+      "b_value": "粉体/颗粒"
+    },
+    "processing": "颗粒制备、粒径分级与复合配方开发。",
+    "variants": [
+      {
+        "sku": "CER-BG45S5",
+        "mw": "不适用",
+        "iv": "不适用",
+        "end_group": "不适用",
+        "crystallinity": "非晶玻璃态",
+        "form": "粉体/颗粒",
+        "pack": "100g/500g/1kg",
+        "price_cny": null,
+        "lead_time": "按批次评估",
+        "properties": {
+          "composition": "45S5",
+          "bioactivity": "可形成 HCA 层",
+          "indication": "非承重骨修复优先"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/plga-powder.png"
+  },
+  {
+    "id": "beta-tcp",
+    "name": "β-磷酸三钙（β-TCP）",
+    "tagline": "可吸收骨修复陶瓷｜骨传导材料",
+    "category": "生物医用陶瓷",
+    "description": "β-TCP 是常见可吸收钙磷陶瓷，骨传导性良好，通常比 HA 具有更快的体内吸收与替代速度。",
+    "applications": [
+      "骨科骨缺损填充",
+      "牙槽骨修复",
+      "骨组织工程支架"
+    ],
+    "spec_range": {
+      "a_label": "相纯度",
+      "a_value": "β-TCP 主相（可定制）",
+      "b_label": "粒径",
+      "b_value": "100-1000 μm（可定制）"
+    },
+    "processing": "造粒、烧结与孔结构调控。",
+    "variants": [
+      {
+        "sku": "CER-BETA-TCP",
+        "mw": "不适用",
+        "iv": "不适用",
+        "end_group": "不适用",
+        "crystallinity": "陶瓷晶相",
+        "form": "颗粒/多孔块体",
+        "pack": "100g/500g/1kg",
+        "price_cny": null,
+        "lead_time": "按批次评估",
+        "properties": {
+          "resorption": "通常快于 HA",
+          "osteoconduction": "良好",
+          "indication": "骨修复"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/pellets.svg"
+  },
+  {
+    "id": "ha",
+    "name": "羟基磷灰石（HA）",
+    "tagline": "高骨相容陶瓷｜骨传导支撑",
+    "category": "生物医用陶瓷",
+    "description": "HA 具有优异骨传导性与生物相容性，体内吸收通常慢于 β-TCP，适用于需要较长支撑的骨修复场景。",
+    "applications": [
+      "骨缺损修复",
+      "骨移植替代材料",
+      "涂层与复合支架"
+    ],
+    "spec_range": {
+      "a_label": "化学组成",
+      "a_value": "Ca10(PO4)6(OH)2",
+      "b_label": "形态",
+      "b_value": "粉体/颗粒/多孔块体"
+    },
+    "processing": "颗粒制备、涂层与复合材料开发。",
+    "variants": [
+      {
+        "sku": "CER-HA",
+        "mw": "不适用",
+        "iv": "不适用",
+        "end_group": "不适用",
+        "crystallinity": "陶瓷晶相",
+        "form": "粉体/颗粒/块体",
+        "pack": "100g/500g/1kg",
+        "price_cny": null,
+        "lead_time": "按批次评估",
+        "properties": {
+          "resorption": "通常慢于 β-TCP",
+          "osteoconduction": "优异",
+          "indication": "骨修复与骨结合"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/plla-sample.png"
   }
 ]

@@ -52,7 +52,7 @@ const SVG = {
   }
 };
 
-const PRODUCT_CATEGORIES = ['全部', '生物医用单体', '生物医用聚合物', '生物医用微球', '医用加工服务'];
+const PRODUCT_CATEGORIES = ['全部', '生物医用单体', '生物医用聚合物', '生物医用微球', '医用加工服务', '生物医用陶瓷'];
 
 const FIELD_LABELS = {
   company: '公司/团队',
@@ -165,27 +165,25 @@ function renderCatalog(){
   if(!grid) return;
   const items = state.products.filter(matchProduct);
   grid.innerHTML = items.map(p=>`
-    <article class="group rounded-3xl border border-slate-200 glass-card hover-lift transition overflow-hidden">
-      <div class="p-4">
-        <div class="card-visual aspect-[4/3]">
-          <span class="molecule-orbit"></span>
-          <span class="molecule-orbit small"></span>
+    <article class="catalog-hover-card group rounded-3xl border border-slate-200 glass-card transition overflow-hidden">
+      <a href="product.html?id=${encodeURIComponent(p.id)}" class="block">
+        <div class="catalog-visual aspect-[4/3]">
           <div class="card-art w-full h-full">${productMedia(p)}</div>
-        </div>
-        <div class="mt-4 flex items-start justify-between gap-3">
-          <div class="min-w-0">
-            <h3 class="text-lg font-semibold tracking-tight text-slate-900 truncate">${p.name}</h3>
-            <p class="mt-1 text-sm text-slate-600 line-clamp-2">${p.tagline}</p>
+          <div class="catalog-overlay"></div>
+          <div class="catalog-content">
+            <h3 class="text-xl font-semibold tracking-tight text-white">${p.name}</h3>
+            <p class="mt-2 text-sm text-slate-100 line-clamp-2">${p.tagline}</p>
           </div>
-          <span class="chip chip-accent pulse-glow shrink-0">医疗级</span>
         </div>
-        <div class="mt-4 flex items-center justify-between">
+      </a>
+      <div class="p-4">
+        <div class="flex items-center justify-between">
           <div class="text-sm text-slate-600">
             <span class="font-medium text-slate-900">${money(p.variants?.[0]?.price_cny)}</span>
-            <span class="ml-2 text-xs text-slate-500">询价</span>
+            <span class="ml-2 text-xs text-slate-500">按项目报价</span>
           </div>
           <a href="product.html?id=${encodeURIComponent(p.id)}" class="btn-primary inline-flex items-center gap-2 rounded-xl bg-slate-900 text-white px-3 py-2 text-sm hover:bg-slate-800 transition">
-            查看规格
+            进入详情
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -228,14 +226,56 @@ function normalizePropertyValue(key, value){
   return text || '—';
 }
 
-function inferProcessing(product){
-  if(product.category === '生物医用微球'){
-    return '乳化挥发、喷雾干燥、冻干与粒径分布调控。';
+function getSpecScope(product){
+  if(product.spec_range) return product.spec_range;
+  return {
+    a_label: '粘均分子量',
+    a_value: '0.6-100万（可定制）',
+    b_label: '特性粘度',
+    b_value: '0.3-5.0 dL/g（可定制）'
+  };
+}
+
+function getSummaryCards(product, variant){
+  const props = variant.properties || {};
+  if(product.id === 'plla'){
+    return [
+      { label: '分子量 Mw', value: '可定制' },
+      { label: '端基', value: '可定制' },
+      { label: '黏度 IV', value: '可定制' },
+      { label: '包装', value: variant.pack || '可定制' }
+    ];
+  }
+  if(product.category === '生物医用单体'){
+    return [
+      { label: '纯度', value: props.purity || '≥99.0%' },
+      { label: '形态', value: variant.form || '块状结晶/粉末' },
+      { label: '水分', value: props.water || '≤0.1%' },
+      { label: '包装', value: variant.pack || '可定制' }
+    ];
+  }
+  if(product.category === '生物医用陶瓷'){
+    return [
+      { label: '形态', value: variant.form || '粉体/颗粒' },
+      { label: '相特征', value: variant.crystallinity || '陶瓷晶相' },
+      { label: '典型应用', value: product.applications?.[0] || '骨修复' },
+      { label: '包装', value: variant.pack || '可定制' }
+    ];
   }
   if(product.category === '医用加工服务'){
-    return '线材挤出、注塑成型、静电纺丝与 3D 打印验证。';
+    return [
+      { label: '服务类型', value: product.name.replace('医用加工服务：', '') },
+      { label: '项目周期', value: variant.lead_time || '按项目评估' },
+      { label: '交付', value: props.deliverables || '样件+参数建议' },
+      { label: '报价方式', value: '项目询价' }
+    ];
   }
-  return '注塑成型、静电纺丝、线材挤出与 3D 打印验证。';
+  return [
+    { label: '分子量 Mw', value: variant.mw || '—' },
+    { label: '端基', value: variant.end_group || '—' },
+    { label: '黏度 IV', value: variant.iv || '—' },
+    { label: '包装', value: variant.pack || '—' }
+  ];
 }
 
 function openReport(file, sku){
@@ -312,12 +352,12 @@ function renderProductDetail(){
               <div class="text-sm font-medium text-slate-900 mb-4">产品规格范围</div>
               <div class="grid md:grid-cols-2 gap-4 text-sm">
                 <div>
-                  <span class="text-slate-600">粘均分子量：</span>
-                  <span class="font-medium text-slate-900">0.6-100万</span>
+                  <span class="text-slate-600">${getSpecScope(p).a_label}：</span>
+                  <span class="font-medium text-slate-900">${getSpecScope(p).a_value}</span>
                 </div>
                 <div>
-                  <span class="text-slate-600">特性粘度：</span>
-                  <span class="font-medium text-slate-900">0.3-5dL/g</span>
+                  <span class="text-slate-600">${getSpecScope(p).b_label}：</span>
+                  <span class="font-medium text-slate-900">${getSpecScope(p).b_value}</span>
                 </div>
               </div>
             </div>
@@ -355,51 +395,22 @@ function renderProductDetail(){
         </div>
 
         <div class="glass-card hover-lift mt-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">相关技术服务</h2>
-          <p class="mt-2 text-sm text-slate-600">我们提供从材料定制到加工验证的“一站式”服务，帮助客户缩短验证周期。</p>
-          <div class="mt-4 grid md:grid-cols-2 gap-3 text-sm">
-            ${[
-              ['聚合物定制/分子量与端基精确定制','根据器械目标强度、降解周期与加工方法给出材料窗口与推荐规格'],
-              ['线材挤出/注塑/3D打印','可按工艺窗口提供试制与参数建议（需按项目签署技术协议）'],
-              ['静电纺丝/膜材/支架','支持纤维直径、孔隙率、力学性能协同优化'],
-              ['微球/载药体系开发','粒径 1–100μm 可控，支持孔隙率与释放曲线调控']
-            ].map(([a,b])=>`
-              <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-                <div class="font-medium text-slate-900">${a}</div>
-                <div class="mt-1 text-slate-600">${b}</div>
-              </div>`).join('')}
-          </div>
-          <a href="services.html" class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-900 hover:underline">
-            查看服务详情
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="glass-card hover-lift mt-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
           <h2 class="text-lg font-semibold text-slate-900">产品信息</h2>
-          <div class="mt-4 grid lg:grid-cols-12 gap-6">
-            <div class="lg:col-span-7 space-y-5 text-sm text-slate-700">
-              <section>
+          <div class="mt-4 grid lg:grid-cols-2 gap-6">
+            <div class="space-y-4 text-sm text-slate-700">
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <h3 class="font-medium text-slate-900">产品介绍</h3>
                 <p class="mt-2 leading-relaxed">${p.description}</p>
-              </section>
-              <section>
-                <h3 class="font-medium text-slate-900">应用</h3>
-                <p class="mt-2 leading-relaxed">${p.applications.join('、')}</p>
-              </section>
-              <section>
-                <h3 class="font-medium text-slate-900">产品特点</h3>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <h3 class="font-medium text-slate-900">应用场景</h3>
                 <ul class="mt-2 space-y-1">
                   ${p.applications.map(app => `<li class="flex gap-2"><span class="text-slate-400">•</span><span>${app}</span></li>`).join('')}
                 </ul>
-              </section>
-              <section>
-                <h3 class="font-medium text-slate-900">加工工艺</h3>
-                <p class="mt-2 leading-relaxed">${inferProcessing(p)}</p>
-              </section>
+              </div>
             </div>
-            <div class="lg:col-span-5">
-              <div class="card-visual aspect-square rounded-2xl overflow-hidden border border-slate-200">
+            <div>
+              <div class="card-visual aspect-[4/3] rounded-2xl overflow-hidden border border-slate-200">
                 ${productMedia(p)}
               </div>
               <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
@@ -434,24 +445,13 @@ function renderProductDetail(){
     document.getElementById('priceText').textContent = money(v.price_cny);
 
     const summary = document.getElementById('variantSummary');
-    summary.innerHTML = `
+    const summaryCards = getSummaryCards(p, v);
+    summary.innerHTML = summaryCards.map((item)=>`
       <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-        <div class="text-xs text-slate-500">分子量 Mw</div>
-        <div class="mt-1 font-semibold text-slate-900">${v.mw}</div>
+        <div class="text-xs text-slate-500">${item.label}</div>
+        <div class="mt-1 font-semibold text-slate-900">${item.value}</div>
       </div>
-      <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-        <div class="text-xs text-slate-500">端基</div>
-        <div class="mt-1 font-semibold text-slate-900">${v.end_group || '—'}</div>
-      </div>
-      <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-        <div class="text-xs text-slate-500">黏度 IV</div>
-        <div class="mt-1 font-semibold text-slate-900">${v.iv || '—'}</div>
-      </div>
-      <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-        <div class="text-xs text-slate-500">包装</div>
-        <div class="mt-1 font-semibold text-slate-900">${v.pack || '—'}</div>
-      </div>
-    `;
+    `).join('');
 
     const propsRows = Object.entries(v.properties || {}).map(([k,val])=>`
       <tr class="border-b border-slate-100">
@@ -775,7 +775,7 @@ function initSpecSelector(){
   const priceEl = document.getElementById('specPrice');
   const addBtn = document.getElementById('specAddBtn');
 
-  const products = state.products.filter(p => ['plla','ppdo','plga','pcl'].includes(p.id));
+  const products = state.products.filter(p => ['plla','ppdo','plga','pcl','pdlla','pgcl'].includes(p.id));
   productSel.innerHTML = products.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
 
   function uniq(arr){

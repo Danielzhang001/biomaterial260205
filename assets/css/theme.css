@@ -319,6 +319,75 @@ h1, h2, h3, .font-display {
   transform: translateY(-4px);
 }
 
+.catalog-hover-card {
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+}
+
+.catalog-visual {
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.catalog-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, opacity 0.6s ease, filter 0.6s ease;
+}
+
+.catalog-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.72));
+  z-index: 1;
+}
+
+.catalog-content {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1rem;
+  z-index: 2;
+  transition: transform 0.35s ease;
+}
+
+.catalog-hover-card:hover .catalog-visual img {
+  transform: scale(1.07);
+  opacity: 0.56;
+  filter: saturate(1.08) contrast(1.08);
+}
+
+.catalog-hover-card:hover .catalog-content {
+  transform: translateY(-4px);
+}
+
+.quote-visual-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(1000px circle at 18% -10%, rgba(56, 189, 248, 0.42), transparent 40%),
+    radial-gradient(800px circle at 120% 120%, rgba(59, 130, 246, 0.38), transparent 42%),
+    linear-gradient(135deg, #0f172a, #1e3a8a 45%, #0369a1);
+}
+
+.quote-visual-glow {
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.22) 48%, transparent 65%);
+  transform: translateX(-120%);
+  animation: quote-shimmer 6s linear infinite;
+}
+
+.quote-visual-image {
+  width: 100%;
+  height: 118px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .pulse-glow {
   animation: pulse-glow 3.2s ease-in-out infinite;
 }
@@ -340,6 +409,10 @@ h1, h2, h3, .font-display {
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.2); }
   50% { box-shadow: 0 0 18px 6px rgba(29, 78, 216, 0.25); }
+}
+
+@keyframes quote-shimmer {
+  to { transform: translateX(120%); }
 }
 
 .qr-placeholder {
@@ -450,7 +523,10 @@ h1, h2, h3, .font-display {
   .pulse-glow,
   .card-visual .molecule-orbit,
   .showcase-tile img,
-  .showcase-tile .tile-content {
+  .showcase-tile .tile-content,
+  .catalog-visual img,
+  .catalog-content,
+  .quote-visual-glow {
     animation: none;
     transition: none;
   }
