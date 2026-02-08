@@ -52,9 +52,31 @@ const SVG = {
   }
 };
 
+const PRODUCT_CATEGORIES = ['全部', '生物医用单体', '生物医用聚合物', '生物医用微球', '医用加工服务'];
+
+const FIELD_LABELS = {
+  company: '公司/团队',
+  contact: '联系人',
+  email: '邮箱',
+  phone: '电话',
+  application: '应用领域',
+  usage: '预计用量',
+  requirements: '需求描述',
+  notes: '补充说明',
+  cart_items: '询价条目',
+  cart_total: '预估总价',
+  cart_count: '总数量'
+};
+
+const initialCategory = getQueryParam('category');
+
 const state = {
   products: [],
-  filter: { q:'', category:'全部', polymer:'全部' },
+  filter: {
+    q: '',
+    category: PRODUCT_CATEGORIES.includes(initialCategory) ? initialCategory : '全部',
+    polymer: '全部'
+  },
   cart: JSON.parse(localStorage.getItem('cart') || '[]')
 };
 
@@ -178,9 +200,7 @@ function renderFilters(){
   const catSel = document.getElementById('catSelect');
   const polySel = document.getElementById('polySelect');
   if(catSel){
-    // 定义固定的产品分类
-    const cats = ['全部', '生物医用单体', '生物医用聚合物', '生物医用微球', '医用加工服务'];
-    catSel.innerHTML = cats.map(c=>`<option value="${c}">${c}</option>`).join('');
+    catSel.innerHTML = PRODUCT_CATEGORIES.map(c=>`<option value="${c}">${c}</option>`).join('');
     catSel.value = state.filter.category;
     catSel.onchange = ()=>{ state.filter.category = catSel.value; renderCatalog(); };
   }
@@ -198,6 +218,24 @@ function renderFilters(){
 
 function getQueryParam(key){
   return new URLSearchParams(location.search).get(key);
+}
+
+function normalizePropertyValue(key, value){
+  const text = value == null ? '' : String(value).trim();
+  if((key === 'Tg' || key === 'Tm') && (!text || text.toLowerCase() === 'null')){
+    return '定制';
+  }
+  return text || '—';
+}
+
+function inferProcessing(product){
+  if(product.category === '生物医用微球'){
+    return '乳化挥发、喷雾干燥、冻干与粒径分布调控。';
+  }
+  if(product.category === '医用加工服务'){
+    return '线材挤出、注塑成型、静电纺丝与 3D 打印验证。';
+  }
+  return '注塑成型、静电纺丝、线材挤出与 3D 打印验证。';
 }
 
 function openReport(file, sku){
@@ -338,19 +376,45 @@ function renderProductDetail(){
         </div>
 
         <div class="glass-card hover-lift mt-6 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-          <h2 class="text-lg font-semibold text-slate-900">产品详细介绍</h2>
-          <div class="mt-4 prose prose-sm max-w-none text-slate-700">
-            <p class="leading-relaxed">${p.description}</p>
-            <div class="mt-4">
-              <h3 class="font-medium text-slate-900">主要特性</h3>
-              <ul class="mt-2 space-y-1">
-                ${p.applications.map(app => `<li class="flex gap-2"><span class="text-slate-400">•</span><span>${app}</span></li>`).join('')}
-              </ul>
+          <h2 class="text-lg font-semibold text-slate-900">产品信息</h2>
+          <div class="mt-4 grid lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-7 space-y-5 text-sm text-slate-700">
+              <section>
+                <h3 class="font-medium text-slate-900">产品介绍</h3>
+                <p class="mt-2 leading-relaxed">${p.description}</p>
+              </section>
+              <section>
+                <h3 class="font-medium text-slate-900">应用</h3>
+                <p class="mt-2 leading-relaxed">${p.applications.join('、')}</p>
+              </section>
+              <section>
+                <h3 class="font-medium text-slate-900">产品特点</h3>
+                <ul class="mt-2 space-y-1">
+                  ${p.applications.map(app => `<li class="flex gap-2"><span class="text-slate-400">•</span><span>${app}</span></li>`).join('')}
+                </ul>
+              </section>
+              <section>
+                <h3 class="font-medium text-slate-900">加工工艺</h3>
+                <p class="mt-2 leading-relaxed">${inferProcessing(p)}</p>
+              </section>
             </div>
-          </div>
-          <div class="mt-4 flex justify-center">
-            <div class="card-visual w-48 h-48 rounded-2xl overflow-hidden border border-slate-200">
-              ${productMedia(p)}
+            <div class="lg:col-span-5">
+              <div class="card-visual aspect-square rounded-2xl overflow-hidden border border-slate-200">
+                ${productMedia(p)}
+              </div>
+              <div class="mt-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <h3 class="font-medium text-slate-900">产品指标</h3>
+                <div class="mt-3 grid gap-3 text-sm">
+                  <div class="rounded-xl border border-slate-200 bg-white px-3 py-2">
+                    <div class="text-xs text-slate-500">粘均分子量</div>
+                    <div class="font-semibold text-slate-900">0.6-100万</div>
+                  </div>
+                  <div class="rounded-xl border border-slate-200 bg-white px-3 py-2">
+                    <div class="text-xs text-slate-500">特性粘度</div>
+                    <div class="font-semibold text-slate-900">0.3-5dL/g</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -392,7 +456,7 @@ function renderProductDetail(){
     const propsRows = Object.entries(v.properties || {}).map(([k,val])=>`
       <tr class="border-b border-slate-100">
         <td class="py-3 pr-4 text-sm text-slate-600 w-1/3">${k}</td>
-        <td class="py-3 text-sm font-medium text-slate-900">${val}</td>
+        <td class="py-3 text-sm font-medium text-slate-900">${normalizePropertyValue(k, val)}</td>
       </tr>
     `).join('');
 
@@ -643,18 +707,37 @@ function initFeishuWebhook(){
       data.forEach((value, key) => {
         if(key === 'bot-field' || key === 'form-name') return;
         if(!value) return;
-        fields.push(`${key}: ${value}`);
+        const v = String(value).trim();
+        if(!v) return;
+        const label = FIELD_LABELS[key] || key;
+        const normalized = key === 'cart_items'
+          ? v.split('\n').filter(Boolean).map((line, idx) => `${idx + 1}. ${line}`).join('\n')
+          : v;
+        fields.push({ label, value: normalized });
       });
 
       const title = form.id === 'cartForm' ? '新询价单提交' : '新样品/报价申请';
-      const content = fields.join('\\n');
+      const content = fields.map((item) => ([
+        { tag: 'text', text: `${item.label}：` },
+        { tag: 'text', text: `${item.value}\n` }
+      ]));
+      content.push([
+        { tag: 'text', text: `提交时间：${new Date().toLocaleString('zh-CN', { hour12: false })}` }
+      ]);
 
       fetch(webhook, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          msg_type: 'text',
-          content: { text: `${title}\\n${content}` }
+          msg_type: 'post',
+          content: {
+            post: {
+              zh_cn: {
+                title,
+                content
+              }
+            }
+          }
         })
       }).catch(()=>{});
     });

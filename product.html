@@ -39,7 +39,18 @@ tailwind.config = {
 
     <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
       <a class="hover:text-slate-900" href="index.html">首页</a>
-      <a class="hover:text-slate-900" href="products.html">产品</a>
+      <div class="nav-dropdown">
+  <a class="hover:text-slate-900 inline-flex items-center gap-1" href="products.html">
+    产品
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="nav-dropdown-menu">
+    <a class="nav-dropdown-link" href="products.html?category=生物医用单体">生物医用单体</a>
+    <a class="nav-dropdown-link" href="products.html?category=生物医用聚合物">生物医用聚合物</a>
+    <a class="nav-dropdown-link" href="products.html?category=生物医用微球">生物医用微球</a>
+    <a class="nav-dropdown-link" href="products.html?category=医用加工服务">医用加工服务</a>
+  </div>
+</div>
       <a class="hover:text-slate-900" href="services.html">服务</a>
       <a class="hover:text-slate-900" href="about.html">关于我们</a>
       <a class="hover:text-slate-900" href="contact.html">联系</a>
@@ -84,8 +95,8 @@ tailwind.config = {
         </div>
       </div>
       <p class="mt-4 text-sm text-slate-600 leading-relaxed">
-        专注可吸收生物材料研发与生产，提�?PLLA / PPDO / PLGA / PCL 原材料与指标检测服务，
-        支持定制合成、微球开发、线材挤出、静电纺丝、注塑与 3D 打印验证�?
+        专注可吸收生物材料研发与生产，提供 PLLA / PPDO / PLGA / PCL 原材料与指标检测服务，
+        支持定制合成、微球开发、线材挤出、静电纺丝、注塑与 3D 打印验证。
       </p>
       <div class="mt-4 text-xs text-slate-500">© 2026 成都迪康药业. All rights reserved.</div>
     </div>
@@ -127,5 +138,3 @@ tailwind.config = {
 
 </body>
 </html>
-
-

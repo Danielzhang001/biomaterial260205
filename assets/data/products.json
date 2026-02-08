@@ -472,5 +472,85 @@
     ],
     "image_svg": "microspheres",
     "image": "assets/images/materials/microspheres.png"
+  },
+  {
+    "id": "l-lactide",
+    "name": "生物医用单体（L-Lactide）",
+    "tagline": "高纯度医用丙交酯单体｜聚合反应与器械级研发",
+    "category": "生物医用单体",
+    "description": "医用级 L-Lactide 单体适用于可吸收聚酯的开环聚合开发，可用于分子量窗口验证、共聚配方筛选与中试放大前评估。",
+    "applications": [
+      "医用聚酯聚合前驱体",
+      "共聚体系比例筛选",
+      "药物缓释载体前期开发"
+    ],
+    "variants": [
+      {
+        "sku": "MONO-LLA-99.5",
+        "mw": "单体级",
+        "iv": "定制",
+        "end_group": "定制",
+        "crystallinity": "高纯度结晶",
+        "form": "结晶粉末",
+        "pack": "100g/500g（可定制）",
+        "price_cny": null,
+        "lead_time": "按项目评估",
+        "properties": {
+          "purity": "≥ 99.5%",
+          "water": "≤ 0.1%",
+          "residual_solvent": "≤ 0.05%",
+          "Tg": "定制",
+          "Tm": "定制"
+        },
+        "reports": [
+          {
+            "name": "检测报告（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plla",
+    "image": "assets/images/materials/plla-sample.png"
+  },
+  {
+    "id": "processing-service",
+    "name": "医用加工服务（挤出/注塑/纺丝/3D打印）",
+    "tagline": "材料到工艺一体化验证｜按项目输出工艺窗口",
+    "category": "医用加工服务",
+    "description": "提供医用聚合物的线材挤出、注塑、静电纺丝和 3D 打印验证服务，支持样品试制、参数迭代与工艺窗口建议。",
+    "applications": [
+      "线材挤出参数验证",
+      "注塑样件与结构试制",
+      "静电纺丝膜材与支架",
+      "3D 打印材料可加工性评估"
+    ],
+    "variants": [
+      {
+        "sku": "SERVICE-PROCESS-VALIDATION",
+        "mw": "按项目",
+        "iv": "按项目",
+        "end_group": "按项目",
+        "crystallinity": "按项目",
+        "form": "项目制",
+        "pack": "方案报价",
+        "price_cny": null,
+        "lead_time": "按项目排期",
+        "properties": {
+          "Tg": "定制",
+          "Tm": "定制",
+          "deliverables": "工艺窗口、样件、测试建议",
+          "project_cycle": "2-8 周（视复杂度）"
+        },
+        "reports": [
+          {
+            "name": "服务说明（示例）",
+            "file": "assets/reports/COA_Summary.pdf"
+          }
+        ]
+      }
+    ],
+    "image_svg": "bottle_plga",
+    "image": "assets/images/materials/plga-pellet.png"
   }
 ]

@@ -36,7 +36,18 @@
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
         <a class="hover:text-slate-900" href="index.html">首页</a>
-        <a class="hover:text-slate-900" href="products.html">产品</a>
+        <div class="nav-dropdown">
+  <a class="hover:text-slate-900 inline-flex items-center gap-1" href="products.html">
+    产品
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+  <div class="nav-dropdown-menu">
+    <a class="nav-dropdown-link" href="products.html?category=生物医用单体">生物医用单体</a>
+    <a class="nav-dropdown-link" href="products.html?category=生物医用聚合物">生物医用聚合物</a>
+    <a class="nav-dropdown-link" href="products.html?category=生物医用微球">生物医用微球</a>
+    <a class="nav-dropdown-link" href="products.html?category=医用加工服务">医用加工服务</a>
+  </div>
+</div>
         <a class="hover:text-slate-900" href="services.html">服务</a>
         <a class="hover:text-slate-900" href="about.html">关于我们</a>
         <a class="hover:text-slate-900" href="contact.html">联系</a>
@@ -104,39 +115,35 @@
         </div>
         <a href="products.html" class="text-sm text-slate-600 hover:text-slate-900">查看全部 →</a>
       </div>
-      <div class="mt-8 grid md:grid-cols-4 gap-6">
-        <div class="glass-card hover-lift rounded-3xl border border-slate-200 overflow-hidden">
-          <div class="card-visual h-40"><img src="assets/images/materials/plla.png" alt="PLLA" /></div>
-          <div class="p-5">
-            <div class="text-sm text-slate-500">PLLA</div>
-            <div class="text-lg font-semibold text-slate-900">左旋聚乳酸</div>
-            <div class="mt-2 text-xs text-slate-600">骨科固定 / 支架 / 缝线基材</div>
+      <div class="mt-8 product-showcase-grid">
+        <a class="showcase-tile is-large" href="product.html?id=microspheres">
+          <img src="assets/images/materials/microspheres.png" alt="医用聚合物微球" loading="lazy" />
+          <div class="tile-content">
+            <div class="tile-title">医用聚合物微球</div>
+            <div class="tile-desc">粒径 1-100μm 可控，支持载药与释放曲线调控</div>
           </div>
-        </div>
-        <div class="glass-card hover-lift rounded-3xl border border-slate-200 overflow-hidden">
-          <div class="card-visual h-40"><img src="assets/images/materials/ppdo.png" alt="PPDO" /></div>
-          <div class="p-5">
-            <div class="text-sm text-slate-500">PDO</div>
-            <div class="text-lg font-semibold text-slate-900">聚对二氧环己酮</div>
-            <div class="mt-2 text-xs text-slate-600">缝合线 / 网片 / 软组织修复</div>
+        </a>
+        <a class="showcase-tile" href="product.html?id=plla">
+          <img src="assets/images/materials/plla.png" alt="左旋聚乳酸 PLLA" loading="lazy" />
+          <div class="tile-content">
+            <div class="tile-title">左旋聚乳酸(PLLA)</div>
+            <div class="tile-desc">骨科固定 / 支架 / 缝线基材</div>
           </div>
-        </div>
-        <div class="glass-card hover-lift rounded-3xl border border-slate-200 overflow-hidden">
-          <div class="card-visual h-40"><img src="assets/images/materials/plga.png" alt="PLGA" /></div>
-          <div class="p-5">
-            <div class="text-sm text-slate-500">PLGA</div>
-            <div class="text-lg font-semibold text-slate-900">丙交酯-乙交酯共聚物</div>
-            <div class="mt-2 text-xs text-slate-600">微球缓释 / 组织工程</div>
+        </a>
+        <a class="showcase-tile" href="product.html?id=plga">
+          <img src="assets/images/materials/plga.png" alt="PLGA 共聚物" loading="lazy" />
+          <div class="tile-content">
+            <div class="tile-title">PLGA 共聚物</div>
+            <div class="tile-desc">药物缓释 / 微球 / 组织工程</div>
           </div>
-        </div>
-        <div class="glass-card hover-lift rounded-3xl border border-slate-200 overflow-hidden">
-          <div class="card-visual h-40"><img src="assets/images/materials/pcl.png" alt="PCL" /></div>
-          <div class="p-5">
-            <div class="text-sm text-slate-500">PCL</div>
-            <div class="text-lg font-semibold text-slate-900">聚己内酯</div>
-            <div class="mt-2 text-xs text-slate-600">长效载体 / 软组织支撑</div>
+        </a>
+        <a class="showcase-tile" href="products.html?category=医用加工服务">
+          <img src="assets/images/materials/plga-pellet.png" alt="医用加工服务" loading="lazy" />
+          <div class="tile-content">
+            <div class="tile-title">医用加工服务</div>
+            <div class="tile-desc">挤出 / 注塑 / 静电纺丝 / 3D 打印验证</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
