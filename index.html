@@ -36,12 +36,20 @@
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
         <a class="hover:text-slate-900" href="index.html">首页</a>
-        <a class="hover:text-slate-900" href="products.html">产品中心</a>
-        <a class="hover:text-slate-900" href="services.html">技术服务</a>
+        <a class="hover:text-slate-900" href="products.html">产品</a>
+        <a class="hover:text-slate-900" href="services.html">服务</a>
         <a class="hover:text-slate-900" href="about.html">关于我们</a>
-        <a class="hover:text-slate-900" href="contact.html">联系我们</a>
-        <a class="btn-primary rounded-full px-4 py-2 text-xs font-medium" href="contact.html#quote">提交询价</a>
+        <a class="hover:text-slate-900" href="contact.html">联系</a>
       </nav>
+      <div class="flex items-center gap-3">
+        <a href="cart.html" class="btn-ghost relative inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 hover:bg-slate-50">
+          询价单
+          <span class="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span>
+        </a>
+        <a href="contact.html#quote" class="btn-primary hidden sm:inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
+          立即询价
+        </a>
+      </div>
     </div>
   </header>
 
