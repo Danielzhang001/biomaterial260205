@@ -1,0 +1,110 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased;
+    background-image:
+      radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.08), transparent 42%),
+      radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.1), transparent 35%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply tracking-tight;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply outline-none;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border border-sky-100 bg-white/95 shadow-soft backdrop-blur;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white shadow-float transition hover:-translate-y-0.5 hover:bg-blue-700;
+    min-height: 44px;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-blue-600 bg-white px-6 py-3 text-sm font-medium text-blue-600 transition hover:-translate-y-0.5 hover:bg-blue-50;
+    min-height: 44px;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50;
+    min-height: 40px;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full border border-sky-100 bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-slate-600 transition hover:text-blue-700;
+  }
+
+  .nav-link-active {
+    @apply text-blue-700;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold text-slate-900 md:text-3xl;
+  }
+
+  .section-subtitle {
+    @apply mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base;
+  }
+
+  .metric-card {
+    @apply glass-card p-5;
+  }
+
+  .timeline-line {
+    @apply border-l-2 border-blue-200 pl-6;
+  }
+
+  .timeline-dot {
+    @apply absolute -left-[0.8rem] inline-flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white;
+  }
+
+  .mobile-cta {
+    @apply fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 shadow-2xl backdrop-blur md:hidden;
+  }
+
+  .fade-in-up {
+    @apply animate-fade-in-up;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .stagger-1 {
+    animation-delay: 0.08s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.16s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.24s;
+  }
+}

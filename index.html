@@ -1,0 +1,216 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>迪康中科生物医用材料 | 医疗级可吸收聚合物</title>
+  <meta name="description" content="成都迪康中科生物医用材料中心，提供 PLLA / PDLLA / PLGA / PPDO / PCL 医疗级材料与定制服务。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/theme.css" />
+</head>
+<body class="font-[Noto_Sans_SC,Manrope,sans-serif]">
+  <header class="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-bold text-white">DK</span>
+        <div>
+          <p class="text-sm font-semibold text-slate-900">迪康中科生物材料</p>
+          <p class="text-xs text-slate-500">Medical Biomaterials</p>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-7 md:flex">
+        <a class="nav-link nav-link-active" href="index.html">首页</a>
+        <a class="nav-link" href="products.html">产品</a>
+        <a class="nav-link" href="services.html">服务</a>
+        <a class="nav-link" href="about.html">关于我们</a>
+        <a class="nav-link" href="contact.html">联系我们</a>
+      </nav>
+
+      <div class="hidden items-center gap-3 md:flex">
+        <a href="cart.html" class="btn-soft">询价单 <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span></a>
+        <a href="contact.html#quote" class="btn-primary px-5">获取样品</a>
+      </div>
+
+      <button type="button" data-menu-toggle class="btn-soft px-3 md:hidden" aria-label="打开菜单">
+        <i data-lucide="menu" class="h-4 w-4"></i>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-sky-100 bg-white md:hidden">
+      <nav class="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm">
+        <a class="nav-link nav-link-active py-2" href="index.html">首页</a>
+        <a class="nav-link py-2" href="products.html">产品中心</a>
+        <a class="nav-link py-2" href="services.html">技术服务</a>
+        <a class="nav-link py-2" href="about.html">关于我们</a>
+        <a class="nav-link py-2" href="contact.html">联系我们</a>
+        <a class="nav-link py-2" href="cart.html">询价单</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
+      <div class="absolute inset-0 opacity-25" style="background-image:url('assets/images/hero/hero-plga-pellet.png');background-size:cover;background-position:center;"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-8 px-4 py-16 md:py-24 lg:grid-cols-12 lg:items-center">
+        <div class="lg:col-span-7 fade-in-up">
+          <p class="chip border-white/40 bg-white/10 text-white">医疗级可吸收材料平台</p>
+          <h1 class="mt-5 text-4xl font-extrabold leading-tight md:text-5xl">专业的生物医用材料解决方案</h1>
+          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-blue-50 md:text-base">覆盖 PLLA、PDLLA、PLGA、PPDO、PCL 全体系，支持分子量、端基、共聚比例、颗粒形态的精细化定制，帮助研发团队快速进入样品验证与注册前阶段。</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="contact.html#quote" class="btn-primary bg-white text-blue-700 hover:bg-blue-50">获取样品</a>
+            <a href="contact.html" class="btn-secondary border-white text-white hover:bg-white/10">联系我们</a>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2 text-xs">
+            <span class="rounded-full border border-white/40 px-3 py-1">ISO 13485 体系</span>
+            <span class="rounded-full border border-white/40 px-3 py-1">2000 年成立</span>
+            <span class="rounded-full border border-white/40 px-3 py-1">支持 COA 批次追溯</span>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="glass-card p-6 text-slate-800 fade-in-up stagger-1">
+            <h2 class="text-lg font-semibold text-slate-900">智能规格选择器</h2>
+            <p class="mt-2 text-sm text-slate-600">选择目标材料和参数后，一键加入询价单。</p>
+            <div id="specSelector" class="mt-5 space-y-3">
+              <select id="specProduct" class="w-full rounded-xl border border-slate-200 px-3 py-3 text-sm"></select>
+              <div class="grid gap-3 sm:grid-cols-3">
+                <select id="specMw" class="rounded-xl border border-slate-200 px-3 py-3 text-sm"></select>
+                <select id="specEnd" class="rounded-xl border border-slate-200 px-3 py-3 text-sm"></select>
+                <select id="specForm" class="rounded-xl border border-slate-200 px-3 py-3 text-sm"></select>
+              </div>
+              <div class="grid gap-3 sm:grid-cols-2">
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <p class="text-xs text-slate-500">SKU</p>
+                  <p id="specSku" class="mt-1 text-sm font-semibold text-slate-900">-</p>
+                </div>
+                <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                  <p class="text-xs text-slate-500">价格</p>
+                  <p id="specPrice" class="mt-1 text-sm font-semibold text-slate-900">项目询价</p>
+                </div>
+              </div>
+              <button id="specAddBtn" type="button" class="btn-primary w-full">加入询价单</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 py-14">
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="metric-card fade-in-up">
+          <p class="text-xs text-slate-500">分子量范围</p>
+          <p class="mt-2 text-2xl font-bold text-slate-900">5k - 1M+</p>
+          <p class="mt-2 text-sm text-slate-600">支持多档窗口定制，覆盖短中长期降解需求。</p>
+        </article>
+        <article class="metric-card fade-in-up stagger-1">
+          <p class="text-xs text-slate-500">交付能力</p>
+          <p class="mt-2 text-2xl font-bold text-slate-900">样品 7-15 天</p>
+          <p class="mt-2 text-sm text-slate-600">研发阶段快速送样，配套关键指标检测建议。</p>
+        </article>
+        <article class="metric-card fade-in-up stagger-2">
+          <p class="text-xs text-slate-500">质量体系</p>
+          <p class="mt-2 text-2xl font-bold text-slate-900">ISO & COA</p>
+          <p class="mt-2 text-sm text-slate-600">批次化输出报告，满足法规与审计追溯要求。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 py-6">
+      <div class="flex items-end justify-between gap-3">
+        <div>
+          <h2 class="section-title">核心产品体系</h2>
+          <p class="section-subtitle">从可吸收聚合物到微球与复合材料，覆盖研发与产业化应用。</p>
+        </div>
+        <a href="products.html" class="btn-soft hidden sm:inline-flex">查看全部产品</a>
+      </div>
+      <div class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="product.html?id=plla" class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1">
+          <img src="assets/images/materials/plla.png" alt="PLLA" class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-4">
+            <p class="text-sm font-semibold text-slate-900">PLLA</p>
+            <p class="mt-1 text-xs text-slate-600">高强度骨科固定与组织工程支架。</p>
+          </div>
+        </a>
+        <a href="product.html?id=plga" class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1">
+          <img src="assets/images/materials/plga-powder.png" alt="PLGA" class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-4">
+            <p class="text-sm font-semibold text-slate-900">PLGA</p>
+            <p class="mt-1 text-xs text-slate-600">用于缓释微球与可吸收器械结构。</p>
+          </div>
+        </a>
+        <a href="product.html?id=ppdo" class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1">
+          <img src="assets/images/materials/ppdo-powder.png" alt="PPDO" class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-4">
+            <p class="text-sm font-semibold text-slate-900">PPDO</p>
+            <p class="mt-1 text-xs text-slate-600">柔韧可吸收体系，适配缝线与软组织。</p>
+          </div>
+        </a>
+        <a href="product.html?id=microspheres" class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1">
+          <img src="assets/images/materials/microspheres.png" alt="Microspheres" class="h-40 w-full object-cover" loading="lazy" />
+          <div class="p-4">
+            <p class="text-sm font-semibold text-slate-900">微球体系</p>
+            <p class="mt-1 text-xs text-slate-600">粒径可控，支持载药与释放曲线调节。</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-4 py-14">
+      <div class="glass-card overflow-hidden bg-gradient-to-r from-slate-900 to-sky-900 px-6 py-10 text-white md:px-10">
+        <h2 class="text-2xl font-semibold md:text-3xl">准备开始材料验证？</h2>
+        <p class="mt-3 max-w-2xl text-sm text-slate-100 md:text-base">提交需求后，我们会结合你的应用场景给出材料窗口、关键测试项和样品建议，帮助研发团队缩短验证周期。</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="contact.html#quote" class="btn-primary bg-white text-blue-700 hover:bg-blue-50">获取样品</a>
+          <a href="products.html" class="btn-secondary border-white text-white hover:bg-white/10">浏览产品目录</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white">
+    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <p class="text-base font-semibold text-slate-900">成都迪康中科生物医学材料有限公司</p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600">专注可吸收生物材料研发与应用转化，提供医疗器械与药械结合项目所需的材料供应、检测和工艺支持。</p>
+      </div>
+      <div class="md:col-span-7 grid gap-6 text-sm text-slate-600 sm:grid-cols-3">
+        <div>
+          <p class="font-semibold text-slate-900">导航</p>
+          <ul class="mt-3 space-y-2">
+            <li><a class="hover:text-blue-700" href="products.html">产品中心</a></li>
+            <li><a class="hover:text-blue-700" href="services.html">技术服务</a></li>
+            <li><a class="hover:text-blue-700" href="about.html">关于我们</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-slate-900">联系</p>
+          <ul class="mt-3 space-y-2">
+            <li>邮箱：1792625284@qq.com</li>
+            <li>电话：13689016487</li>
+            <li>地址：四川省成都市</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-slate-900">企业微信</p>
+          <img class="mt-3 h-24 w-24 rounded-xl border border-slate-200 object-cover" src="assets/images/qr/wechat.png" alt="企业微信二维码" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta">
+    <div class="mx-auto flex max-w-7xl items-center gap-3">
+      <a href="contact.html#quote" class="btn-primary flex-1">获取样品</a>
+      <a href="cart.html" class="btn-secondary flex-1">询价单</a>
+    </div>
+  </div>
+
+  <div id="toast" class="pointer-events-none fixed bottom-24 left-1/2 z-50 -translate-x-1/2 translate-y-3 rounded-full bg-slate-900 px-5 py-3 text-sm text-white opacity-0 transition">提示</div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
