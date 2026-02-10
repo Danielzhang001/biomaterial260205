@@ -1,5 +1,6 @@
 ﻿const ALL_LABEL = "全部";
 const LOCAL_CART_KEY = "cart";
+const MAX_NAV_CATEGORIES = 6;
 
 const state = {
   products: [],
@@ -10,6 +11,8 @@ const state = {
     polymer: ALL_LABEL
   }
 };
+
+let activeDesktopProductMenu = null;
 
 function getQueryParam(key) {
   return new URLSearchParams(window.location.search).get(key);
@@ -24,6 +27,97 @@ function safeText(value, fallback = "-") {
 function formatPrice(value) {
   if (typeof value !== "number" || Number.isNaN(value)) return "项目询价";
   return `¥${value.toLocaleString("zh-CN")}`;
+}
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function normalizeString(value, fallback = "") {
+  if (value === null || value === undefined) return fallback;
+  const text = String(value).trim();
+  return text || fallback;
+}
+
+function normalizeVariant(raw, index, productId) {
+  const variant = raw && typeof raw === "object" ? raw : {};
+  return {
+    sku: normalizeString(variant.sku, `${productId || "material"}-V${index + 1}`),
+    mw: normalizeString(variant.mw, "可定制"),
+    iv: normalizeString(variant.iv, "可定制"),
+    end_group: normalizeString(variant.end_group, "可定制"),
+    crystallinity: normalizeString(variant.crystallinity, "可定制"),
+    form: normalizeString(variant.form, "颗粒"),
+    pack: normalizeString(variant.pack, "定制包装"),
+    price_cny: typeof variant.price_cny === "number" && !Number.isNaN(variant.price_cny) ? variant.price_cny : null,
+    lead_time: normalizeString(variant.lead_time, "7-15个工作日"),
+    properties: variant.properties && typeof variant.properties === "object" ? variant.properties : {},
+    reports: asArray(variant.reports).map((report) => ({
+      name: normalizeString(report?.name, "检测报告"),
+      file: normalizeString(report?.file)
+    })).filter((report) => report.file)
+  };
+}
+
+function normalizeProduct(raw, index) {
+  const product = raw && typeof raw === "object" ? raw : {};
+  const safeId = normalizeString(product.id, `material-${index + 1}`)
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, "-");
+
+  return {
+    id: safeId || `material-${index + 1}`,
+    name: normalizeString(product.name, `材料 ${index + 1}`),
+    tagline: normalizeString(product.tagline, "医疗级可吸收材料"),
+    category: normalizeString(product.category, "未分类"),
+    description: normalizeString(product.description, "支持分子量、端基和形态定制。"),
+    applications: asArray(product.applications).map((item) => normalizeString(item)).filter(Boolean),
+    spec_range: product.spec_range && typeof product.spec_range === "object" ? product.spec_range : {},
+    processing: normalizeString(product.processing, "支持挤出、注塑、纺丝和 3D 打印等工艺。"),
+    variants: asArray(product.variants).map((variant, variantIndex) => normalizeVariant(variant, variantIndex, safeId)),
+    image: normalizeString(product.image),
+    image_svg: normalizeString(product.image_svg)
+  };
+}
+
+function normalizeProducts(rawData) {
+  if (!Array.isArray(rawData)) {
+    toast("产品数据格式异常：根节点必须是数组");
+    return [];
+  }
+
+  const normalized = rawData.map((item, index) => normalizeProduct(item, index));
+  const valid = normalized.filter((item) => item.id && item.name);
+
+  if (!valid.length) {
+    toast("产品数据加载失败：没有有效产品条目");
+    return [];
+  }
+
+  if (valid.length !== normalized.length) {
+    toast("部分产品条目字段不完整，已自动跳过");
+  }
+
+  return valid;
+}
+
+function buildNavCategoryLinks() {
+  const unique = new Map();
+
+  state.products.forEach((product) => {
+    const label = normalizeString(product.category);
+    if (!label || unique.has(label)) return;
+    unique.set(label, `products.html?category=${encodeURIComponent(label)}`);
+  });
+
+  const items = Array.from(unique.entries())
+    .slice(0, MAX_NAV_CATEGORIES)
+    .map(([label, href]) => ({ label, href }));
+
+  return [
+    { label: "全部产品", href: "products.html" },
+    ...items
+  ];
 }
 
 function readCart() {
@@ -546,14 +640,34 @@ function cartSummaryText() {
     .join("\n");
 }
 
+function cartWebhookPayload() {
+  const timestamp = new Date().toLocaleString("zh-CN", { hour12: false });
+  const lines = [
+    "【询价请求】",
+    `时间：${timestamp}`,
+    `条目数：${cartCount()}`,
+    `总价：${cartHasPrice() ? formatPrice(cartNumericTotal()) : "项目询价"}`,
+    "---",
+    "【条目明细】"
+  ];
+
+  state.cart.forEach((item, index) => {
+    lines.push(`${index + 1}. ${safeText(item.productName)} | ${safeText(item.sku)} | qty:${item.qty} | pack:${safeText(item.pack, "-")}`);
+  });
+
+  return lines.join("\n");
+}
+
 function syncCartForm() {
   const itemsInput = document.getElementById("cartItemsInput");
   const totalInput = document.getElementById("cartTotalInput");
   const countInput = document.getElementById("cartCountInput");
+  const webhookInput = document.getElementById("cartWebhookPayloadInput");
 
   if (itemsInput) itemsInput.value = cartSummaryText();
   if (totalInput) totalInput.value = cartHasPrice() ? String(cartNumericTotal()) : "项目询价";
   if (countInput) countInput.value = String(cartCount());
+  if (webhookInput) webhookInput.value = cartWebhookPayload();
 }
 
 async function submitFormByFetch(form) {
@@ -675,13 +789,182 @@ function initSpecSelector() {
   updateSelection();
 }
 
+function closeDesktopProductMenu() {
+  if (!activeDesktopProductMenu) return;
+  activeDesktopProductMenu.panel.classList.add("hidden");
+  activeDesktopProductMenu.trigger.setAttribute("aria-expanded", "false");
+  activeDesktopProductMenu = null;
+}
+
+function bindDesktopProductMenu() {
+  const links = Array.from(document.querySelectorAll("header nav a.nav-link[href='products.html']"))
+    .filter((link) => !link.closest("#mobileMenu"));
+  if (!links.length) return;
+
+  const navItems = buildNavCategoryLinks();
+  const navGrid = navItems.map((item) => `
+    <a href="${item.href}" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 transition hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
+      <span>${item.label}</span>
+      <i data-lucide="chevron-right" class="h-4 w-4 opacity-60 transition group-hover:opacity-100"></i>
+    </a>
+  `).join("");
+
+  links.forEach((link) => {
+    if (link.dataset.productMenuBound === "true") return;
+
+    link.dataset.productMenuBound = "true";
+    link.setAttribute("aria-haspopup", "true");
+    link.setAttribute("aria-expanded", "false");
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "relative";
+    link.parentNode.insertBefore(wrapper, link);
+    wrapper.appendChild(link);
+
+    const panel = document.createElement("div");
+    panel.className = "absolute left-1/2 top-full z-50 mt-3 hidden w-[22rem] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100 bg-white p-3 shadow-2xl";
+    panel.innerHTML = `
+      <div class="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-3 py-3 text-white">
+        <p class="text-xs opacity-90">产品快捷入口</p>
+        <p class="mt-1 text-sm font-semibold">支持分类与材料双路径浏览</p>
+      </div>
+      <div class="mt-3 grid gap-2">${navGrid}</div>
+    `;
+
+    wrapper.appendChild(panel);
+
+    const openMenu = () => {
+      if (activeDesktopProductMenu && activeDesktopProductMenu.panel !== panel) {
+        closeDesktopProductMenu();
+      }
+      panel.classList.remove("hidden");
+      link.setAttribute("aria-expanded", "true");
+      activeDesktopProductMenu = { trigger: link, panel };
+      initIcons();
+    };
+
+    const toggleMenu = () => {
+      if (panel.classList.contains("hidden")) {
+        openMenu();
+      } else {
+        closeDesktopProductMenu();
+      }
+    };
+
+    wrapper.addEventListener("mouseenter", openMenu);
+    wrapper.addEventListener("mouseleave", closeDesktopProductMenu);
+
+    link.addEventListener("click", (event) => {
+      if (panel.classList.contains("hidden")) {
+        event.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    link.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleMenu();
+      }
+      if (event.key === "Escape") {
+        closeDesktopProductMenu();
+      }
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!activeDesktopProductMenu) return;
+    if (activeDesktopProductMenu.panel.contains(event.target) || activeDesktopProductMenu.trigger.contains(event.target)) return;
+    closeDesktopProductMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeDesktopProductMenu();
+    }
+  });
+}
+
+function bindMobileProductMenu(menu) {
+  const nav = menu.querySelector("nav");
+  if (!nav) return;
+  if (nav.querySelector("[data-mobile-products='true']")) return;
+
+  const productLink = nav.querySelector("a[href='products.html']");
+  if (!productLink) return;
+
+  const navItems = buildNavCategoryLinks();
+  const wrapper = document.createElement("div");
+  wrapper.dataset.mobileProducts = "true";
+  wrapper.className = "rounded-xl border border-sky-100 bg-sky-50/70";
+  const inProductContext = /product/i.test(window.location.pathname);
+  if (inProductContext) {
+    wrapper.classList.add("border-blue-200");
+  }
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-slate-700";
+  if (inProductContext) {
+    toggle.classList.add("text-blue-700");
+  }
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.innerHTML = `
+    <span>产品中心</span>
+    <i data-lucide="chevron-down" class="h-4 w-4 transition"></i>
+  `;
+
+  const list = document.createElement("div");
+  list.className = "hidden border-t border-sky-100 px-2 py-2";
+  list.innerHTML = navItems.map((item) => `
+    <a class="block rounded-lg px-2 py-2 text-sm text-slate-600 transition hover:bg-white hover:text-blue-700" href="${item.href}">${item.label}</a>
+  `).join("");
+
+  toggle.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+    list.classList.toggle("hidden", expanded);
+  });
+
+  list.querySelectorAll("a").forEach((anchor) => {
+    anchor.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      const menuBtn = document.querySelector("[data-menu-toggle]");
+      menuBtn?.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  wrapper.appendChild(toggle);
+  wrapper.appendChild(list);
+  productLink.replaceWith(wrapper);
+  initIcons();
+}
+
 function bindMobileMenu() {
   const toggle = document.querySelector("[data-menu-toggle]");
   const menu = document.getElementById("mobileMenu");
   if (!toggle || !menu) return;
 
+  toggle.setAttribute("aria-expanded", "false");
+
   toggle.addEventListener("click", () => {
+    const willOpen = menu.classList.contains("hidden");
     menu.classList.toggle("hidden");
+    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (menu.classList.contains("hidden")) return;
+    if (menu.contains(event.target) || toggle.contains(event.target)) return;
+    menu.classList.add("hidden");
+    toggle.setAttribute("aria-expanded", "false");
   });
 }
 
@@ -696,7 +979,8 @@ async function loadProducts() {
   try {
     const response = await fetch("assets/data/products.json", { cache: "no-store" });
     if (!response.ok) throw new Error("load failed");
-    state.products = await response.json();
+    const raw = await response.json();
+    state.products = normalizeProducts(raw);
   } catch (_) {
     state.products = [];
     toast("产品数据加载失败，请检查 assets/data/products.json");
@@ -712,6 +996,9 @@ async function init() {
   renderCartBadge();
 
   await loadProducts();
+  bindDesktopProductMenu();
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (mobileMenu) bindMobileProductMenu(mobileMenu);
 
   renderFilters();
   renderCatalog();

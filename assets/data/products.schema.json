@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dk-biomaterials.local/schemas/products.schema.json",
+  "title": "DK Biomaterials Product Model",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "category", "description", "variants"],
+    "properties": {
+      "id": { "type": "string", "minLength": 1 },
+      "name": { "type": "string", "minLength": 1 },
+      "tagline": { "type": "string" },
+      "category": { "type": "string", "minLength": 1 },
+      "description": { "type": "string", "minLength": 1 },
+      "applications": {
+        "type": "array",
+        "items": { "type": "string", "minLength": 1 }
+      },
+      "processing": { "type": "string" },
+      "image": { "type": "string" },
+      "variants": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["sku", "mw", "end_group", "form", "pack"],
+          "properties": {
+            "sku": { "type": "string", "minLength": 1 },
+            "mw": { "type": "string", "minLength": 1 },
+            "iv": { "type": "string" },
+            "end_group": { "type": "string", "minLength": 1 },
+            "form": { "type": "string", "minLength": 1 },
+            "pack": { "type": "string", "minLength": 1 },
+            "price_cny": { "type": ["number", "null"] },
+            "lead_time": { "type": "string" },
+            "properties": { "type": "object" },
+            "reports": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "file"],
+                "properties": {
+                  "name": { "type": "string", "minLength": 1 },
+                  "file": { "type": "string", "minLength": 1 }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
