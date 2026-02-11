@@ -4,113 +4,89 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>产品详情 | 迪康中科</title>
-  <meta name="description" content="查看医疗级可吸收材料的规格参数、应用场景与检测报告。" />
+  <meta name="description" content="查看产品规格参数、应用场景与检测报告入口。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/theme.css" />
 </head>
-<body class="font-[Noto_Sans_SC,Manrope,sans-serif]">
-  <header class="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-bold text-white">DK</span>
+<body data-page="products">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-meta">
+        <span class="inline"><i data-lucide="file-search"></i> 规格详情与报告入口</span>
+      </div>
+      <div class="topbar-links">
+        <a class="inline" href="mailto:1792625284@qq.com"><i data-lucide="mail"></i> 1792625284@qq.com</a>
+        <a class="inline" href="tel:13689016487"><i data-lucide="phone"></i> 13689016487</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">DK</span>
         <div>
-          <p class="text-sm font-semibold text-slate-900">迪康中科生物材料</p>
-          <p class="text-xs text-slate-500">Medical Biomaterials</p>
+          <p class="brand-name">迪康中科生物材料</p>
+          <p class="brand-sub">Medical Biomaterials Platform</p>
         </div>
       </a>
-      <nav class="hidden items-center gap-7 md:flex">
-        <a class="nav-link" href="index.html">首页</a>
-        <a class="nav-link nav-link-active" href="products.html">产品</a>
-        <a class="nav-link" href="services.html">服务</a>
-        <a class="nav-link" href="about.html">关于我们</a>
-        <a class="nav-link" href="contact.html">联系我们</a>
+      <nav class="nav-links">
+        <a class="nav-link" data-nav="home" href="index.html">首页</a>
+        <a class="nav-link" data-nav="about" href="about.html">关于我们</a>
+        <a class="nav-link" data-nav="services" href="services.html">加工服务</a>
+        <a class="nav-link" data-nav="products" href="products.html">产品中心</a>
+        <a class="nav-link" data-nav="contact" href="contact.html">联系</a>
       </nav>
-      <div class="hidden items-center gap-3 md:flex">
-        <a href="cart.html" class="btn-soft">询价单 <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span></a>
-        <a href="contact.html#quote" class="btn-primary px-5">获取样品</a>
-      </div>
-      <button type="button" data-menu-toggle class="btn-soft px-3 md:hidden" aria-label="打开菜单">
-        <i data-lucide="menu" class="h-4 w-4"></i>
-      </button>
+      <a class="btn btn-primary" href="contact.html">提交询价</a>
+      <button id="menuToggle" class="menu-btn" type="button" aria-expanded="false" aria-label="打开菜单"><i data-lucide="menu"></i></button>
     </div>
-    <div id="mobileMenu" class="hidden border-t border-sky-100 bg-white md:hidden">
-      <nav class="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm">
-        <a class="nav-link py-2" href="index.html">首页</a>
-        <a class="nav-link nav-link-active py-2" href="products.html">产品中心</a>
-        <a class="nav-link py-2" href="services.html">技术服务</a>
-        <a class="nav-link py-2" href="about.html">关于我们</a>
-        <a class="nav-link py-2" href="contact.html">联系我们</a>
-        <a class="nav-link py-2" href="cart.html">询价单</a>
-      </nav>
+    <div id="mobileNav" class="mobile-nav">
+      <a data-nav="home" href="index.html">首页</a>
+      <a data-nav="about" href="about.html">关于我们</a>
+      <a data-nav="services" href="services.html">加工服务</a>
+      <a data-nav="products" href="products.html">产品中心</a>
+      <a data-nav="contact" href="contact.html">联系</a>
     </div>
   </header>
 
   <main>
-    <section class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
-      <div class="mx-auto max-w-7xl px-4 py-10">
-        <a href="products.html" class="inline-flex items-center gap-1 text-sm text-blue-100 hover:text-white"><i data-lucide="chevron-left" class="h-4 w-4"></i> 返回产品目录</a>
-        <h1 class="mt-3 text-3xl font-bold md:text-4xl">产品详情</h1>
-        <p class="mt-2 text-sm text-blue-50">查看规格参数、检测指标和应用场景，支持一键加入询价单。</p>
+    <section class="section">
+      <div class="container">
+        <a class="btn btn-outline" href="products.html" style="margin-bottom:16px;">返回产品列表</a>
+        <div id="productDetail"></div>
       </div>
-    </section>
-
-    <section class="mx-auto max-w-7xl px-4 py-10">
-      <div id="productDetail"></div>
     </section>
   </main>
 
-  <div id="reportModal" class="fixed inset-0 z-50 hidden">
-    <div id="reportBackdrop" class="absolute inset-0 bg-slate-900/60"></div>
-    <div class="relative mx-auto mt-8 h-[85vh] max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl">
-      <div class="flex items-center justify-between border-b border-slate-200 px-4 py-3">
-        <p id="reportTitle" class="text-sm font-semibold text-slate-900">检测报告</p>
-        <button id="closeReportBtn" type="button" class="btn-soft px-3 py-2">关闭</button>
+  <footer class="footer">
+    <div class="container footer-top grid three">
+      <div>
+        <h4>迪康中科生物材料</h4>
+        <p>专注可吸收生物材料与加工转化，服务医疗器械与药械结合项目。</p>
       </div>
-      <iframe id="reportFrame" title="COA PDF" src="about:blank" class="h-full w-full"></iframe>
-    </div>
-  </div>
-
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-12">
-      <div class="md:col-span-5">
-        <p class="text-base font-semibold text-slate-900">成都迪康中科生物医学材料有限公司</p>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600">专注可吸收生物材料研发与应用转化，提供医疗器械与药械结合项目所需的材料供应、检测和工艺支持。</p>
+      <div>
+        <h4>导航</h4>
+        <ul>
+          <li><a href="products.html">产品中心</a></li>
+          <li><a href="services.html">加工服务</a></li>
+          <li><a href="contact.html">联系</a></li>
+        </ul>
       </div>
-      <div class="md:col-span-7 grid gap-6 text-sm text-slate-600 sm:grid-cols-3">
-        <div>
-          <p class="font-semibold text-slate-900">导航</p>
-          <ul class="mt-3 space-y-2">
-            <li><a class="hover:text-blue-700" href="products.html">产品中心</a></li>
-            <li><a class="hover:text-blue-700" href="services.html">技术服务</a></li>
-            <li><a class="hover:text-blue-700" href="contact.html">联系我们</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-slate-900">联系</p>
-          <ul class="mt-3 space-y-2">
-            <li>邮箱：1792625284@qq.com</li>
-            <li>电话：13689016487</li>
-            <li>地址：四川省成都市</li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-slate-900">企业微信</p>
-          <img class="mt-3 h-24 w-24 rounded-xl border border-slate-200 object-cover" src="assets/images/qr/wechat.png" alt="企业微信二维码" loading="lazy" />
-        </div>
+      <div>
+        <h4>联系方式</h4>
+        <ul>
+          <li>邮箱：1792625284@qq.com</li>
+          <li>电话：13689016487</li>
+          <li>地址：四川省成都市</li>
+        </ul>
       </div>
     </div>
+    <div class="container footer-bottom">© <span data-year></span> 迪康中科. Design reference from MIT-licensed medical template.</div>
   </footer>
 
-  <div class="mobile-cta">
-    <div class="mx-auto flex max-w-7xl items-center gap-3">
-      <a href="contact.html#quote" class="btn-primary flex-1">获取样品</a>
-      <a href="cart.html" class="btn-secondary flex-1">询价单</a>
-    </div>
-  </div>
-
-  <div id="toast" class="pointer-events-none fixed bottom-24 left-1/2 z-50 -translate-x-1/2 translate-y-3 rounded-full bg-slate-900 px-5 py-3 text-sm text-white opacity-0 transition">提示</div>
+  <div id="toast" class="toast">提示</div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="assets/js/app.js"></script>

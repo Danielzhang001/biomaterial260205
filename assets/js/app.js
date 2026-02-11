@@ -1,203 +1,452 @@
-﻿const ALL_LABEL = "全部";
-const LOCAL_CART_KEY = "cart";
-const MAX_NAV_CATEGORIES = 6;
+﻿const ALL = "全部分类";
 
-const state = {
-  products: [],
-  cart: readCart(),
-  filter: {
-    q: "",
-    category: getQueryParam("category") || ALL_LABEL,
-    polymer: ALL_LABEL
+const PRODUCT_META = {
+  plla: {
+    name: "聚左旋乳酸 PLLA",
+    tagline: "高强度可吸收聚合物，适用于骨科与支架场景",
+    category: "医用可吸收高分子",
+    description: "PLLA 具备较高机械强度和中长期降解特性，支持分子量、端基、形态和包装定制。",
+    applications: ["骨科固定", "可吸收膜材", "组织工程支架", "中长期缓释载体"]
+  },
+  pdlla: {
+    name: "聚消旋乳酸 PDLLA",
+    tagline: "无定形体系，降解速度快于 PLLA",
+    category: "医用可吸收高分子",
+    description: "PDLLA 适用于中短期支撑及药物递送，常用于可吸收填充和修复方案。",
+    applications: ["药物缓释基体", "组织修复", "短中期固定", "可吸收填充"]
+  },
+  plga: {
+    name: "聚乳酸-羟基乙酸共聚物 PLGA",
+    tagline: "LA:GA 比例可调，释放周期可设计",
+    category: "医用可吸收高分子",
+    description: "PLGA 通过配比实现降解速率和力学窗口调控，适用于微球、膜材与可吸收器械。",
+    applications: ["缓释微球", "组织工程", "抗粘连膜", "可吸收器械"]
+  },
+  ppdo: {
+    name: "聚对二氧环己酮 PPDO",
+    tagline: "高柔韧可吸收材料，适配缝线与软组织修复",
+    category: "医用可吸收高分子",
+    description: "PPDO 兼具柔韧性与延展性，适合单丝、编织和中期支撑类应用。",
+    applications: ["可吸收缝线", "软组织修复", "可吸收网片", "中期支撑部件"]
+  },
+  pcl: {
+    name: "聚己内酯 PCL",
+    tagline: "低熔点、可加工性强的可吸收材料",
+    category: "医用可吸收高分子",
+    description: "PCL 适用于挤出、注塑、3D 打印及复合改性，在医美和组织工程中应用广泛。",
+    applications: ["3D 打印耗材", "组织工程", "医美填充", "复合材料改性"]
+  },
+  pgcl: {
+    name: "聚乙丙交酯 PGCL",
+    tagline: "柔韧性优异的可吸收共聚体系",
+    category: "医用可吸收高分子",
+    description: "PGCL 在弹性和降解速率之间取得平衡，常用于软组织修复类器械。",
+    applications: ["软组织修复", "可吸收缝线", "薄膜与管材", "弹性支撑结构"]
+  },
+  "l-la": {
+    name: "L-乳酸单体",
+    tagline: "医药级可聚合原料",
+    category: "医药级单体",
+    description: "用于高纯度可吸收聚合物合成，支持纯度与水分等关键指标控制。",
+    applications: ["聚合原料", "工艺开发", "中试放大", "质量对照"]
+  },
+  "d-la": {
+    name: "D-乳酸单体",
+    tagline: "立体构型调控用关键单体",
+    category: "医药级单体",
+    description: "用于共聚及立构调控，适配科研与工艺验证场景。",
+    applications: ["共聚改性", "立构调控", "工艺开发", "对照验证"]
+  },
+  "dl-la": {
+    name: "DL-乳酸单体",
+    tagline: "无定形聚乳酸体系常用原料",
+    category: "医药级单体",
+    description: "适用于 PDLLA 等体系开发，支持定制化供应。",
+    applications: ["PDLLA 合成", "原料评估", "中试验证", "定制合成"]
+  },
+  "plla-ms": {
+    name: "PLLA 微球",
+    tagline: "中长期释放与支撑场景",
+    category: "可吸收微球",
+    description: "可按粒径、分布与端基定制，支持药械项目开发。",
+    applications: ["缓释系统", "组织修复", "填充体系", "项目验证"]
+  },
+  "pdlla-ms": {
+    name: "PDLLA 微球",
+    tagline: "短中周期释放微球体系",
+    category: "可吸收微球",
+    description: "适合快速验证与短中周期释放需求。",
+    applications: ["缓释载体", "注射微球", "工艺评估", "中试开发"]
+  },
+  "ppdo-ms": {
+    name: "PPDO 微球",
+    tagline: "柔性体系微球解决方案",
+    category: "可吸收微球",
+    description: "聚焦柔性体系开发，支持定制粒径与表面特性。",
+    applications: ["柔性填充", "药械结合", "项目开发", "工艺放大"]
+  },
+  "plga-ms": {
+    name: "PLGA 微球",
+    tagline: "最常用可降解缓释微球平台",
+    category: "可吸收微球",
+    description: "可覆盖月级到季度级释放策略，适用于多种药物体系。",
+    applications: ["长效注射", "月级释放", "工艺验证", "放大生产"]
+  },
+  "service-injection": {
+    name: "注塑加工服务",
+    tagline: "医疗级注塑打样与工艺窗口建立",
+    category: "加工服务",
+    description: "提供原料评估、模具配合、打样验证与参数优化。",
+    applications: ["结构件打样", "工艺窗口", "可靠性测试", "小批试制"]
+  },
+  "service-microsphere": {
+    name: "微球制备服务",
+    tagline: "乳化固化与粒径分布控制",
+    category: "加工服务",
+    description: "覆盖处方筛选、粒径控制、残溶优化与放大验证。",
+    applications: ["处方开发", "工艺开发", "放大验证", "质量控制"]
+  },
+  "service-3d": {
+    name: "3D 打印耗材开发",
+    tagline: "医疗级可吸收打印材料与参数配套",
+    category: "加工服务",
+    description: "提供线材/颗粒开发、打印参数匹配和样件验证。",
+    applications: ["线材开发", "打印参数", "样件测试", "应用验证"]
+  },
+  bg45s5: {
+    name: "生物活性玻璃 45S5",
+    tagline: "骨修复常用生物活性无机材料",
+    category: "生物陶瓷",
+    description: "用于骨缺损修复和复合改性体系，支持粒径和包装定制。",
+    applications: ["骨修复", "复合改性", "涂层应用", "材料开发"]
+  },
+  "beta-tcp": {
+    name: "β-TCP 磷酸三钙",
+    tagline: "骨传导常用生物陶瓷材料",
+    category: "生物陶瓷",
+    description: "适用于骨替代和骨填充复合体系。",
+    applications: ["骨填充", "复合支架", "骨传导", "涂层体系"]
+  },
+  ha: {
+    name: "羟基磷灰石 HA",
+    tagline: "高生物相容性钙磷材料",
+    category: "生物陶瓷",
+    description: "常用于骨组织工程和复合改性，支持粒径和纯度控制。",
+    applications: ["骨组织工程", "复合材料", "涂层开发", "修复填充"]
   }
 };
 
-let activeDesktopProductMenu = null;
+const state = {
+  products: []
+};
 
-function getQueryParam(key) {
-  return new URLSearchParams(window.location.search).get(key);
+function $(selector) {
+  return document.querySelector(selector);
 }
 
-function safeText(value, fallback = "-") {
+function showToast(text) {
+  const toast = $("#toast");
+  if (!toast) return;
+  toast.textContent = text;
+  toast.classList.add("show");
+  clearTimeout(showToast._timer);
+  showToast._timer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+function safe(value, fallback = "-") {
   if (value === null || value === undefined) return fallback;
   const text = String(value).trim();
   return text || fallback;
 }
 
-function formatPrice(value) {
-  if (typeof value !== "number" || Number.isNaN(value)) return "项目询价";
-  return `¥${value.toLocaleString("zh-CN")}`;
+function priceText(value) {
+  return typeof value === "number" && !Number.isNaN(value) ? `¥${value.toLocaleString("zh-CN")}` : "项目询价";
 }
 
-function asArray(value) {
-  return Array.isArray(value) ? value : [];
-}
-
-function normalizeString(value, fallback = "") {
-  if (value === null || value === undefined) return fallback;
-  const text = String(value).trim();
-  return text || fallback;
-}
-
-function normalizeVariant(raw, index, productId) {
-  const variant = raw && typeof raw === "object" ? raw : {};
+function normalizeVariant(raw) {
+  const v = raw && typeof raw === "object" ? raw : {};
   return {
-    sku: normalizeString(variant.sku, `${productId || "material"}-V${index + 1}`),
-    mw: normalizeString(variant.mw, "可定制"),
-    iv: normalizeString(variant.iv, "可定制"),
-    end_group: normalizeString(variant.end_group, "可定制"),
-    crystallinity: normalizeString(variant.crystallinity, "可定制"),
-    form: normalizeString(variant.form, "颗粒"),
-    pack: normalizeString(variant.pack, "定制包装"),
-    price_cny: typeof variant.price_cny === "number" && !Number.isNaN(variant.price_cny) ? variant.price_cny : null,
-    lead_time: normalizeString(variant.lead_time, "7-15个工作日"),
-    properties: variant.properties && typeof variant.properties === "object" ? variant.properties : {},
-    reports: asArray(variant.reports).map((report) => ({
-      name: normalizeString(report?.name, "检测报告"),
-      file: normalizeString(report?.file)
-    })).filter((report) => report.file)
+    sku: safe(v.sku, "CUSTOM-SKU"),
+    mw: safe(v.mw, "可定制"),
+    end_group: safe(v.end_group, "可定制"),
+    form: safe(v.form, "可定制"),
+    pack: safe(v.pack, "可定制"),
+    lead_time: safe(v.lead_time, "7-15 个工作日"),
+    iv: safe(v.iv, "可定制"),
+    price_cny: typeof v.price_cny === "number" ? v.price_cny : null,
+    properties: v.properties && typeof v.properties === "object" ? v.properties : {},
+    reports: Array.isArray(v.reports)
+      ? v.reports
+          .map((item) => ({ name: safe(item?.name, "检测报告"), file: safe(item?.file, "") }))
+          .filter((item) => item.file)
+      : []
   };
 }
 
-function normalizeProduct(raw, index) {
-  const product = raw && typeof raw === "object" ? raw : {};
-  const safeId = normalizeString(product.id, `material-${index + 1}`)
-    .toLowerCase()
-    .replace(/[^a-z0-9-]/g, "-");
+function normalizeProduct(raw, idx) {
+  const base = raw && typeof raw === "object" ? raw : {};
+  const id = safe(base.id, `product-${idx + 1}`).toLowerCase();
+  const meta = PRODUCT_META[id] || {};
 
   return {
-    id: safeId || `material-${index + 1}`,
-    name: normalizeString(product.name, `材料 ${index + 1}`),
-    tagline: normalizeString(product.tagline, "医疗级可吸收材料"),
-    category: normalizeString(product.category, "未分类"),
-    description: normalizeString(product.description, "支持分子量、端基和形态定制。"),
-    applications: asArray(product.applications).map((item) => normalizeString(item)).filter(Boolean),
-    spec_range: product.spec_range && typeof product.spec_range === "object" ? product.spec_range : {},
-    processing: normalizeString(product.processing, "支持挤出、注塑、纺丝和 3D 打印等工艺。"),
-    variants: asArray(product.variants).map((variant, variantIndex) => normalizeVariant(variant, variantIndex, safeId)),
-    image: normalizeString(product.image),
-    image_svg: normalizeString(product.image_svg)
+    id,
+    name: safe(meta.name || base.name, `产品 ${idx + 1}`),
+    tagline: safe(meta.tagline || base.tagline, "医疗级生物材料"),
+    category: safe(meta.category || base.category, "未分类"),
+    description: safe(meta.description || base.description, "支持分子量、端基、形态及包装定制。"),
+    applications: Array.isArray(meta.applications)
+      ? meta.applications
+      : Array.isArray(base.applications)
+        ? base.applications.map((x) => safe(x)).filter(Boolean)
+        : [],
+    image: safe(base.image).replace(/\.(png|jpg|jpeg)$/i, ".webp"),
+    variants: Array.isArray(base.variants) && base.variants.length
+      ? base.variants.map(normalizeVariant)
+      : [normalizeVariant({ sku: `${id}-CUSTOM` })]
   };
 }
 
-function normalizeProducts(rawData) {
-  if (!Array.isArray(rawData)) {
-    toast("产品数据格式异常：根节点必须是数组");
-    return [];
-  }
-
-  const normalized = rawData.map((item, index) => normalizeProduct(item, index));
-  const valid = normalized.filter((item) => item.id && item.name);
-
-  if (!valid.length) {
-    toast("产品数据加载失败：没有有效产品条目");
-    return [];
-  }
-
-  if (valid.length !== normalized.length) {
-    toast("部分产品条目字段不完整，已自动跳过");
-  }
-
-  return valid;
-}
-
-function buildNavCategoryLinks() {
-  const unique = new Map();
-
-  state.products.forEach((product) => {
-    const label = normalizeString(product.category);
-    if (!label || unique.has(label)) return;
-    unique.set(label, `products.html?category=${encodeURIComponent(label)}`);
-  });
-
-  const items = Array.from(unique.entries())
-    .slice(0, MAX_NAV_CATEGORIES)
-    .map(([label, href]) => ({ label, href }));
-
-  return [
-    { label: "全部产品", href: "products.html" },
-    ...items
-  ];
-}
-
-function readCart() {
+async function loadProducts() {
   try {
-    const raw = localStorage.getItem(LOCAL_CART_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    const response = await fetch("assets/data/products.json", { cache: "no-store" });
+    if (!response.ok) throw new Error("load failed");
+    const data = await response.json();
+    state.products = Array.isArray(data) ? data.map(normalizeProduct) : [];
   } catch (_) {
-    return [];
+    state.products = [];
+    showToast("产品数据加载失败，请检查 assets/data/products.json");
   }
 }
 
-function writeCart() {
-  localStorage.setItem(LOCAL_CART_KEY, JSON.stringify(state.cart));
-  renderCartBadge();
-  syncCartForm();
+function cardHTML(product) {
+  return `
+    <article class="card product-card">
+      <div class="media"><img src="${safe(product.image, "assets/images/materials/plga.webp")}" alt="${safe(product.name)}" loading="lazy"/></div>
+      <div class="card-pad stack">
+        <span class="badge">${safe(product.category)}</span>
+        <h3>${safe(product.name)}</h3>
+        <p>${safe(product.tagline)}</p>
+        <div class="inline" style="justify-content:space-between; margin-top:8px;">
+          <strong style="color:#1c4f83;">${priceText(product.variants[0]?.price_cny)}</strong>
+          <a class="btn btn-outline" href="product.html?id=${encodeURIComponent(product.id)}">查看详情</a>
+        </div>
+      </div>
+    </article>
+  `;
 }
 
-function addToCart(item) {
-  const existing = state.cart.find((x) => x.sku === item.sku);
-  if (existing) {
-    existing.qty += item.qty;
-  } else {
-    state.cart.push(item);
+function renderHomeFeatured() {
+  const host = $("#featuredProducts");
+  if (!host) return;
+  const items = state.products.filter((item) => item.category !== "加工服务").slice(0, 3);
+  host.innerHTML = items.length ? items.map(cardHTML).join("") : "<div class='notice'>暂无产品数据</div>";
+}
+
+function renderProductsPage() {
+  const grid = $("#productsGrid");
+  if (!grid) return;
+
+  const search = $("#productSearch");
+  const select = $("#productCategory");
+  const count = $("#productCount");
+  const categories = [ALL, ...new Set(state.products.map((p) => p.category))];
+
+  if (select) {
+    select.innerHTML = categories.map((c) => `<option value="${c}">${c}</option>`).join("");
   }
-  writeCart();
-  toast("已加入询价单");
+
+  const render = () => {
+    const keyword = safe(search?.value, "").toLowerCase();
+    const category = safe(select?.value, ALL);
+
+    const filtered = state.products.filter((item) => {
+      const categoryMatch = category === ALL || item.category === category;
+      const searchMatch = !keyword || `${item.name} ${item.tagline} ${item.description}`.toLowerCase().includes(keyword);
+      return categoryMatch && searchMatch;
+    });
+
+    grid.innerHTML = filtered.length ? filtered.map(cardHTML).join("") : "<div class='notice'>未找到匹配结果，请调整筛选条件。</div>";
+    if (count) count.textContent = `共 ${filtered.length} 项`;
+    initIcons();
+  };
+
+  search?.addEventListener("input", render);
+  select?.addEventListener("change", render);
+  render();
 }
 
-function removeFromCart(sku) {
-  state.cart = state.cart.filter((x) => x.sku !== sku);
-  writeCart();
-  renderCartPage();
+function renderProductDetail() {
+  const host = $("#productDetail");
+  if (!host) return;
+
+  const id = new URLSearchParams(window.location.search).get("id");
+  const product = state.products.find((item) => item.id === id) || state.products[0];
+
+  if (!product) {
+    host.innerHTML = "<div class='notice'>未找到产品信息。</div>";
+    return;
+  }
+
+  host.innerHTML = `
+    <div class="grid two">
+      <article class="card">
+        <div class="media"><img src="${safe(product.image)}" alt="${safe(product.name)}" loading="lazy"/></div>
+        <div class="card-pad stack">
+          <span class="badge">${safe(product.category)}</span>
+          <h1 class="section-title" style="font-size:30px;">${safe(product.name)}</h1>
+          <p>${safe(product.description)}</p>
+          <div class="stack">
+            ${(product.applications || []).slice(0, 4).map((item) => `<div class="notice">${safe(item)}</div>`).join("")}
+          </div>
+        </div>
+      </article>
+
+      <section class="card card-pad stack">
+        <div class="inline" style="justify-content:space-between; align-items:center;">
+          <h2 style="margin:0;color:#1e2b3a;">规格与参数</h2>
+          <a class="btn btn-primary" id="toContactBtn" href="contact.html?product=${encodeURIComponent(product.name)}">提交询价</a>
+        </div>
+
+        <div>
+          <label for="variantSelect">规格型号</label>
+          <select id="variantSelect" class="select">
+            ${product.variants.map((v, idx) => `<option value="${idx}">${safe(v.sku)} / ${safe(v.form)}</option>`).join("")}
+          </select>
+        </div>
+
+        <div class="grid two" id="variantSummary"></div>
+
+        <div>
+          <h3 style="margin:6px 0 10px;color:#1e2b3a;">关键参数</h3>
+          <table class="table">
+            <tbody id="variantProps"></tbody>
+          </table>
+        </div>
+
+        <div id="variantReports" class="stack"></div>
+      </section>
+    </div>
+  `;
+
+  const select = $("#variantSelect");
+  const summary = $("#variantSummary");
+  const props = $("#variantProps");
+  const reports = $("#variantReports");
+  const toContactBtn = $("#toContactBtn");
+
+  const applyVariant = (idx) => {
+    const v = product.variants[idx] || product.variants[0];
+
+    const rows = [
+      ["SKU", v.sku],
+      ["分子量", v.mw],
+      ["端基", v.end_group],
+      ["形态", v.form],
+      ["包装", v.pack],
+      ["交付周期", v.lead_time],
+      ["报价", priceText(v.price_cny)]
+    ];
+
+    summary.innerHTML = rows
+      .map((row) => `<div class="kpi"><strong style="font-size:16px;">${safe(row[1])}</strong><p>${row[0]}</p></div>`)
+      .join("");
+
+    const propRows = Object.entries(v.properties || {});
+    props.innerHTML = propRows.length
+      ? propRows.map(([k, val]) => `<tr><th>${safe(k)}</th><td>${safe(val)}</td></tr>`).join("")
+      : "<tr><th>说明</th><td>当前规格暂无额外属性，支持按项目定制。</td></tr>";
+
+    reports.innerHTML = v.reports.length
+      ? v.reports.map((r) => `<a class="btn btn-outline" href="${safe(r.file)}" target="_blank" rel="noopener">${safe(r.name)}</a>`).join("")
+      : "<div class='notice'>暂无可预览报告，提交需求后可由销售发送对应批次文件。</div>";
+
+    toContactBtn.href = `contact.html?product=${encodeURIComponent(product.name)}&sku=${encodeURIComponent(v.sku)}`;
+  };
+
+  select?.addEventListener("change", () => applyVariant(Number(select.value)));
+  applyVariant(0);
 }
 
-function setCartQty(sku, qty) {
-  const target = state.cart.find((x) => x.sku === sku);
-  if (!target) return;
-  target.qty = Math.max(1, Number(qty) || 1);
-  writeCart();
-  renderCartPage();
-}
+function bindMobileMenu() {
+  const btn = $("#menuToggle");
+  const menu = $("#mobileNav");
+  if (!btn || !menu) return;
 
-function clearCart() {
-  state.cart = [];
-  writeCart();
-  renderCartPage();
-  toast("询价单已清空");
-}
-
-function cartCount() {
-  return state.cart.reduce((sum, item) => sum + (Number(item.qty) || 0), 0);
-}
-
-function cartNumericTotal() {
-  return state.cart.reduce((sum, item) => sum + ((Number(item.unitPrice) || 0) * (Number(item.qty) || 0)), 0);
-}
-
-function cartHasPrice() {
-  return state.cart.some((item) => typeof item.unitPrice === "number" && !Number.isNaN(item.unitPrice));
-}
-
-function renderCartBadge() {
-  const count = cartCount();
-  document.querySelectorAll("[data-cart-badge]").forEach((badge) => {
-    badge.textContent = String(count);
-    badge.classList.toggle("hidden", count === 0);
+  btn.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
   });
 }
 
-function toast(message) {
-  const el = document.getElementById("toast");
-  if (!el) return;
-  el.textContent = message;
-  el.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
-  window.clearTimeout(el._hideTimer);
-  el._hideTimer = window.setTimeout(() => {
-    el.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
-  }, 1800);
+function highlightNav() {
+  const page = safe(document.body.dataset.page, "");
+  document.querySelectorAll("[data-nav]").forEach((node) => {
+    node.classList.toggle("active", node.dataset.nav === page);
+  });
+}
+
+function fillContactContext() {
+  const form = $("#contactForm");
+  if (!form) return;
+
+  const query = new URLSearchParams(window.location.search);
+  const product = query.get("product");
+  const sku = query.get("sku");
+
+  const interestInput = $("#interestField");
+  const messageInput = $("#messageField");
+
+  if (product && interestInput) {
+    interestInput.value = product;
+  }
+
+  if ((product || sku) && messageInput && !messageInput.value.trim()) {
+    const prefill = [
+      product ? `意向产品：${product}` : "",
+      sku ? `意向规格：${sku}` : "",
+      "请补充应用方向、预计用量和目标周期。"
+    ].filter(Boolean).join("\n");
+
+    messageInput.value = prefill;
+  }
+}
+
+function bindApiForms() {
+  document.querySelectorAll("[data-api-form]").forEach((form) => {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+      payload.page = window.location.pathname;
+      payload.source = form.dataset.apiForm || "website";
+      payload.submitted_at = new Date().toISOString();
+
+      try {
+        const response = await fetch(form.getAttribute("action") || "/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || "提交失败");
+        }
+
+        form.reset();
+        fillContactContext();
+        showToast("提交成功，我们会尽快联系你。");
+      } catch (error) {
+        showToast(`提交失败：${error.message || "请稍后重试"}`);
+      }
+    });
+  });
+}
+
+function setYear() {
+  document.querySelectorAll("[data-year]").forEach((el) => {
+    el.textContent = String(new Date().getFullYear());
+  });
 }
 
 function initIcons() {
@@ -206,805 +455,17 @@ function initIcons() {
   }
 }
 
-function productImage(product) {
-  if (product.image) {
-    return `<img src="${product.image}" alt="${safeText(product.name)}" class="h-full w-full object-cover" loading="lazy"/>`;
-  }
-  return `
-    <div class="grid h-full w-full place-items-center bg-gradient-to-br from-blue-600 to-cyan-500 text-white">
-      <span class="text-lg font-semibold">${safeText(product.name, "材料")}</span>
-    </div>
-  `;
-}
-
-function variantSummary(variant) {
-  const rows = [
-    { label: "分子量", value: safeText(variant.mw) },
-    { label: "端基", value: safeText(variant.end_group) },
-    { label: "形态", value: safeText(variant.form) },
-    { label: "包装", value: safeText(variant.pack) }
-  ];
-
-  return rows.map((row) => `
-    <div class="glass-card p-4">
-      <div class="text-xs text-slate-500">${row.label}</div>
-      <div class="mt-1 text-sm font-semibold text-slate-900">${row.value}</div>
-    </div>
-  `).join("");
-}
-
-function getAllCategories() {
-  const categories = Array.from(new Set(state.products.map((item) => item.category).filter(Boolean)));
-  return [ALL_LABEL, ...categories];
-}
-
-function getPolymerOptions() {
-  return [
-    { id: ALL_LABEL, name: ALL_LABEL },
-    ...state.products.map((item) => ({ id: item.id, name: item.name }))
-  ];
-}
-
-function searchTarget(product) {
-  const variants = (product.variants || [])
-    .map((variant) => [variant.sku, variant.mw, variant.end_group, variant.form, variant.iv].join(" "))
-    .join(" ");
-
-  return [
-    product.name,
-    product.tagline,
-    product.description,
-    product.category,
-    variants
-  ].filter(Boolean).join(" ").toLowerCase();
-}
-
-function matchProduct(product) {
-  const q = state.filter.q.trim().toLowerCase();
-  const categoryOk = state.filter.category === ALL_LABEL || product.category === state.filter.category;
-  const polymerOk = state.filter.polymer === ALL_LABEL || product.id === state.filter.polymer;
-  const queryOk = !q || searchTarget(product).includes(q);
-  return categoryOk && polymerOk && queryOk;
-}
-
-function renderFilters() {
-  const catSelect = document.getElementById("catSelect");
-  const polySelect = document.getElementById("polySelect");
-  const qInput = document.getElementById("qInput");
-
-  if (!catSelect || !polySelect) return;
-
-  const categories = getAllCategories();
-  if (!categories.includes(state.filter.category)) {
-    state.filter.category = ALL_LABEL;
-  }
-
-  catSelect.innerHTML = categories.map((cat) => `<option value="${cat}">${cat}</option>`).join("");
-  catSelect.value = state.filter.category;
-
-  const polymers = getPolymerOptions();
-  polySelect.innerHTML = polymers.map((item) => `<option value="${item.id}">${item.name}</option>`).join("");
-  polySelect.value = state.filter.polymer;
-
-  catSelect.onchange = () => {
-    state.filter.category = catSelect.value;
-    renderCatalog();
-  };
-
-  polySelect.onchange = () => {
-    state.filter.polymer = polySelect.value;
-    renderCatalog();
-  };
-
-  if (qInput) {
-    qInput.addEventListener("input", () => {
-      state.filter.q = qInput.value;
-      renderCatalog();
-    });
-  }
-}
-
-function renderCatalog() {
-  const grid = document.getElementById("productGrid");
-  if (!grid) return;
-
-  const items = state.products.filter(matchProduct);
-
-  if (!items.length) {
-    grid.innerHTML = `
-      <div class="glass-card p-8 text-center text-sm text-slate-500 sm:col-span-2 xl:col-span-3">
-        当前筛选条件下暂无结果，请调整关键词或分类。
-      </div>
-    `;
-  } else {
-    grid.innerHTML = items.map((product) => {
-      const tags = (product.applications || []).slice(0, 2);
-      return `
-        <article class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-float">
-          <a href="product.html?id=${encodeURIComponent(product.id)}" class="block">
-            <div class="aspect-[4/3] overflow-hidden">${productImage(product)}</div>
-            <div class="p-5">
-              <div class="text-xs text-sky-700">${safeText(product.category)}</div>
-              <h3 class="mt-1 text-lg font-semibold text-slate-900">${safeText(product.name)}</h3>
-              <p class="mt-2 line-clamp-2 text-sm text-slate-600">${safeText(product.tagline)}</p>
-              <div class="mt-3 flex flex-wrap gap-2">
-                ${tags.map((tag) => `<span class="chip">${safeText(tag)}</span>`).join("")}
-              </div>
-              <div class="mt-4 flex items-center justify-between">
-                <span class="text-sm font-medium text-slate-600">${formatPrice(product.variants?.[0]?.price_cny)}</span>
-                <span class="btn-soft">了解详情</span>
-              </div>
-            </div>
-          </a>
-        </article>
-      `;
-    }).join("");
-  }
-
-  const countEl = document.getElementById("resultCount");
-  if (countEl) {
-    countEl.textContent = `共 ${items.length} 项`;
-  }
-
-  initIcons();
-}
-
-function openReport(file, sku) {
-  const modal = document.getElementById("reportModal");
-  const frame = document.getElementById("reportFrame");
-  const title = document.getElementById("reportTitle");
-  if (!modal || !frame) return;
-
-  if (title) {
-    title.textContent = `检测报告：${sku}`;
-  }
-  frame.src = file;
-  modal.classList.remove("hidden");
-}
-
-function closeReport() {
-  const modal = document.getElementById("reportModal");
-  const frame = document.getElementById("reportFrame");
-  if (frame) frame.src = "about:blank";
-  if (modal) modal.classList.add("hidden");
-}
-
-function renderVariantTabs(product, variant) {
-  const props = Object.entries(variant.properties || {}).map(([key, value]) => `
-    <tr class="border-b border-slate-100 even:bg-slate-50">
-      <td class="px-3 py-2 text-sm text-slate-600">${key}</td>
-      <td class="px-3 py-2 text-sm font-medium text-slate-900">${safeText(value)}</td>
-    </tr>
-  `).join("");
-
-  const reports = (variant.reports || []).map((report) => `
-    <button type="button" class="btn-soft w-full justify-between" data-open-report="${report.file}" data-report-sku="${variant.sku}">
-      <span>${safeText(report.name)}</span>
-      <span>查看</span>
-    </button>
-  `).join("") || "<p class=\"text-sm text-slate-500\">暂无可预览报告。</p>";
-
-  const apps = (product.applications || []).map((item) => `
-    <li class="rounded-xl border border-sky-100 bg-sky-50 px-3 py-2 text-sm text-slate-700">${safeText(item)}</li>
-  `).join("");
-
-  return [
-    `<div class="overflow-hidden rounded-xl border border-slate-200"><table class="w-full">${props}</table></div>`,
-    `<div class="space-y-3">${reports}</div>`,
-    `<ul class="grid gap-2 sm:grid-cols-2">${apps}</ul>`
-  ];
-}
-
-function bindTabSwitch(root) {
-  const buttons = root.querySelectorAll(".tabBtn");
-  const panels = root.querySelectorAll(".tabPanel");
-
-  const setActive = (index) => {
-    buttons.forEach((btn, idx) => {
-      btn.className = idx === index
-        ? "tabBtn rounded-full bg-blue-600 px-4 py-2 text-sm font-medium text-white"
-        : "tabBtn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 hover:bg-slate-50";
-    });
-    panels.forEach((panel, idx) => {
-      panel.classList.toggle("hidden", idx !== index);
-    });
-  };
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => setActive(Number(btn.dataset.tab)));
-  });
-
-  setActive(0);
-}
-
-function renderProductDetail() {
-  const host = document.getElementById("productDetail");
-  if (!host) return;
-
-  const productId = getQueryParam("id");
-  const product = state.products.find((item) => item.id === productId) || state.products[0];
-
-  if (!product) {
-    host.innerHTML = `<div class="glass-card p-8 text-sm text-slate-500">未找到产品信息。</div>`;
-    return;
-  }
-
-  const variants = Array.isArray(product.variants) ? product.variants : [];
-  let currentVariant = variants[0] || {};
-
-  host.innerHTML = `
-    <div class="grid gap-7 lg:grid-cols-12">
-      <div class="lg:col-span-5">
-        <article class="glass-card overflow-hidden">
-          <div class="aspect-[4/3] overflow-hidden">${productImage(product)}</div>
-          <div class="p-6">
-            <p class="text-xs text-sky-700">${safeText(product.category)}</p>
-            <h1 class="mt-1 text-3xl font-semibold text-slate-900">${safeText(product.name)}</h1>
-            <p class="mt-3 text-sm leading-relaxed text-slate-600">${safeText(product.description)}</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              ${(product.applications || []).slice(0, 4).map((item) => `<span class="chip">${safeText(item)}</span>`).join("")}
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="lg:col-span-7">
-        <section class="glass-card p-6">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h2 class="text-xl font-semibold text-slate-900">规格与询价</h2>
-              <p class="mt-1 text-sm text-slate-600">选择规格后可加入询价单，技术团队将 24 小时内回复。</p>
-            </div>
-            <a href="cart.html" class="btn-soft">查看询价单 <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span></a>
-          </div>
-
-          <div class="mt-5 grid gap-4 sm:grid-cols-2" id="variantSummary"></div>
-
-          <div class="mt-6 grid gap-3 sm:grid-cols-[minmax(0,1fr),auto,auto] sm:items-end">
-            <div>
-              <label class="text-sm text-slate-700">规格</label>
-              <select id="variantSelect" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm">
-                ${variants.map((variant, idx) => `<option value="${idx}">${safeText(variant.sku)} / ${safeText(variant.form)}</option>`).join("")}
-              </select>
-            </div>
-            <div>
-              <label class="text-sm text-slate-700">数量 (kg)</label>
-              <input id="qtyInput" type="number" min="1" value="1" class="mt-2 w-28 rounded-xl border border-slate-200 px-3 py-3 text-sm" />
-            </div>
-            <button id="addBtn" type="button" class="btn-primary">加入询价单</button>
-          </div>
-
-          <div class="mt-5 rounded-xl bg-sky-50 p-4">
-            <div class="text-xs text-slate-500">报价方式</div>
-            <div id="priceText" class="mt-1 text-2xl font-semibold text-slate-900">${formatPrice(currentVariant.price_cny)}</div>
-          </div>
-
-          <div class="mt-6">
-            <div class="flex flex-wrap gap-2">
-              <button type="button" class="tabBtn" data-tab="0">关键参数</button>
-              <button type="button" class="tabBtn" data-tab="1">检测报告</button>
-              <button type="button" class="tabBtn" data-tab="2">应用场景</button>
-            </div>
-            <div id="tabPanels" class="mt-4"></div>
-          </div>
-        </section>
-      </div>
-    </div>
-  `;
-
-  const summaryHost = document.getElementById("variantSummary");
-  const variantSelect = document.getElementById("variantSelect");
-  const priceText = document.getElementById("priceText");
-  const tabPanels = document.getElementById("tabPanels");
-  const addBtn = document.getElementById("addBtn");
-  const qtyInput = document.getElementById("qtyInput");
-
-  const applyVariant = (variant) => {
-    currentVariant = variant;
-
-    if (summaryHost) {
-      summaryHost.innerHTML = variantSummary(variant);
-    }
-
-    if (priceText) {
-      priceText.textContent = formatPrice(variant.price_cny);
-    }
-
-    if (tabPanels) {
-      const tabs = renderVariantTabs(product, variant);
-      tabPanels.innerHTML = tabs.map((panel, idx) => `<section class="tabPanel ${idx !== 0 ? "hidden" : ""}">${panel}</section>`).join("");
-      bindTabSwitch(host);
-
-      tabPanels.querySelectorAll("[data-open-report]").forEach((button) => {
-        button.addEventListener("click", () => {
-          openReport(button.dataset.openReport, button.dataset.reportSku || variant.sku);
-        });
-      });
-    }
-
-    if (addBtn) {
-      addBtn.onclick = () => {
-        addToCart({
-          productId: product.id,
-          productName: product.name,
-          sku: safeText(variant.sku, `${product.id}-custom`),
-          pack: safeText(variant.pack, "定制包装"),
-          unitPrice: typeof variant.price_cny === "number" ? variant.price_cny : null,
-          qty: Math.max(1, Number(qtyInput?.value) || 1)
-        });
-      };
-    }
-
-    initIcons();
-    renderCartBadge();
-  };
-
-  variantSelect?.addEventListener("change", () => {
-    const selected = variants[Number(variantSelect.value)] || variants[0] || {};
-    applyVariant(selected);
-  });
-
-  applyVariant(currentVariant);
-}
-
-function renderCartPage() {
-  const table = document.getElementById("cartTable");
-  if (!table) return;
-
-  const empty = document.getElementById("cartEmpty");
-  const totalEl = document.getElementById("cartTotal");
-
-  if (!state.cart.length) {
-    table.innerHTML = "";
-    if (empty) empty.classList.remove("hidden");
-    if (totalEl) totalEl.textContent = "项目询价";
-    syncCartForm();
-    return;
-  }
-
-  if (empty) empty.classList.add("hidden");
-
-  table.innerHTML = state.cart.map((item) => {
-    const product = state.products.find((x) => x.id === item.productId);
-    const preview = product?.image
-      ? `<img src="${product.image}" alt="${safeText(item.productName)}" class="h-12 w-12 rounded-xl object-cover" loading="lazy"/>`
-      : "";
-
-    return `
-      <tr class="border-b border-slate-100">
-        <td class="px-2 py-4">
-          <div class="flex items-center gap-3">
-            ${preview}
-            <div>
-              <div class="text-sm font-medium text-slate-900">${safeText(item.productName)}</div>
-              <div class="text-xs text-slate-500">${safeText(item.sku)} / ${safeText(item.pack, "-")}</div>
-            </div>
-          </div>
-        </td>
-        <td class="px-2 py-4 text-sm text-slate-600">${formatPrice(item.unitPrice)}</td>
-        <td class="px-2 py-4">
-          <div class="inline-flex items-center overflow-hidden rounded-xl border border-slate-200">
-            <button type="button" class="px-3 py-2 text-slate-600 hover:bg-slate-50" data-dec="${item.sku}">-</button>
-            <input type="number" min="1" value="${item.qty}" class="w-14 text-center text-sm" data-qty="${item.sku}" />
-            <button type="button" class="px-3 py-2 text-slate-600 hover:bg-slate-50" data-inc="${item.sku}">+</button>
-          </div>
-        </td>
-        <td class="px-2 py-4 text-right">
-          <button type="button" class="text-sm text-rose-500 hover:text-rose-600" data-rm="${item.sku}">移除</button>
-        </td>
-      </tr>
-    `;
-  }).join("");
-
-  table.querySelectorAll("[data-rm]").forEach((button) => {
-    button.addEventListener("click", () => removeFromCart(button.dataset.rm));
-  });
-
-  table.querySelectorAll("[data-inc]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = state.cart.find((x) => x.sku === button.dataset.inc);
-      setCartQty(button.dataset.inc, (item?.qty || 1) + 1);
-    });
-  });
-
-  table.querySelectorAll("[data-dec]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const item = state.cart.find((x) => x.sku === button.dataset.dec);
-      setCartQty(button.dataset.dec, (item?.qty || 1) - 1);
-    });
-  });
-
-  table.querySelectorAll("[data-qty]").forEach((input) => {
-    input.addEventListener("change", () => {
-      setCartQty(input.dataset.qty, input.value);
-    });
-  });
-
-  if (totalEl) {
-    totalEl.textContent = cartHasPrice() ? formatPrice(cartNumericTotal()) : "项目询价";
-  }
-
-  syncCartForm();
-}
-
-function cartSummaryText() {
-  if (!state.cart.length) return "";
-
-  return state.cart
-    .map((item) => [
-      safeText(item.productName),
-      safeText(item.sku),
-      `qty:${item.qty}`,
-      `pack:${safeText(item.pack, "-")}`
-    ].join(" | "))
-    .join("\n");
-}
-
-function cartWebhookPayload() {
-  const timestamp = new Date().toLocaleString("zh-CN", { hour12: false });
-  const lines = [
-    "【询价请求】",
-    `时间：${timestamp}`,
-    `条目数：${cartCount()}`,
-    `总价：${cartHasPrice() ? formatPrice(cartNumericTotal()) : "项目询价"}`,
-    "---",
-    "【条目明细】"
-  ];
-
-  state.cart.forEach((item, index) => {
-    lines.push(`${index + 1}. ${safeText(item.productName)} | ${safeText(item.sku)} | qty:${item.qty} | pack:${safeText(item.pack, "-")}`);
-  });
-
-  return lines.join("\n");
-}
-
-function syncCartForm() {
-  const itemsInput = document.getElementById("cartItemsInput");
-  const totalInput = document.getElementById("cartTotalInput");
-  const countInput = document.getElementById("cartCountInput");
-  const webhookInput = document.getElementById("cartWebhookPayloadInput");
-
-  if (itemsInput) itemsInput.value = cartSummaryText();
-  if (totalInput) totalInput.value = cartHasPrice() ? String(cartNumericTotal()) : "项目询价";
-  if (countInput) countInput.value = String(cartCount());
-  if (webhookInput) webhookInput.value = cartWebhookPayload();
-}
-
-async function submitFormByFetch(form) {
-  const body = new URLSearchParams(new FormData(form)).toString();
-  await fetch(form.getAttribute("action") || window.location.pathname, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body
-  });
-}
-
-function bindCartForm() {
-  const form = document.getElementById("cartForm");
-  if (!form) return;
-
-  form.addEventListener("submit", async (event) => {
-    if (!state.cart.length) {
-      event.preventDefault();
-      toast("询价单为空，请先添加产品规格");
-      return;
-    }
-
-    event.preventDefault();
-    syncCartForm();
-
-    try {
-      await submitFormByFetch(form);
-      form.reset();
-      toast("询价需求已提交，我们会尽快联系你");
-    } catch (_) {
-      toast("提交失败，请稍后重试或直接联系销售");
-    }
-  });
-
-  const clearButton = document.getElementById("clearCartBtn");
-  clearButton?.addEventListener("click", clearCart);
-}
-
-function bindQuoteForm() {
-  const form = document.getElementById("quoteForm");
-  if (!form) return;
-
-  form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    try {
-      await submitFormByFetch(form);
-      form.reset();
-      toast("已收到你的需求，我们会在 24 小时内回复");
-    } catch (_) {
-      toast("提交失败，请稍后重试");
-    }
-  });
-}
-
-function initSpecSelector() {
-  const wrap = document.getElementById("specSelector");
-  if (!wrap) return;
-
-  const productSelect = document.getElementById("specProduct");
-  const mwSelect = document.getElementById("specMw");
-  const endSelect = document.getElementById("specEnd");
-  const formSelect = document.getElementById("specForm");
-  const skuEl = document.getElementById("specSku");
-  const priceEl = document.getElementById("specPrice");
-  const addButton = document.getElementById("specAddBtn");
-
-  if (!productSelect || !mwSelect || !endSelect || !formSelect || !skuEl || !priceEl || !addButton) return;
-
-  const candidates = state.products.filter((item) => Array.isArray(item.variants) && item.variants.length);
-  if (!candidates.length) return;
-
-  const uniq = (list) => Array.from(new Set(list.filter(Boolean)));
-
-  productSelect.innerHTML = candidates.map((item) => `<option value="${item.id}">${item.name}</option>`).join("");
-
-  const updateSelection = () => {
-    const product = candidates.find((item) => item.id === productSelect.value) || candidates[0];
-    const variants = product.variants || [];
-
-    const mwOptions = uniq(variants.map((variant) => variant.mw));
-    const endOptions = uniq(variants.map((variant) => variant.end_group));
-    const formOptions = uniq(variants.map((variant) => variant.form));
-
-    mwSelect.innerHTML = mwOptions.map((option) => `<option value="${option}">${option}</option>`).join("");
-    endSelect.innerHTML = endOptions.map((option) => `<option value="${option}">${option}</option>`).join("");
-    formSelect.innerHTML = formOptions.map((option) => `<option value="${option}">${option}</option>`).join("");
-
-    updateVariant();
-  };
-
-  const updateVariant = () => {
-    const product = candidates.find((item) => item.id === productSelect.value) || candidates[0];
-    const variants = product.variants || [];
-
-    const variant = variants.find((item) =>
-      item.mw === mwSelect.value && item.end_group === endSelect.value && item.form === formSelect.value
-    ) || variants[0] || {};
-
-    skuEl.textContent = safeText(variant.sku);
-    priceEl.textContent = formatPrice(variant.price_cny);
-
-    addButton.onclick = () => {
-      addToCart({
-        productId: product.id,
-        productName: product.name,
-        sku: safeText(variant.sku, `${product.id}-custom`),
-        pack: safeText(variant.pack, "定制包装"),
-        unitPrice: typeof variant.price_cny === "number" ? variant.price_cny : null,
-        qty: 1
-      });
-    };
-  };
-
-  productSelect.addEventListener("change", updateSelection);
-  mwSelect.addEventListener("change", updateVariant);
-  endSelect.addEventListener("change", updateVariant);
-  formSelect.addEventListener("change", updateVariant);
-
-  updateSelection();
-}
-
-function closeDesktopProductMenu() {
-  if (!activeDesktopProductMenu) return;
-  activeDesktopProductMenu.panel.classList.add("hidden");
-  activeDesktopProductMenu.trigger.setAttribute("aria-expanded", "false");
-  activeDesktopProductMenu = null;
-}
-
-function bindDesktopProductMenu() {
-  const links = Array.from(document.querySelectorAll("header nav a.nav-link[href='products.html']"))
-    .filter((link) => !link.closest("#mobileMenu"));
-  if (!links.length) return;
-
-  const navItems = buildNavCategoryLinks();
-  const navGrid = navItems.map((item) => `
-    <a href="${item.href}" class="group flex items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 transition hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700">
-      <span>${item.label}</span>
-      <i data-lucide="chevron-right" class="h-4 w-4 opacity-60 transition group-hover:opacity-100"></i>
-    </a>
-  `).join("");
-
-  links.forEach((link) => {
-    if (link.dataset.productMenuBound === "true") return;
-
-    link.dataset.productMenuBound = "true";
-    link.setAttribute("aria-haspopup", "true");
-    link.setAttribute("aria-expanded", "false");
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "relative";
-    link.parentNode.insertBefore(wrapper, link);
-    wrapper.appendChild(link);
-
-    const panel = document.createElement("div");
-    panel.className = "absolute left-1/2 top-full z-50 mt-3 hidden w-[22rem] -translate-x-1/2 overflow-hidden rounded-2xl border border-sky-100 bg-white p-3 shadow-2xl";
-    panel.innerHTML = `
-      <div class="rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-3 py-3 text-white">
-        <p class="text-xs opacity-90">产品快捷入口</p>
-        <p class="mt-1 text-sm font-semibold">支持分类与材料双路径浏览</p>
-      </div>
-      <div class="mt-3 grid gap-2">${navGrid}</div>
-    `;
-
-    wrapper.appendChild(panel);
-
-    const openMenu = () => {
-      if (activeDesktopProductMenu && activeDesktopProductMenu.panel !== panel) {
-        closeDesktopProductMenu();
-      }
-      panel.classList.remove("hidden");
-      link.setAttribute("aria-expanded", "true");
-      activeDesktopProductMenu = { trigger: link, panel };
-      initIcons();
-    };
-
-    const toggleMenu = () => {
-      if (panel.classList.contains("hidden")) {
-        openMenu();
-      } else {
-        closeDesktopProductMenu();
-      }
-    };
-
-    wrapper.addEventListener("mouseenter", openMenu);
-    wrapper.addEventListener("mouseleave", closeDesktopProductMenu);
-
-    link.addEventListener("click", (event) => {
-      if (panel.classList.contains("hidden")) {
-        event.preventDefault();
-        toggleMenu();
-      }
-    });
-
-    link.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        toggleMenu();
-      }
-      if (event.key === "Escape") {
-        closeDesktopProductMenu();
-      }
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (!activeDesktopProductMenu) return;
-    if (activeDesktopProductMenu.panel.contains(event.target) || activeDesktopProductMenu.trigger.contains(event.target)) return;
-    closeDesktopProductMenu();
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeDesktopProductMenu();
-    }
-  });
-}
-
-function bindMobileProductMenu(menu) {
-  const nav = menu.querySelector("nav");
-  if (!nav) return;
-  if (nav.querySelector("[data-mobile-products='true']")) return;
-
-  const productLink = nav.querySelector("a[href='products.html']");
-  if (!productLink) return;
-
-  const navItems = buildNavCategoryLinks();
-  const wrapper = document.createElement("div");
-  wrapper.dataset.mobileProducts = "true";
-  wrapper.className = "rounded-xl border border-sky-100 bg-sky-50/70";
-  const inProductContext = /product/i.test(window.location.pathname);
-  if (inProductContext) {
-    wrapper.classList.add("border-blue-200");
-  }
-
-  const toggle = document.createElement("button");
-  toggle.type = "button";
-  toggle.className = "flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium text-slate-700";
-  if (inProductContext) {
-    toggle.classList.add("text-blue-700");
-  }
-  toggle.setAttribute("aria-expanded", "false");
-  toggle.innerHTML = `
-    <span>产品中心</span>
-    <i data-lucide="chevron-down" class="h-4 w-4 transition"></i>
-  `;
-
-  const list = document.createElement("div");
-  list.className = "hidden border-t border-sky-100 px-2 py-2";
-  list.innerHTML = navItems.map((item) => `
-    <a class="block rounded-lg px-2 py-2 text-sm text-slate-600 transition hover:bg-white hover:text-blue-700" href="${item.href}">${item.label}</a>
-  `).join("");
-
-  toggle.addEventListener("click", () => {
-    const expanded = toggle.getAttribute("aria-expanded") === "true";
-    toggle.setAttribute("aria-expanded", expanded ? "false" : "true");
-    list.classList.toggle("hidden", expanded);
-  });
-
-  list.querySelectorAll("a").forEach((anchor) => {
-    anchor.addEventListener("click", () => {
-      menu.classList.add("hidden");
-      const menuBtn = document.querySelector("[data-menu-toggle]");
-      menuBtn?.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  wrapper.appendChild(toggle);
-  wrapper.appendChild(list);
-  productLink.replaceWith(wrapper);
-  initIcons();
-}
-
-function bindMobileMenu() {
-  const toggle = document.querySelector("[data-menu-toggle]");
-  const menu = document.getElementById("mobileMenu");
-  if (!toggle || !menu) return;
-
-  toggle.setAttribute("aria-expanded", "false");
-
-  toggle.addEventListener("click", () => {
-    const willOpen = menu.classList.contains("hidden");
-    menu.classList.toggle("hidden");
-    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
-  });
-
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.add("hidden");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (menu.classList.contains("hidden")) return;
-    if (menu.contains(event.target) || toggle.contains(event.target)) return;
-    menu.classList.add("hidden");
-    toggle.setAttribute("aria-expanded", "false");
-  });
-}
-
-function bindReportModal() {
-  const close = document.getElementById("closeReportBtn");
-  const backdrop = document.getElementById("reportBackdrop");
-  close?.addEventListener("click", closeReport);
-  backdrop?.addEventListener("click", closeReport);
-}
-
-async function loadProducts() {
-  try {
-    const response = await fetch("assets/data/products.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("load failed");
-    const raw = await response.json();
-    state.products = normalizeProducts(raw);
-  } catch (_) {
-    state.products = [];
-    toast("产品数据加载失败，请检查 assets/data/products.json");
-  }
-}
-
 async function init() {
+  highlightNav();
   bindMobileMenu();
-  bindReportModal();
-  bindQuoteForm();
-  bindCartForm();
-
-  renderCartBadge();
+  setYear();
+  bindApiForms();
 
   await loadProducts();
-  bindDesktopProductMenu();
-  const mobileMenu = document.getElementById("mobileMenu");
-  if (mobileMenu) bindMobileProductMenu(mobileMenu);
-
-  renderFilters();
-  renderCatalog();
+  renderHomeFeatured();
+  renderProductsPage();
   renderProductDetail();
-  renderCartPage();
-  initSpecSelector();
+  fillContactContext();
 
   initIcons();
 }

@@ -3,89 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>联系我们 | 迪康中科</title>
-  <meta name="description" content="提交样品与报价需求，迪康中科技术团队将在 24 小时内反馈。" />
+  <title>联系与询价 | 迪康中科</title>
+  <meta name="description" content="提交材料和加工需求，迪康中科技术团队将在 24 小时内回复。" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/theme.css" />
 </head>
-<body class="font-[Noto_Sans_SC,Manrope,sans-serif]">
-  <header class="sticky top-0 z-50 border-b border-sky-100/80 bg-white/90 backdrop-blur">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-      <a href="index.html" class="flex items-center gap-3">
-        <span class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 text-sm font-bold text-white">DK</span>
+<body data-page="contact">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-meta">
+        <span class="inline"><i data-lucide="message-square-heart"></i> 需求受理后 24 小时内回复</span>
+      </div>
+      <div class="topbar-links">
+        <a class="inline" href="mailto:1792625284@qq.com"><i data-lucide="mail"></i> 1792625284@qq.com</a>
+        <a class="inline" href="tel:13689016487"><i data-lucide="phone"></i> 13689016487</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">DK</span>
         <div>
-          <p class="text-sm font-semibold text-slate-900">迪康中科生物材料</p>
-          <p class="text-xs text-slate-500">Medical Biomaterials</p>
+          <p class="brand-name">迪康中科生物材料</p>
+          <p class="brand-sub">Medical Biomaterials Platform</p>
         </div>
       </a>
-      <nav class="hidden items-center gap-7 md:flex">
-        <a class="nav-link" href="index.html">首页</a>
-        <a class="nav-link" href="products.html">产品</a>
-        <a class="nav-link" href="services.html">服务</a>
-        <a class="nav-link" href="about.html">关于我们</a>
-        <a class="nav-link nav-link-active" href="contact.html">联系我们</a>
+      <nav class="nav-links">
+        <a class="nav-link" data-nav="home" href="index.html">首页</a>
+        <a class="nav-link" data-nav="about" href="about.html">关于我们</a>
+        <a class="nav-link" data-nav="services" href="services.html">加工服务</a>
+        <a class="nav-link" data-nav="products" href="products.html">产品中心</a>
+        <a class="nav-link" data-nav="contact" href="contact.html">联系</a>
       </nav>
-      <div class="hidden items-center gap-3 md:flex">
-        <a href="cart.html" class="btn-soft">询价单 <span class="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span></a>
-        <a href="#quote" class="btn-primary px-5">获取样品</a>
-      </div>
-      <button type="button" data-menu-toggle class="btn-soft px-3 md:hidden" aria-label="打开菜单">
-        <i data-lucide="menu" class="h-4 w-4"></i>
-      </button>
+      <a class="btn btn-primary" href="#contactForm">提交需求</a>
+      <button id="menuToggle" class="menu-btn" type="button" aria-expanded="false" aria-label="打开菜单"><i data-lucide="menu"></i></button>
     </div>
-    <div id="mobileMenu" class="hidden border-t border-sky-100 bg-white md:hidden">
-      <nav class="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm">
-        <a class="nav-link py-2" href="index.html">首页</a>
-        <a class="nav-link py-2" href="products.html">产品中心</a>
-        <a class="nav-link py-2" href="services.html">技术服务</a>
-        <a class="nav-link py-2" href="about.html">关于我们</a>
-        <a class="nav-link nav-link-active py-2" href="contact.html">联系我们</a>
-        <a class="nav-link py-2" href="cart.html">询价单</a>
-      </nav>
+    <div id="mobileNav" class="mobile-nav">
+      <a data-nav="home" href="index.html">首页</a>
+      <a data-nav="about" href="about.html">关于我们</a>
+      <a data-nav="services" href="services.html">加工服务</a>
+      <a data-nav="products" href="products.html">产品中心</a>
+      <a data-nav="contact" href="contact.html">联系</a>
     </div>
   </header>
 
   <main>
-    <section class="bg-gradient-to-r from-blue-600 to-cyan-500 text-white">
-      <div class="mx-auto max-w-7xl px-4 py-16">
-        <h1 class="text-3xl font-bold md:text-4xl">提交样品/报价需求</h1>
-        <p class="mt-3 max-w-3xl text-sm text-blue-50 md:text-base">填写核心需求后，销售与技术团队将协同反馈材料建议、样品方案与沟通安排。</p>
+    <section class="page-hero" style="padding:64px 0;">
+      <img class="bg" src="assets/images/hero/hero-plga-powder.webp" alt="联系" />
+      <div class="container">
+        <h1 class="hero-title">联系与询价</h1>
+        <p class="hero-text">填写需求信息后，我们将结合你的应用方向推荐材料和加工路径。</p>
       </div>
     </section>
 
-    <section class="mx-auto max-w-7xl px-4 py-10">
-      <div class="grid gap-8 lg:grid-cols-12">
-        <section id="quote" class="lg:col-span-7 glass-card p-6 md:p-8">
-          <div class="mb-5">
-            <h2 class="text-2xl font-semibold text-slate-900">需求表单</h2>
-            <p class="mt-2 text-sm text-slate-600">建议尽量填写应用场景和目标周期，便于更快匹配材料。</p>
-          </div>
+    <section class="section">
+      <div class="container grid two">
+        <section class="card card-pad">
+          <h2 class="section-title" style="font-size:28px;">提交需求</h2>
+          <p class="section-sub" style="margin-top:8px;">该表单通过 Vercel Function 接收，可直接部署在 Vercel 使用。</p>
 
-          <form id="quoteForm" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="grid gap-4 sm:grid-cols-2">
-            <input type="hidden" name="form-name" value="quote" />
-            <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-
+          <form id="contactForm" class="form-grid" data-api-form="contact" action="/api/contact" method="post">
             <div>
-              <label class="text-sm text-slate-700">公司/团队</label>
-              <input name="company" required class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="例如：XX 医疗器械" />
+              <label for="nameField">联系人</label>
+              <input id="nameField" name="name" class="input" required />
             </div>
             <div>
-              <label class="text-sm text-slate-700">联系人</label>
-              <input name="contact" required class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="姓名" />
+              <label for="companyField">公司/团队</label>
+              <input id="companyField" name="company" class="input" required />
             </div>
             <div>
-              <label class="text-sm text-slate-700">邮箱</label>
-              <input name="email" type="email" required class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="name@company.com" />
+              <label for="emailField">邮箱</label>
+              <input id="emailField" type="email" name="email" class="input" required />
             </div>
             <div>
-              <label class="text-sm text-slate-700">电话</label>
-              <input name="phone" required class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="+86 ..." />
+              <label for="phoneField">电话</label>
+              <input id="phoneField" name="phone" class="input" required />
             </div>
             <div>
-              <label class="text-sm text-slate-700">应用方向</label>
-              <select name="application" required class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm">
+              <label for="appField">应用方向</label>
+              <select id="appField" name="application" class="select" required>
                 <option value="">请选择</option>
                 <option>骨科固定</option>
                 <option>软组织修复</option>
@@ -96,94 +96,65 @@
               </select>
             </div>
             <div>
-              <label class="text-sm text-slate-700">预计用量</label>
-              <input name="usage" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="例如：10kg/月" />
+              <label for="interestField">意向产品（可选）</label>
+              <input id="interestField" name="interest" class="input" placeholder="例如：PLGA 微球" />
             </div>
-
-            <div class="sm:col-span-2">
-              <label class="text-sm text-slate-700">需求描述</label>
-              <textarea name="requirements" rows="6" class="mt-2 w-full rounded-xl border border-slate-200 px-3 py-3 text-sm" placeholder="例如：PLGA 75:25 微球，目标释放周期 1-2 个月..." ></textarea>
+            <div class="full">
+              <label for="messageField">需求描述</label>
+              <textarea id="messageField" name="message" class="textarea" rows="7" required placeholder="请描述目标周期、规格偏好、预计用量等"></textarea>
             </div>
-
-            <div class="sm:col-span-2 flex flex-wrap gap-3 pt-1">
-              <button type="submit" class="btn-primary">提交需求</button>
-              <a href="cart.html" class="btn-secondary">先查看询价单</a>
+            <div class="full" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+              <button type="submit" class="btn btn-primary">提交需求</button>
+              <span style="font-size:13px;color:#7c8fa3;">提交即表示同意我们用于技术沟通与商务联系。</span>
             </div>
           </form>
         </section>
 
-        <aside class="lg:col-span-5 space-y-5">
-          <section class="glass-card p-6">
-            <h2 class="text-lg font-semibold text-slate-900">联系方式</h2>
-            <ul class="mt-4 space-y-3 text-sm text-slate-600">
-              <li class="flex items-center gap-2"><i data-lucide="mail" class="h-4 w-4 text-blue-600"></i>1792625284@qq.com</li>
-              <li class="flex items-center gap-2"><i data-lucide="phone" class="h-4 w-4 text-blue-600"></i>13689016487</li>
-              <li class="flex items-center gap-2"><i data-lucide="map-pin" class="h-4 w-4 text-blue-600"></i>四川省成都市</li>
-            </ul>
+        <aside class="stack">
+          <section class="card card-pad stack">
+            <h3 style="margin:0;color:#1e2b3a;">联系方式</h3>
+            <div class="notice">邮箱：1792625284@qq.com</div>
+            <div class="notice">电话：13689016487</div>
+            <div class="notice">地址：四川省成都市</div>
+            <img src="assets/images/qr/wechat.webp" alt="企业微信" style="width:112px;height:112px;border-radius:12px;border:1px solid #d9e4ef;" loading="lazy" />
           </section>
 
-          <section class="glass-card bg-gradient-to-br from-slate-900 to-sky-900 p-6 text-white">
-            <h2 class="text-lg font-semibold">报价处理流程</h2>
-            <ol class="mt-4 space-y-2 text-sm text-slate-100">
-              <li>1. 需求评估</li>
-              <li>2. 材料建议与样品方案</li>
-              <li>3. 测试反馈与参数迭代</li>
-              <li>4. 商务报价与供货计划</li>
-            </ol>
-          </section>
-
-          <section id="tech" class="glass-card p-6">
-            <h2 class="text-lg font-semibold text-slate-900">技术沟通重点</h2>
-            <div class="mt-4 grid gap-3 text-sm text-slate-600">
-              <div class="rounded-xl border border-slate-200 p-4">目标支撑周期、力学窗口、灭菌方式</div>
-              <div class="rounded-xl border border-slate-200 p-4">材料体系选择与配方边界</div>
-              <div class="rounded-xl border border-slate-200 p-4">工艺验证路径与关键检测项</div>
-            </div>
+          <section class="card card-pad stack">
+            <h3 style="margin:0;color:#1e2b3a;">建议提供的信息</h3>
+            <p>目标应用、预期支撑/释放周期、灭菌方式、预计用量、计划节点。信息越完整，方案反馈越快。</p>
           </section>
         </aside>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-200 bg-white">
-    <div class="mx-auto grid max-w-7xl gap-8 px-4 py-12 md:grid-cols-12">
-      <div class="md:col-span-5">
-        <p class="text-base font-semibold text-slate-900">成都迪康中科生物医学材料有限公司</p>
-        <p class="mt-3 text-sm leading-relaxed text-slate-600">专注可吸收生物材料研发与应用转化，提供医疗器械与药械结合项目所需的材料供应、检测和工艺支持。</p>
+  <footer class="footer">
+    <div class="container footer-top grid three">
+      <div>
+        <h4>迪康中科生物材料</h4>
+        <p>专注可吸收生物材料与加工转化，服务医疗器械与药械结合项目。</p>
       </div>
-      <div class="md:col-span-7 grid gap-6 text-sm text-slate-600 sm:grid-cols-3">
-        <div>
-          <p class="font-semibold text-slate-900">导航</p>
-          <ul class="mt-3 space-y-2">
-            <li><a class="hover:text-blue-700" href="products.html">产品中心</a></li>
-            <li><a class="hover:text-blue-700" href="services.html">技术服务</a></li>
-            <li><a class="hover:text-blue-700" href="about.html">关于我们</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-slate-900">联系</p>
-          <ul class="mt-3 space-y-2">
-            <li>邮箱：1792625284@qq.com</li>
-            <li>电话：13689016487</li>
-            <li>地址：四川省成都市</li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-slate-900">企业微信</p>
-          <img class="mt-3 h-24 w-24 rounded-xl border border-slate-200 object-cover" src="assets/images/qr/wechat.png" alt="企业微信二维码" loading="lazy" />
-        </div>
+      <div>
+        <h4>导航</h4>
+        <ul>
+          <li><a href="products.html">产品中心</a></li>
+          <li><a href="services.html">加工服务</a></li>
+          <li><a href="about.html">关于我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>联系方式</h4>
+        <ul>
+          <li>邮箱：1792625284@qq.com</li>
+          <li>电话：13689016487</li>
+          <li>地址：四川省成都市</li>
+        </ul>
       </div>
     </div>
+    <div class="container footer-bottom">© <span data-year></span> 迪康中科. Design reference from MIT-licensed medical template.</div>
   </footer>
 
-  <div class="mobile-cta">
-    <div class="mx-auto flex max-w-7xl items-center gap-3">
-      <a href="#quote" class="btn-primary flex-1">提交需求</a>
-      <a href="cart.html" class="btn-secondary flex-1">询价单</a>
-    </div>
-  </div>
-
-  <div id="toast" class="pointer-events-none fixed bottom-24 left-1/2 z-50 -translate-x-1/2 translate-y-3 rounded-full bg-slate-900 px-5 py-3 text-sm text-white opacity-0 transition">提示</div>
+  <div id="toast" class="toast">提示</div>
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="assets/js/app.js"></script>
