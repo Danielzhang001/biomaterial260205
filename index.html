@@ -22,11 +22,17 @@
   </script>
   <link rel="stylesheet" href="assets/css/theme.css" />
 </head>
-<body class="theme-dark bg-slate-50 text-slate-900">
+<body class="theme-dark home-page bg-slate-50 text-slate-900">
   <canvas id="particleNetwork" class="particle-canvas"></canvas>
 
-  <header class="sticky top-0 z-40 backdrop-blur bg-white/70 border-b border-slate-200">
-    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/88 backdrop-blur">
+    <div class="header-notice">
+      <div class="mx-auto max-w-7xl px-4 py-2 text-center text-xs text-white sm:text-sm">
+        可吸收材料联合验证平台已开放 2026 年第一季度项目窗口，
+        <a href="services.html" class="font-semibold text-amber-300 hover:text-amber-200">查看服务流程</a>
+      </div>
+    </div>
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
       <a href="index.html" class="flex items-center gap-2">
         <div class="h-9 w-9 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">DK</div>
         <div class="leading-tight">
@@ -37,70 +43,96 @@
       <nav class="hidden md:flex items-center gap-7 text-sm text-slate-700">
         <a class="hover:text-slate-900" href="index.html">首页</a>
         <div class="nav-dropdown">
-  <a class="hover:text-slate-900 inline-flex items-center gap-1" href="products.html">
-    产品
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </a>
-  <div class="nav-dropdown-menu">
-    <a class="nav-dropdown-link" href="products.html?category=生物医用单体">生物医用单体</a>
-    <a class="nav-dropdown-link" href="products.html?category=生物医用聚合物">生物医用聚合物</a>
-    <a class="nav-dropdown-link" href="products.html?category=生物医用微球">生物医用微球</a>
-    <a class="nav-dropdown-link" href="products.html?category=医用加工服务">医用加工服务</a>
-    <a class="nav-dropdown-link" href="products.html?category=生物医用陶瓷">生物医用陶瓷</a>
-  </div>
-</div>
-        <a class="hover:text-slate-900" href="services.html">服务</a>
+          <a class="hover:text-slate-900 inline-flex items-center gap-1" href="products.html">
+            产品
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-link" href="products.html?category=生物医用单体">生物医用单体</a>
+            <a class="nav-dropdown-link" href="products.html?category=生物医用聚合物">生物医用聚合物</a>
+            <a class="nav-dropdown-link" href="products.html?category=生物医用微球">生物医用微球</a>
+            <a class="nav-dropdown-link" href="products.html?category=医用加工服务">医用加工服务</a>
+            <a class="nav-dropdown-link" href="products.html?category=生物医用陶瓷">生物医用陶瓷</a>
+          </div>
+        </div>
+        <div class="nav-dropdown">
+          <a class="hover:text-slate-900 inline-flex items-center gap-1" href="services.html">
+            服务
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a class="nav-dropdown-link" href="services.html">服务总览</a>
+            <a class="nav-dropdown-link" href="services.html#service-brief">项目需求梳理</a>
+            <a class="nav-dropdown-link" href="services.html#service-pilot">样品与小试</a>
+            <a class="nav-dropdown-link" href="services.html#service-report">指标与报告</a>
+            <a class="nav-dropdown-link" href="services.html#service-process">加工验证</a>
+            <a class="nav-dropdown-link" href="products.html?category=医用加工服务">医用加工服务</a>
+          </div>
+        </div>
         <a class="hover:text-slate-900" href="about.html">关于我们</a>
         <a class="hover:text-slate-900" href="contact.html">联系</a>
       </nav>
-      <div class="flex items-center gap-3">
-        <a href="cart.html" class="btn-ghost relative inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 hover:bg-slate-50">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="cart.html" class="relative hidden items-center gap-2 text-sm text-slate-700 transition hover:text-slate-900 md:inline-flex">
           询价单
-          <span class="absolute -top-2 -right-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span>
+          <span class="absolute -right-3 -top-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-slate-900 px-1 text-xs text-white hidden" data-cart-badge>0</span>
         </a>
-        <a href="contact.html#quote" class="btn-primary hidden sm:inline-flex items-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">
-          立即询价
+        <a href="contact.html#quote" class="btn-ghost hidden items-center px-5 py-2.5 text-sm font-medium sm:inline-flex">
+          提交样品
+        </a>
+        <a href="contact.html#quote" class="btn-primary inline-flex items-center px-5 py-2.5 text-sm font-medium">
+          提交询价
         </a>
       </div>
     </div>
+
+    <nav class="mx-auto flex max-w-7xl items-center gap-4 overflow-x-auto px-4 pb-3 text-sm text-slate-700 md:hidden">
+      <a class="whitespace-nowrap hover:text-slate-900" href="index.html">首页</a>
+      <a class="whitespace-nowrap hover:text-slate-900" href="products.html">产品</a>
+      <a class="whitespace-nowrap hover:text-slate-900" href="services.html">服务</a>
+      <a class="whitespace-nowrap hover:text-slate-900" href="about.html">关于我们</a>
+      <a class="whitespace-nowrap hover:text-slate-900" href="contact.html">联系</a>
+      <a class="whitespace-nowrap hover:text-slate-900" href="cart.html">询价单</a>
+    </nav>
   </header>
 
-  <section class="relative overflow-hidden">
+  <section class="hero-reference relative overflow-hidden">
     <div class="hero-slider" aria-hidden="true">
       <div class="hero-slide" style="background-image:url('assets/images/hero/hero-ppdo.png')"></div>
       <div class="hero-slide" style="background-image:url('assets/images/hero/hero-plga-powder.png')"></div>
       <div class="hero-slide" style="background-image:url('assets/images/hero/hero-plga-pellet.png')"></div>
     </div>
     <div class="hero-overlay"></div>
-    <div class="mx-auto max-w-7xl px-4 py-20 lg:py-28 relative">
-      <div class="max-w-2xl">
-        <div class="chip chip-accent">医用可吸收高分子材料中心</div>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-semibold leading-tight text-slate-900">
+    <div class="hero-stripe-mask"></div>
+    <div class="relative mx-auto max-w-7xl px-4 py-20 lg:py-28">
+      <div class="mx-auto max-w-4xl text-center">
+        <div class="chip chip-accent hero-chip">医用可吸收高分子材料中心</div>
+        <h1 class="mt-6 text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
           高端医用可吸收材料
-          <span class="text-slate-700 block">分子级定制与验证平台</span>
+          <span class="block text-slate-100">分子级定制与验证平台</span>
         </h1>
-        <p class="mt-6 text-lg text-slate-600 leading-relaxed">
+        <p class="mt-6 text-lg leading-relaxed text-slate-100">
           覆盖 PLLA / PDO / PLGA / PCL 全谱系，支持分子量定制、端基修饰与形态定制（颗粒 / 粉末 / 丝材）。从材料合成到器械验证，提供全流程检测与工艺支持。
         </p>
-        <p class="mt-3 text-base text-slate-600 leading-relaxed">
+        <p class="mt-3 text-base leading-relaxed text-slate-200">
           同时提供生物医用单体、可控粒径微球与骨修复陶瓷材料，覆盖药物缓释、组织工程与植入材料的快速验证需求。
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="products.html" class="btn-primary rounded-2xl px-6 py-3 text-sm font-medium">进入产品中心</a>
-          <a href="contact.html#quote" class="btn-ghost rounded-2xl px-6 py-3 text-sm font-medium">提交询价</a>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="contact.html#quote" class="btn-primary px-6 py-3 text-sm font-medium">提交询价</a>
+          <a href="services.html" class="btn-ghost hero-outline px-6 py-3 text-sm font-medium">查看服务</a>
         </div>
-        <div class="mt-10 grid sm:grid-cols-3 gap-4">
-          <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-            <div class="text-sm font-medium text-slate-900">多形态供货</div>
-            <div class="text-xs text-slate-600 mt-1">粉料 ~100nm / 粒料 ~3mm / 丝材</div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-2xl border border-white/30 bg-white/10 p-4 text-left shadow-lg backdrop-blur-sm">
+            <div class="text-sm font-medium text-white">多形态供货</div>
+            <div class="mt-1 text-xs text-slate-200">粉料 ~100nm / 粒料 ~3mm / 丝材</div>
           </div>
-          <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-            <div class="text-sm font-medium text-slate-900">分子量定制</div>
-            <div class="text-xs text-slate-600 mt-1">可按需求精准定制</div>
+          <div class="rounded-2xl border border-white/30 bg-white/10 p-4 text-left shadow-lg backdrop-blur-sm">
+            <div class="text-sm font-medium text-white">分子量定制</div>
+            <div class="mt-1 text-xs text-slate-200">可按需求精准定制</div>
           </div>
-          <div class="glass-card hover-lift rounded-2xl border border-slate-200 p-4">
-            <div class="text-sm font-medium text-slate-900">检测即交付</div>
-            <div class="text-xs text-slate-600 mt-1">COA / ISO 10993 / 重金属与单体残留</div>
+          <div class="rounded-2xl border border-white/30 bg-white/10 p-4 text-left shadow-lg backdrop-blur-sm">
+            <div class="text-sm font-medium text-white">检测即交付</div>
+            <div class="mt-1 text-xs text-slate-200">COA / ISO 10993 / 重金属与单体残留</div>
           </div>
         </div>
       </div>
@@ -138,18 +170,18 @@
             <div class="tile-desc">药物缓释 / 微球 / 组织工程</div>
           </div>
         </a>
-        <a class="showcase-tile" href="products.html?category=医用加工服务">
-          <img src="assets/images/materials/plga-pellet.png" alt="医用加工服务" loading="lazy" />
-          <div class="tile-content">
-            <div class="tile-title">医用加工服务</div>
-            <div class="tile-desc">挤出 / 注塑 / 静电纺丝 / 3D 打印验证</div>
-          </div>
-        </a>
         <a class="showcase-tile" href="products.html?category=生物医用陶瓷">
           <img src="assets/images/materials/plga-powder.png" alt="生物医用陶瓷" loading="lazy" />
           <div class="tile-content">
             <div class="tile-title">生物医用陶瓷</div>
             <div class="tile-desc">45S5 生物活性玻璃 / β-TCP / 羟基磷灰石</div>
+          </div>
+        </a>
+        <a class="showcase-tile" href="services.html#service-flow">
+          <img src="assets/images/materials/plga-pellet.png" alt="技术服务流程" loading="lazy" />
+          <div class="tile-content">
+            <div class="tile-title">技术服务流程</div>
+            <div class="tile-desc">需求梳理 / 样品小试 / 指标报告 / 加工验证</div>
           </div>
         </a>
       </div>

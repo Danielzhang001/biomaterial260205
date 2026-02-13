@@ -118,6 +118,77 @@ h1, h2, h3, .font-display {
   background: rgba(226, 232, 240, 0.6);
 }
 
+.home-page .header-notice {
+  background: linear-gradient(90deg, #242a7a, #2e3e9f);
+}
+
+.home-page .btn-primary {
+  border-radius: 999px;
+  border: 1px solid rgba(249, 115, 22, 0.28);
+  background: linear-gradient(135deg, #ffaf1a, #f97316);
+  color: #fff !important;
+  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.26);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.home-page .btn-primary:hover {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  box-shadow: 0 16px 30px rgba(194, 65, 12, 0.3);
+  transform: translateY(-1px);
+}
+
+.home-page .btn-ghost {
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.24);
+  background: transparent;
+  color: #0f172a !important;
+  transition: background 0.28s ease, border-color 0.28s ease, color 0.28s ease;
+}
+
+.home-page .btn-ghost:hover {
+  border-color: rgba(15, 23, 42, 0.36);
+  background: #fff;
+}
+
+.home-page .hero-outline {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff !important;
+}
+
+.home-page .hero-outline:hover {
+  border-color: #fff;
+  background: #fff;
+  color: #0f172a !important;
+}
+
+.home-page .hero-reference .hero-overlay {
+  background: linear-gradient(105deg, rgba(17, 27, 76, 0.9) 0%, rgba(34, 52, 128, 0.72) 42%, rgba(43, 67, 153, 0.35) 78%, rgba(43, 67, 153, 0.12) 100%);
+}
+
+.home-page .hero-stripe-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(12, 22, 67, 0.28) 0%,
+    rgba(12, 22, 67, 0.28) 19%,
+    rgba(33, 51, 128, 0.1) 19%,
+    rgba(33, 51, 128, 0.1) 39%
+  );
+  mix-blend-mode: multiply;
+}
+
+.home-page .hero-slide {
+  filter: contrast(1.05) saturate(1.04);
+}
+
+.home-page .hero-chip {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
 .nav-dropdown {
   position: relative;
   /* Extend hover area below trigger so cursor can move into menu without flicker */
