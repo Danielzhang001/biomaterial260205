@@ -312,7 +312,7 @@ function renderCatalog() {
 
   if (!items.length) {
     grid.innerHTML = `
-      <div class="glass-card p-8 text-center text-sm text-slate-500 sm:col-span-2 xl:col-span-3">
+      <div class="surface-card p-8 text-center text-sm text-slate-500 sm:col-span-2 xl:col-span-3">
         当前筛选条件下暂无结果，请调整关键词或分类。
       </div>
     `;
@@ -320,7 +320,7 @@ function renderCatalog() {
     grid.innerHTML = items.map((product) => {
       const tags = (product.applications || []).slice(0, 2);
       return `
-        <article class="group overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-soft transition hover:-translate-y-1 hover:shadow-float">
+        <article class="group surface-card overflow-hidden transition hover:-translate-y-1 hover:shadow-float">
           <a href="product.html?id=${encodeURIComponent(product.id)}" class="block">
             <div class="aspect-[4/3] overflow-hidden">${productImage(product)}</div>
             <div class="p-5">
@@ -425,7 +425,7 @@ function renderProductDetail() {
   const product = state.products.find((item) => item.id === productId) || state.products[0];
 
   if (!product) {
-    host.innerHTML = `<div class="glass-card p-8 text-sm text-slate-500">未找到产品信息。</div>`;
+    host.innerHTML = `<div class="surface-card p-8 text-sm text-slate-500">未找到产品信息。</div>`;
     return;
   }
 

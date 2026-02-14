@@ -3,12 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --radius-card: 1rem;
+    --surface-border: rgba(203, 213, 225, 0.72);
+    --surface-shadow: 0 14px 36px -24px rgba(15, 23, 42, 0.36);
+    --surface-shadow-hover: 0 20px 46px -24px rgba(15, 23, 42, 0.5);
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
     @apply bg-slate-50 text-slate-800 antialiased;
+    font-family: "Noto Sans SC", "Manrope", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    line-height: 1.68;
     background-image:
       radial-gradient(circle at 10% 10%, rgba(14, 165, 233, 0.08), transparent 42%),
       radial-gradient(circle at 90% 20%, rgba(6, 182, 212, 0.1), transparent 35%);
@@ -20,6 +30,18 @@
     @apply tracking-tight;
   }
 
+  h1 {
+    line-height: 1.14;
+  }
+
+  h2 {
+    line-height: 1.22;
+  }
+
+  h3 {
+    line-height: 1.3;
+  }
+
   input,
   textarea,
   select {
@@ -28,22 +50,34 @@
 }
 
 @layer components {
+  .surface-card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--surface-border);
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--surface-shadow);
+  }
+
+  .surface-card:hover {
+    box-shadow: var(--surface-shadow-hover);
+  }
+
   .glass-card {
-    @apply rounded-2xl border border-sky-100 bg-white/95 shadow-soft backdrop-blur;
+    @apply surface-card border-sky-100 bg-white/95 backdrop-blur;
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-medium text-white shadow-float transition hover:-translate-y-0.5 hover:bg-blue-700;
-    min-height: 44px;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-float transition hover:-translate-y-0.5 hover:bg-blue-700;
+    min-height: 46px;
+    letter-spacing: 0.01em;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-blue-600 bg-white px-6 py-3 text-sm font-medium text-blue-600 transition hover:-translate-y-0.5 hover:bg-blue-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 bg-white/95 px-6 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50;
     min-height: 44px;
   }
 
   .btn-soft {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50;
     min-height: 40px;
   }
 
@@ -60,15 +94,17 @@
   }
 
   .section-title {
-    @apply text-2xl font-semibold text-slate-900 md:text-3xl;
+    @apply text-[1.7rem] font-semibold text-slate-900 md:text-[2.15rem];
+    line-height: 1.2;
   }
 
   .section-subtitle {
-    @apply mt-3 max-w-3xl text-sm leading-relaxed text-slate-600 md:text-base;
+    @apply mt-3 text-sm leading-relaxed text-slate-600 md:text-base;
+    max-width: 68ch;
   }
 
   .metric-card {
-    @apply glass-card p-5;
+    @apply surface-card p-5;
   }
 
   .timeline-line {
@@ -81,6 +117,44 @@
 
   .mobile-cta {
     @apply fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 shadow-2xl backdrop-blur md:hidden;
+    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  .hero-title {
+    @apply text-3xl font-extrabold md:text-5xl;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold md:text-4xl;
+    letter-spacing: -0.025em;
+    line-height: 1.16;
+  }
+
+  .hero-copy {
+    @apply mt-5 text-base leading-relaxed text-blue-50 md:text-lg;
+    max-width: 66ch;
+  }
+
+  .page-intro {
+    @apply mt-3 text-base text-blue-50 md:text-lg;
+    max-width: 66ch;
+    line-height: 1.62;
+  }
+
+  .hero-actions {
+    @apply mt-7 flex flex-col gap-3 sm:flex-row sm:items-center;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary {
+    @apply w-full sm:w-auto;
+    min-width: 9.5rem;
+  }
+
+  .reading-measure {
+    max-width: 68ch;
   }
 
   .fade-in-up {
