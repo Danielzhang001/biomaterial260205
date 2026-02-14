@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
@@ -6,7 +6,7 @@
   <title>迪康医用材料 | PLLA / PPDO / PLGA / PCL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -30,9 +30,6 @@
       <div class="header-notice-marquee">
         <div class="header-notice-track">
           <span>精益求精，值得信赖</span>
-          <span aria-hidden="true">精益求精，值得信赖</span>
-          <span aria-hidden="true">精益求精，值得信赖</span>
-          <span aria-hidden="true">精益求精，值得信赖</span>
         </div>
       </div>
     </div>
@@ -102,9 +99,13 @@
 
   <section class="hero-reference relative overflow-hidden">
     <div class="hero-slider" aria-hidden="true">
-      <div class="hero-slide" style="background-image:url('assets/images/hero/hero-ppdo.png')"></div>
-      <div class="hero-slide" style="background-image:url('assets/images/hero/hero-plga-powder.png')"></div>
-      <div class="hero-slide" style="background-image:url('assets/images/hero/hero-plga-pellet.png')"></div>
+      <div class="hero-slide" style="--hero-order:0;background-image:url('assets/images/hero/hero-ppdo.png')"></div>
+      <div class="hero-slide" style="--hero-order:1;background-image:url('assets/images/hero/hero-plga-powder.png')"></div>
+      <div class="hero-slide" style="--hero-order:2;background-image:url('assets/images/hero/hero-plga-pellet.png')"></div>
+      <div class="hero-slide" style="--hero-order:3;background-image:url('assets/images/hero/hero-plla-pellet.png')"></div>
+      <div class="hero-slide" style="--hero-order:4;background-image:url('assets/images/hero/hero-ppdo-powder-alt.png')"></div>
+      <div class="hero-slide" style="--hero-order:5;background-image:url('assets/images/hero/hero-microspheres.png')"></div>
+      <div class="hero-slide" style="--hero-order:6;background-image:url('assets/images/hero/hero-plla.png')"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-stripe-mask"></div>
@@ -286,3 +287,4 @@
   <script src="assets/js/app.js"></script>
 </body>
 </html>
+
