@@ -372,52 +372,7 @@
       }
     ],
     "image_svg": "bottle_plla",
-    "image": "assets/images/materials/plla-sample.png"
-  },
-  {
-    "id": "d-la",
-    "name": "D-LA（D-丙交酯）",
-    "tagline": "高纯度手性单体｜立构调控共聚开发",
-    "category": "生物医用单体",
-    "description": "D-LA 常用于立构调控与共聚设计，形态可为块状结晶或粉末，适合科研与器械材料开发。",
-    "applications": [
-      "立构调控共聚",
-      "PDLA 开发",
-      "结晶行为研究"
-    ],
-    "spec_range": {
-      "a_label": "纯度",
-      "a_value": "≥99.0%",
-      "b_label": "形态",
-      "b_value": "块状结晶/粉末"
-    },
-    "processing": "低水分控制与低温密封储存。",
-    "variants": [
-      {
-        "sku": "MONO-D-LA",
-        "mw": "单体级",
-        "iv": "不适用",
-        "end_group": "不适用",
-        "crystallinity": "高纯度结晶",
-        "form": "块状结晶/粉末",
-        "pack": "100g/500g（可定制）",
-        "price_cny": null,
-        "lead_time": "按批次评估",
-        "properties": {
-          "purity": "≥99.0%",
-          "water": "≤0.1%",
-          "appearance": "白色结晶或粉末"
-        },
-        "reports": [
-          {
-            "name": "检测报告（示例）",
-            "file": "assets/reports/COA_Summary.pdf"
-          }
-        ]
-      }
-    ],
-    "image_svg": "bottle_plla",
-    "image": "assets/images/materials/plla-sample.png"
+    "image": "assets/images/materials/l-la-monomer.png"
   },
   {
     "id": "dl-la",
@@ -462,7 +417,7 @@
       }
     ],
     "image_svg": "bottle_plla",
-    "image": "assets/images/materials/plla-sample.png"
+    "image": "assets/images/materials/dl-la-monomer.png"
   },
   {
     "id": "plla-ms",
@@ -597,7 +552,7 @@
       }
     ],
     "image_svg": "microspheres",
-    "image": "assets/images/materials/ppdo-powder.png"
+    "image": "assets/images/materials/ppdo-microsphere.png"
   },
   {
     "id": "plga-ms",
@@ -819,7 +774,7 @@
       }
     ],
     "image_svg": "bottle_plga",
-    "image": "assets/images/materials/plga-powder.png"
+    "image": "assets/images/materials/bioactive-glass-45s5.png"
   },
   {
     "id": "beta-tcp",
@@ -864,7 +819,7 @@
       }
     ],
     "image_svg": "bottle_plga",
-    "image": "assets/images/materials/pellets.svg"
+    "image": "assets/images/materials/beta-tcp.png"
   },
   {
     "id": "ha",
@@ -909,6 +864,6 @@
       }
     ],
     "image_svg": "bottle_plga",
-    "image": "assets/images/materials/plla-sample.png"
+    "image": "assets/images/materials/hydroxyapatite-ha.png"
   }
 ]

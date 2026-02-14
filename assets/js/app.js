@@ -171,8 +171,8 @@ function renderCatalog(){
           <div class="card-art w-full h-full">${productMedia(p)}</div>
           <div class="catalog-overlay"></div>
           <div class="catalog-content">
-            <h3 class="text-xl font-semibold tracking-tight text-white">${p.name}</h3>
-            <p class="mt-2 text-sm text-slate-100 line-clamp-2">${p.tagline}</p>
+            <h3 class="catalog-title">${p.name}</h3>
+            <p class="catalog-subtitle line-clamp-2">${p.tagline}</p>
           </div>
         </div>
       </a>

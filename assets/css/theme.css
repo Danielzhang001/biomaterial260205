@@ -710,17 +710,42 @@ h1, h2, h3, .font-display {
 .catalog-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.18), rgba(15, 23, 42, 0.72));
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.4) 52%, rgba(2, 6, 23, 0.86) 100%),
+    radial-gradient(85% 65% at 50% 100%, rgba(2, 6, 23, 0.32), transparent 72%);
   z-index: 1;
 }
 
 .catalog-content {
   position: absolute;
-  left: 1.1rem;
-  right: 1.1rem;
-  bottom: 1rem;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.85rem;
   z-index: 2;
+  padding: 0.78rem 0.82rem 0.7rem;
+  border-radius: 0.92rem;
+  background: linear-gradient(165deg, rgba(15, 23, 42, 0.76), rgba(15, 23, 42, 0.58));
+  border: 1px solid rgba(148, 163, 184, 0.33);
+  backdrop-filter: blur(4px);
   transition: transform 0.35s ease;
+}
+
+.catalog-title {
+  margin: 0;
+  font-size: 1.24rem;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #f8fafc;
+  text-shadow: 0 2px 8px rgba(2, 6, 23, 0.45);
+}
+
+.catalog-subtitle {
+  margin-top: 0.38rem;
+  font-size: 0.97rem;
+  line-height: 1.42;
+  color: rgba(241, 245, 249, 0.94);
+  text-shadow: 0 1px 6px rgba(2, 6, 23, 0.38);
 }
 
 .catalog-hover-card:hover .catalog-visual img {
