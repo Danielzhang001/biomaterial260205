@@ -175,18 +175,20 @@ h1, h2, h3, .font-display {
 }
 
 .home-page .hero-outline {
-  border-color: rgba(255, 255, 255, 0.7);
-  color: #fff !important;
+  border-color: rgba(15, 23, 42, 0.4);
+  background: rgba(248, 250, 252, 0.52);
+  color: #0f172a !important;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
 }
 
 .home-page .hero-outline:hover {
-  border-color: #fff;
-  background: #fff;
+  border-color: rgba(15, 23, 42, 0.58);
+  background: rgba(255, 255, 255, 0.82);
   color: #0f172a !important;
 }
 
 .home-page .hero-reference .hero-overlay {
-  background: linear-gradient(115deg, rgba(2, 6, 23, 0.18) 0%, rgba(15, 23, 42, 0.06) 45%, rgba(2, 6, 23, 0.16) 100%);
+  background: linear-gradient(115deg, rgba(248, 250, 252, 0.1) 0%, rgba(248, 250, 252, 0.02) 45%, rgba(248, 250, 252, 0.08) 100%);
 }
 
 .home-page .hero-stripe-mask {
@@ -194,23 +196,71 @@ h1, h2, h3, .font-display {
 }
 
 .home-page .hero-slide {
-  filter: contrast(1.03) saturate(1.08) brightness(1.03);
+  filter: contrast(1.02) saturate(1.06) brightness(1.08);
+}
+
+.home-page .hero-copy {
+  position: relative;
+  isolation: isolate;
+  padding: 0.35rem 1.25rem 1rem;
+}
+
+.home-page .hero-copy::before {
+  content: "";
+  position: absolute;
+  inset: 2rem -1.5rem 2.4rem;
+  border-radius: 2rem;
+  background: radial-gradient(ellipse at center, rgba(248, 250, 252, 0.34) 0%, rgba(248, 250, 252, 0.18) 45%, rgba(248, 250, 252, 0) 78%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .home-page .hero-chip {
-  border-color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-}
-.home-page .hero-reference h1 {
-  font-family: 'Noto Serif SC', ui-sans-serif, system-ui;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  text-shadow: 0 5px 26px rgba(2, 6, 23, 0.42);
+  border-color: rgba(15, 23, 42, 0.24);
+  background: rgba(248, 250, 252, 0.72);
+  color: #0f172a;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.home-page .hero-reference p {
-  text-shadow: 0 2px 14px rgba(2, 6, 23, 0.3);
+.home-page .hero-reference .hero-title {
+  font-family: 'Noto Serif SC', ui-sans-serif, system-ui;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  color: #0b1f3d;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.86), 0 10px 26px rgba(15, 23, 42, 0.18);
+}
+
+.home-page .hero-reference .hero-title-sub {
+  color: #123768;
+}
+
+.home-page .hero-reference .hero-lead {
+  color: #1f2f4a;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.home-page .hero-reference .hero-sublead {
+  color: #334155;
+  font-weight: 500;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.66);
+}
+
+.home-page .hero-kpi-card {
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(248, 250, 252, 0.58);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+}
+
+.home-page .hero-kpi-title {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.home-page .hero-kpi-desc {
+  color: #334155;
+  font-weight: 500;
 }
 .nav-dropdown {
   position: relative;
@@ -722,6 +772,18 @@ h1, h2, h3, .font-display {
 
   .hero-slider {
     --hero-step: 6s;
+  }
+
+  .home-page .hero-copy {
+    padding: 0.15rem 0.4rem 0.75rem;
+  }
+
+  .home-page .hero-copy::before {
+    inset: 1.3rem -0.6rem 2rem;
+  }
+
+  .home-page .hero-reference .hero-title {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.84), 0 7px 20px rgba(15, 23, 42, 0.16);
   }
 
   .product-showcase-grid {
