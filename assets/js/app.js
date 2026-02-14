@@ -863,14 +863,40 @@ function initSpecSelector(){
     return Array.from(new Set(arr.filter(Boolean)));
   }
 
+  function getDimensionKey(product, vars){
+    const hasRatio = product?.id === 'plga' && vars.some(v => v.ratio);
+    return hasRatio ? 'ratio' : 'mw';
+  }
+
+  function normalizeRatio(raw){
+    return String(raw || '').replace(/^LA:GA\s*=\s*/i, '').trim();
+  }
+
+  function getDimensionText(value, key){
+    if(key === 'ratio'){
+      const ratio = normalizeRatio(value);
+      return ratio ? `\u4e73\u9178:\u4e59\u9187\u9178 = ${ratio}` : '\u6bd4\u4f8b\u53ef\u5b9a\u5236';
+    }
+    return value || '\u53ef\u5b9a\u5236';
+  }
+
+  function getDisplayCode(product, variant){
+    if(product?.id === 'plga'){
+      const ratio = normalizeRatio(variant?.ratio);
+      if(ratio) return `PLGA\uff08\u4e73\u9178:\u4e59\u9187\u9178 ${ratio}\uff09`;
+    }
+    return variant?.sku || '\u5f85\u786e\u8ba4';
+  }
+
   function updateOptions(){
     const p = products.find(x => x.id === productSel.value) || products[0];
     const vars = p.variants || [];
-    const mws = uniq(vars.map(v => v.mw));
+    const dimensionKey = getDimensionKey(p, vars);
+    const mws = uniq(vars.map(v => v[dimensionKey]));
     const ends = uniq(vars.map(v => v.end_group));
     const forms = uniq(vars.map(v => v.form));
 
-    mwSel.innerHTML = mws.map(v => `<option value="${v}">${v}</option>`).join('');
+    mwSel.innerHTML = mws.map(v => `<option value="${v}">${getDimensionText(v, dimensionKey)}</option>`).join('');
     endSel.innerHTML = ends.map(v => `<option value="${v}">${v}</option>`).join('');
     formSel.innerHTML = forms.map(v => `<option value="${v}">${v}</option>`).join('');
 
@@ -880,11 +906,13 @@ function initSpecSelector(){
   function updateSelection(){
     const p = products.find(x => x.id === productSel.value) || products[0];
     const vars = p.variants || [];
-    const v = vars.find(x => x.mw === mwSel.value && x.end_group === endSel.value && x.form === formSel.value)
-      || vars.find(x => x.mw === mwSel.value && x.end_group === endSel.value)
+    const dimensionKey = getDimensionKey(p, vars);
+    const selectedDimension = mwSel.value;
+    const v = vars.find(x => x[dimensionKey] === selectedDimension && x.end_group === endSel.value && x.form === formSel.value)
+      || vars.find(x => x[dimensionKey] === selectedDimension && x.end_group === endSel.value)
       || vars[0];
     if(!v) return;
-    skuEl.textContent = v.sku || '-';
+    skuEl.textContent = getDisplayCode(p, v);
     priceEl.textContent = v.price_cny ? money(v.price_cny) : '询价';
 
     if(addBtn){

@@ -174,11 +174,11 @@
             <div class="tile-desc">45S5 生物活性玻璃 / β-TCP / 羟基磷灰石</div>
           </div>
         </a>
-        <a class="showcase-tile" href="services.html#service-flow">
-          <img src="assets/images/materials/plga-pellet.png" alt="技术服务流程" loading="lazy" />
+        <a class="showcase-tile service-process-tile" href="services.html#service-flow">
+          <img src="assets/images/materials/electrospinning-service.webp" alt="静电纺丝加工服务" loading="lazy" />
           <div class="tile-content">
-            <div class="tile-title">技术服务流程</div>
-            <div class="tile-desc">需求梳理 / 样品小试 / 指标报告 / 加工验证</div>
+            <div class="tile-title">静电纺丝加工服务</div>
+            <div class="tile-desc">工艺路线梳理 / 参数窗口开发 / 样品验证</div>
           </div>
         </a>
       </div>
@@ -188,44 +188,62 @@
   <section class="relative z-10 bg-slate-50">
     <div class="mx-auto max-w-7xl px-4 py-16">
       <div class="grid lg:grid-cols-2 gap-10">
-        <div class="glass-card rounded-3xl border border-slate-200 p-8" id="specSelector">
-          <div class="text-lg font-semibold text-slate-900">智能规格选择系统</div>
-          <p class="mt-2 text-sm text-slate-600">选择分子量、端基与形态，实时生成可选规格。</p>
+        <div class="spec-system-card glass-card rounded-3xl border border-slate-200 p-8" id="specSelector">
+          <div class="spec-title text-4xl font-semibold text-slate-900">智能规格选择系统</div>
+          <p class="spec-lead mt-2 text-sm text-slate-600">选择材料、规格与形态，实时生成可选方案。</p>
           <div class="mt-6 space-y-4">
-            <select id="specProduct" class="w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
-            <div class="grid sm:grid-cols-3 gap-3">
-              <select id="specMw" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
-              <select id="specEnd" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
-              <select id="specForm" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
+            <select id="specProduct" class="spec-select spec-select-main w-full rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
+            <div class="spec-control-grid grid sm:grid-cols-3 gap-3">
+              <select id="specMw" class="spec-select rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
+              <select id="specEnd" class="spec-select rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
+              <select id="specForm" class="spec-select rounded-2xl border border-slate-200 px-4 py-3 text-sm"></select>
             </div>
             <div class="grid sm:grid-cols-2 gap-3">
-              <div class="rounded-2xl border border-slate-200 px-4 py-3">
-                <div class="text-xs text-slate-500">SKU</div>
-                <div class="text-sm font-medium text-slate-900" id="specSku">-</div>
+              <div class="spec-stat rounded-2xl border border-slate-200 px-4 py-3">
+                <div class="spec-stat-label text-xs text-slate-500">产品编号</div>
+                <div class="spec-stat-value text-sm font-medium text-slate-900" id="specSku">-</div>
               </div>
-              <div class="rounded-2xl border border-slate-200 px-4 py-3">
-                <div class="text-xs text-slate-500">价格</div>
-                <div class="text-sm font-medium text-slate-900" id="specPrice">询价</div>
+              <div class="spec-stat rounded-2xl border border-slate-200 px-4 py-3">
+                <div class="spec-stat-label text-xs text-slate-500">参考价格</div>
+                <div class="spec-stat-value text-sm font-medium text-slate-900" id="specPrice">询价</div>
               </div>
             </div>
-            <button id="specAddBtn" class="btn-primary rounded-2xl px-6 py-3 text-sm font-medium">加入询价单</button>
+            <button id="specAddBtn" class="spec-add-btn btn-primary rounded-2xl px-6 py-3 text-sm font-medium">加入询价单</button>
           </div>
         </div>
-        <div class="glass-card rounded-3xl border border-slate-200 p-8">
-          <div class="text-lg font-semibold text-slate-900">QA 质量检测模块</div>
-          <p class="mt-2 text-sm text-slate-600">关键指标透明可追溯，支持完整 COA 数据交付。</p>
-          <div class="mt-5 grid sm:grid-cols-2 gap-4 text-sm text-slate-700">
-            <div class="rounded-2xl border border-slate-200 p-4">单体残留 &lt; 0.5%</div>
-            <div class="rounded-2xl border border-slate-200 p-4">Sn &lt; 10 ppm</div>
-            <div class="rounded-2xl border border-slate-200 p-4">IV / Mw / 残留溶剂</div>
-            <div class="rounded-2xl border border-slate-200 p-4">ISO 13485 / ISO 10993</div>
+        <div class="quality-overview-card rounded-3xl border border-slate-200 p-8">
+          <div class="text-2xl font-semibold text-white">品质与合规体系</div>
+          <p class="mt-2 text-sm text-slate-200">面向中国大陆医疗器械项目，按用途支持合规资料对接与验证路径。</p>
+          <div class="quality-logo-grid mt-6 grid sm:grid-cols-2 gap-4">
+            <div class="quality-logo-card rounded-2xl p-4">
+              <div class="quality-logo-mark">N</div>
+              <div class="quality-logo-title">NMPA / CFDA 路径</div>
+              <div class="quality-logo-sub">注册法规与资料框架支持</div>
+            </div>
+            <div class="quality-logo-card rounded-2xl p-4">
+              <div class="quality-logo-mark">85</div>
+              <div class="quality-logo-title">ISO 13485</div>
+              <div class="quality-logo-sub">质量管理体系要求对齐</div>
+            </div>
+            <div class="quality-logo-card rounded-2xl p-4">
+              <div class="quality-logo-mark">93</div>
+              <div class="quality-logo-title">ISO 10993</div>
+              <div class="quality-logo-sub">生物相容性评价标准</div>
+            </div>
+            <div class="quality-logo-card rounded-2xl p-4">
+              <div class="quality-logo-mark">G</div>
+              <div class="quality-logo-title">GMP 规范</div>
+              <div class="quality-logo-sub">医疗器械生产质量规范参考</div>
+            </div>
           </div>
-          <div class="mt-4 flex flex-wrap gap-2 text-xs">
-            <span class="chip">ISO 13485</span>
-            <span class="chip">ISO 10993</span>
-            <span class="chip">USP Class VI</span>
-            <span class="chip">GMP</span>
+          <div class="quality-requirements mt-5 flex flex-wrap gap-2 text-xs">
+            <span class="quality-chip">注册检验报告</span>
+            <span class="quality-chip">型式检验资料</span>
+            <span class="quality-chip">可追溯 COA</span>
+            <span class="quality-chip">风险管理文件</span>
+            <span class="quality-chip">灭菌与残留评估</span>
           </div>
+          <p class="quality-note mt-4 text-xs text-slate-300">以上为项目常见合规要点，具体以产品分类和监管要求为准。</p>
         </div>
       </div>
     </div>
